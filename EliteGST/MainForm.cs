@@ -59,15 +59,17 @@ namespace EliteGST
                 // Include purchase order facility
                 if (Config.config["IncludePurchaseOrder"] == "true")
                 {
+                    Height = 430;
                     tileItem4.Visible = true;
                     tileItem5.Visible = true;
-                    this.Width = 770;
                 }
                 else
                 {
+                    Height = 270;
+                    tileControl1.Dock = DockStyle.Fill;
+                    tileControl2.Visible = false;
                     tileItem4.Visible = false;
                     tileItem5.Visible = false;
-                    Width = 480;
                 }
 
                 // Include packs?

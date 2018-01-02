@@ -297,7 +297,7 @@
             // chkCancelled
             // 
             this.chkCancelled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkCancelled.Location = new System.Drawing.Point(424, 635);
+            this.chkCancelled.Location = new System.Drawing.Point(424, 634);
             this.chkCancelled.Name = "chkCancelled";
             this.chkCancelled.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCancelled.Properties.Appearance.Options.UseFont = true;
@@ -360,16 +360,16 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(24, 537);
+            this.txtRemarks.Location = new System.Drawing.Point(24, 494);
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(384, 132);
+            this.txtRemarks.Size = new System.Drawing.Size(384, 175);
             this.txtRemarks.StyleController = this.layoutControl1;
             this.txtRemarks.TabIndex = 39;
             // 
             // lblInvoiceTotal
             // 
             this.lblInvoiceTotal.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceTotal.Location = new System.Drawing.Point(436, 575);
+            this.lblInvoiceTotal.Location = new System.Drawing.Point(436, 574);
             this.lblInvoiceTotal.Name = "lblInvoiceTotal";
             this.lblInvoiceTotal.Size = new System.Drawing.Size(411, 44);
             this.lblInvoiceTotal.TabIndex = 38;
@@ -529,18 +529,18 @@
             // simpleButton7
             // 
             this.simpleButton7.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton7.Location = new System.Drawing.Point(626, 659);
+            this.simpleButton7.Location = new System.Drawing.Point(626, 658);
             this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(233, 22);
+            this.simpleButton7.Size = new System.Drawing.Size(233, 23);
             this.simpleButton7.StyleController = this.layoutControl1;
             this.simpleButton7.TabIndex = 23;
             this.simpleButton7.Text = "&Close";
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(424, 659);
+            this.simpleButton6.Location = new System.Drawing.Point(424, 658);
             this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(198, 22);
+            this.simpleButton6.Size = new System.Drawing.Size(198, 23);
             this.simpleButton6.StyleController = this.layoutControl1;
             this.simpleButton6.TabIndex = 22;
             this.simpleButton6.Text = "&Save";
@@ -588,7 +588,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 250);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -754,7 +754,7 @@
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(388, 297);
+            this.layoutControlItem8.Size = new System.Drawing.Size(388, 254);
             this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
@@ -762,11 +762,10 @@
             // layoutControlItem33
             // 
             this.layoutControlItem33.Control = this.txtRemarks;
-            this.layoutControlItem33.Location = new System.Drawing.Point(0, 297);
-            this.layoutControlItem33.MaxSize = new System.Drawing.Size(388, 152);
-            this.layoutControlItem33.MinSize = new System.Drawing.Size(388, 152);
+            this.layoutControlItem33.Location = new System.Drawing.Point(0, 254);
+            this.layoutControlItem33.MinSize = new System.Drawing.Size(99, 36);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(388, 152);
+            this.layoutControlItem33.Size = new System.Drawing.Size(388, 195);
             this.layoutControlItem33.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem33.Text = "Remarks";
             this.layoutControlItem33.TextLocation = DevExpress.Utils.Locations.Top;
@@ -775,10 +774,10 @@
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.simpleButton7;
-            this.layoutControlItem18.Location = new System.Drawing.Point(614, 647);
+            this.layoutControlItem18.Location = new System.Drawing.Point(614, 646);
             this.layoutControlItem18.MinSize = new System.Drawing.Size(80, 26);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(237, 26);
+            this.layoutControlItem18.Size = new System.Drawing.Size(237, 27);
             this.layoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
@@ -786,10 +785,10 @@
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.simpleButton6;
-            this.layoutControlItem17.Location = new System.Drawing.Point(412, 647);
+            this.layoutControlItem17.Location = new System.Drawing.Point(412, 646);
             this.layoutControlItem17.MinSize = new System.Drawing.Size(80, 26);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(202, 26);
+            this.layoutControlItem17.Size = new System.Drawing.Size(202, 27);
             this.layoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
@@ -1259,7 +1258,7 @@
             // 
             this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem32});
-            this.layoutControlGroup7.Location = new System.Drawing.Point(412, 533);
+            this.layoutControlGroup7.Location = new System.Drawing.Point(412, 532);
             this.layoutControlGroup7.Name = "layoutControlGroup7";
             this.layoutControlGroup7.Size = new System.Drawing.Size(439, 90);
             this.layoutControlGroup7.Text = "Invoice Total";
@@ -1283,7 +1282,7 @@
             this.layoutControlItem35});
             this.layoutControlGroup8.Location = new System.Drawing.Point(412, 466);
             this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(439, 67);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(439, 66);
             this.layoutControlGroup8.Text = "Extra Charges";
             // 
             // layoutControlItem34
@@ -1292,9 +1291,9 @@
             this.layoutControlItem34.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.layoutControlItem34.Control = this.txtLoading;
             this.layoutControlItem34.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem34.MinSize = new System.Drawing.Size(195, 24);
+            this.layoutControlItem34.MinSize = new System.Drawing.Size(152, 24);
             this.layoutControlItem34.Name = "layoutControlItem34";
-            this.layoutControlItem34.Size = new System.Drawing.Size(203, 25);
+            this.layoutControlItem34.Size = new System.Drawing.Size(203, 24);
             this.layoutControlItem34.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem34.Text = "Loading/Forwarding";
             this.layoutControlItem34.TextSize = new System.Drawing.Size(95, 13);
@@ -1305,9 +1304,9 @@
             this.layoutControlItem35.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.layoutControlItem35.Control = this.txtOtherCharges;
             this.layoutControlItem35.Location = new System.Drawing.Point(203, 0);
-            this.layoutControlItem35.MinSize = new System.Drawing.Size(195, 24);
+            this.layoutControlItem35.MinSize = new System.Drawing.Size(152, 24);
             this.layoutControlItem35.Name = "layoutControlItem35";
-            this.layoutControlItem35.Size = new System.Drawing.Size(212, 25);
+            this.layoutControlItem35.Size = new System.Drawing.Size(212, 24);
             this.layoutControlItem35.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem35.Text = "Other Charges";
             this.layoutControlItem35.TextSize = new System.Drawing.Size(95, 13);
@@ -1316,7 +1315,7 @@
             // 
             this.layoutControlItem38.Control = this.chkCancelled;
             this.layoutControlItem38.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layoutControlItem38.Location = new System.Drawing.Point(412, 623);
+            this.layoutControlItem38.Location = new System.Drawing.Point(412, 622);
             this.layoutControlItem38.MinSize = new System.Drawing.Size(94, 24);
             this.layoutControlItem38.Name = "layoutControlItem38";
             this.layoutControlItem38.Size = new System.Drawing.Size(439, 24);

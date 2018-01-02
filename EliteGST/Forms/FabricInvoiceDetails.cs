@@ -121,7 +121,7 @@ namespace EliteGST.Forms
                     var ip = _prrepo.GetById(_ip.ProductId);
                     if (ip != null)
                     {
-                        var pv = new FabricProductView { Id = _ip.Id, ProductDescription = ip.ProductDescription, Meters = _ip.Meters, Rate = _ip.Rate, FoldingLoss = _ip.FoldingLoss, HSN = ip.HSN, CGST = _ip.CGST, CGSTRate = _ip.CGSTRate, SGST = _ip.SGST, SGSTRate = _ip.SGSTRate, IGST = _ip.IGST, IGSTRate = _ip.IGSTRate, ProductId = ip.Id, Bales = _ip.Bales, Pieces = _ip.Pieces };
+                        var pv = new FabricProductView { Id = _ip.Id, ProductDescription = ip.ProductDescription, Meters = _ip.Meters, Rate = _ip.Rate, FoldingLoss = _ip.FoldingLoss, FoldingLossRate = _ip.FoldingLossRate, HSN = ip.HSN, CGST = _ip.CGST, CGSTRate = _ip.CGSTRate, SGST = _ip.SGST, SGSTRate = _ip.SGSTRate, IGST = _ip.IGST, IGSTRate = _ip.IGSTRate, ProductId = ip.Id, Bales = _ip.Bales, Pieces = _ip.Pieces };
                         _productView.Add(pv);
                         _defaultFoldingLossRate = (pv.FoldingLossRate > _defaultFoldingLossRate) ? pv.FoldingLossRate : _defaultFoldingLossRate;
                         if (_firstRound)
@@ -393,6 +393,8 @@ namespace EliteGST.Forms
         {
             try
             {
+                int _tempid;
+                if (!int.TryParse(txtInvoiceId.Text, out _tempid)) throw new Exception("Invoice no must be a number");
                 if (_billingId == 0) throw new Exception("Please select billing address");
                 if (_shippingId == 0) throw new Exception("Please select shipping address");
                 if (dataGridView1.Rows.Count < 1) throw new Exception("Please add some products before proceeding");

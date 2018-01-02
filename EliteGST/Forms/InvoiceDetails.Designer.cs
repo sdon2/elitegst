@@ -344,9 +344,9 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(24, 543);
+            this.txtRemarks.Location = new System.Drawing.Point(24, 495);
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(384, 132);
+            this.txtRemarks.Size = new System.Drawing.Size(384, 180);
             this.txtRemarks.StyleController = this.layoutControl1;
             this.txtRemarks.TabIndex = 39;
             // 
@@ -572,7 +572,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 299);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 251);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -738,7 +738,7 @@
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(388, 303);
+            this.layoutControlItem8.Size = new System.Drawing.Size(388, 255);
             this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
@@ -746,11 +746,10 @@
             // layoutControlItem33
             // 
             this.layoutControlItem33.Control = this.txtRemarks;
-            this.layoutControlItem33.Location = new System.Drawing.Point(0, 303);
-            this.layoutControlItem33.MaxSize = new System.Drawing.Size(388, 152);
-            this.layoutControlItem33.MinSize = new System.Drawing.Size(388, 152);
+            this.layoutControlItem33.Location = new System.Drawing.Point(0, 255);
+            this.layoutControlItem33.MinSize = new System.Drawing.Size(99, 36);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(388, 152);
+            this.layoutControlItem33.Size = new System.Drawing.Size(388, 200);
             this.layoutControlItem33.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem33.Text = "Remarks";
             this.layoutControlItem33.TextLocation = DevExpress.Utils.Locations.Top;

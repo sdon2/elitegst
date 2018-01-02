@@ -372,6 +372,8 @@ namespace EliteGST.Forms
         {
             try
             {
+                int _tempid;
+                if (!int.TryParse(txtInvoiceId.Text, out _tempid)) throw new Exception("Purchase order no must be a number");
                 if (_billingId == 0) throw new Exception("Please select billing address");
                 if (_shippingId == 0) throw new Exception("Please select shipping address");
                 if (dataGridView1.Rows.Count < 1) throw new Exception("Please add some products before proceeding");

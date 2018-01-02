@@ -73,7 +73,7 @@ namespace EliteGST.Forms
             try
             {
                 _invoices.Clear();
-                var px = _irepo.GetByPartyName(customer).ToList();
+                var px = _irepo.GetByPartyName(customer).OrderByDescending(i => Convert.ToInt32(i.InvoiceStringId)).ToList();
                 if (!checkEdit1.Checked) px = px.Where(p => p.IsCancelled == false).ToList();
                 foreach (var pi in px)
                 {

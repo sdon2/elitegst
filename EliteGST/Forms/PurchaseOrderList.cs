@@ -70,7 +70,7 @@ namespace EliteGST.Forms
             try
             {
                 _purchaseOrders.Clear();
-                var px = _porepo.GetByPartyName(customer).ToList();
+                var px = _porepo.GetByPartyName(customer).OrderByDescending(p => Convert.ToInt32(p.PurchaseOrderStringId)).ToList();
                 if (SelectMode) px = px.Where(p => p.IsCancelled == true).ToList();
                 foreach (var pi in px)
                 {
