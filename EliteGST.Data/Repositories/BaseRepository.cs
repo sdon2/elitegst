@@ -11,7 +11,7 @@ using EliteGST.Data.Models;
 
 namespace EliteGST.Data.Repositories
 {
-    public abstract class BaseRepository<T> : IRepository<T> where T : class
+    public abstract class BaseRepository<T> : IDisposable, IRepository<T> where T : class
     {
         public readonly string Table;
         protected readonly IDbConnection Connection;
@@ -45,7 +45,21 @@ namespace EliteGST.Data.Repositories
             string cols = string.Join(",", paramNames);
             string colsParams = string.Join(",", paramNames.Select(p => "@" + p));
             var sql = string.Format("INSERT INTO {0} ({1}) VALUES ({2}); SELECT LAST_INSERT_ID();", Table, cols, colsParams);
-            return Connection.Query<int?>(sql, o).Single();
+
+            using (var transaction = Connection.BeginTransaction())
+            {
+                try
+                {
+                    var result = Connection.Query<int?>(sql, o).Single();
+                    transaction.Commit();
+                    return result;
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
             
         }
 
@@ -57,12 +71,41 @@ namespace EliteGST.Data.Repositories
 
             string paramStr = string.Join(",", paramNames.Select(p => p + " = @" + p));
             var sql = string.Format("UPDATE {0} SET {1} WHERE Id = {2};", Table, paramStr, id);
-            return Connection.Execute(sql, o);
+
+            using (var transaction = Connection.BeginTransaction())
+            {
+                try
+                {
+                    var result = Connection.Execute(sql, o);
+                    transaction.Commit();
+                    return result;
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
         }
 
         public bool Delete(int id)
         {
-            return Connection.Execute(string.Format("DELETE FROM {0} WHERE Id = @id", Table), new { id = id }) > 0;
+            var sql = string.Format("DELETE FROM {0} WHERE Id = @id", Table);
+
+            using (var transaction = Connection.BeginTransaction())
+            {
+                try
+                {
+                    var result = Connection.Execute(sql, new { id = id }) > 0;
+                    transaction.Commit();
+                    return result;
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
         }
 
         private static readonly ConcurrentDictionary<Type, List<string>> paramNameCache = new ConcurrentDictionary<Type, List<string>>();
@@ -90,6 +133,11 @@ namespace EliteGST.Data.Repositories
                 paramNameCache[o.GetType()] = paramNames;
             }
             return paramNames;
+        }
+
+        public void Dispose()
+        {
+            Connection.Dispose();
         }
     }
 }

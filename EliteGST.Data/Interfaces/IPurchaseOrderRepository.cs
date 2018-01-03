@@ -9,6 +9,7 @@ namespace EliteGST.Data.Interfaces
     public interface IPurchaseOrderRepository : IRepository<PurchaseOrder>
     {
         IEnumerable<PurchaseOrder> GetByPartyName(string name);
+        IEnumerable<PurchaseOrder> GetByPartyName(string name, int limit, int offset);
         PurchaseOrder GetTotals(int purchaseOrderId);
         int GetCount();
     }

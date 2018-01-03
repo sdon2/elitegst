@@ -19,7 +19,14 @@ namespace EliteGST.Data.Repositories
         public IEnumerable<PurchaseOrder> GetByPartyName(string name)
         {
             var cols = Table + ".*";
-            var sql = string.Format("SELECT {0}, parties.CompanyName AS Supplier, parties.GSTIN AS GSTIN FROM {1} INNER JOIN parties ON parties.Id={1}.BillingId WHERE parties.CompanyName LIKE CONCAT('%', @name, '%')", cols, Table);
+            var sql = string.Format("SELECT {0}, parties.CompanyName AS Supplier, parties.GSTIN AS GSTIN FROM {1} INNER JOIN parties ON parties.Id={1}.BillingId WHERE parties.CompanyName LIKE CONCAT('%', @name, '%') ORDER BY CAST({1}.PurchaseOrderStringId AS UNSIGNED) DESC", cols, Table);
+            return Connection.Query<PurchaseOrder>(sql, new { name = name });
+        }
+
+        public IEnumerable<PurchaseOrder> GetByPartyName(string name, int limit, int offset)
+        {
+            var cols = Table + ".*";
+            var sql = string.Format("SELECT {0}, parties.CompanyName AS Supplier, parties.GSTIN AS GSTIN FROM {1} INNER JOIN parties ON parties.Id={1}.BillingId WHERE parties.CompanyName LIKE CONCAT('%', @name, '%') ORDER BY CAST({1}.PurchaseOrderStringId AS UNSIGNED) DESC LIMIT {2} OFFSET {3}", cols, Table, limit, offset);
             return Connection.Query<PurchaseOrder>(sql, new { name = name });
         }
 

@@ -26,6 +26,12 @@ namespace EliteGST.Forms
         private InvoiceRepository _irepo = ServiceContainer.GetInstance<InvoiceRepository>();
         private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
 
+        // Paging helpers
+        private int pageIndex = 0;
+        private int pageSize = 20;
+        private bool morePages = true;
+        private bool customerChanged;
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -72,8 +78,22 @@ namespace EliteGST.Forms
         {
             try
             {
-                _invoices.Clear();
-                var px = _irepo.GetByPartyName(customer).OrderByDescending(i => Convert.ToInt32(i.InvoiceStringId)).ToList();
+                if (customerChanged)
+                {
+                    _invoices.Clear();
+                }
+                
+                if (!morePages) return;
+
+                var px = _irepo.GetByPartyName(customer, pageSize, pageIndex * pageSize).ToList();
+                
+                if (px.Count == pageSize)
+                {
+                    morePages = true;
+                }
+                else morePages = false;
+                customerChanged = false;
+
                 if (!checkEdit1.Checked) px = px.Where(p => p.IsCancelled == false).ToList();
                 foreach (var pi in px)
                 {
@@ -93,6 +113,26 @@ namespace EliteGST.Forms
             catch (Exception ex)
             {
                 Helpers.ShowError(ex.Message);
+            }
+        }
+
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            foreach(Control c in dataGridView1.Controls)
+            {
+                if (c is VScrollBar)
+                {
+                    var bar = c as VScrollBar;
+
+                    if (bar.Value + bar.LargeChange > (bar.Maximum + 10))
+                    {
+                        if (e.NewValue > e.OldValue)
+                        {
+                            pageIndex++;
+                            FindInvoices(textEdit1.Text);
+                        }
+                    }
+                }
             }
         }
 
@@ -128,11 +168,17 @@ namespace EliteGST.Forms
 
         private void textEdit1_TextChanged(object sender, EventArgs e)
         {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
             FindInvoices(textEdit1.Text);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
             textEdit1.Text = "";
             FindInvoices();
         }
@@ -173,6 +219,9 @@ namespace EliteGST.Forms
                 pf.IsPacksRequired = IsPacksRequired;
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    customerChanged = true;
+                    morePages = true;
+                    pageIndex = 0;
                     textEdit1.Text = "";
                     FindInvoices();
                 }
@@ -191,6 +240,9 @@ namespace EliteGST.Forms
                     pf.Id = Id;
                     if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        customerChanged = true;
+                        morePages = true;
+                        pageIndex = 0;
                         FindInvoices(textEdit1.Text);
                     }
                 }
@@ -202,6 +254,9 @@ namespace EliteGST.Forms
                     pf.Id = Id;
                     if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        customerChanged = true;
+                        morePages = true;
+                        pageIndex = 0;
                         FindInvoices(textEdit1.Text);
                     }
                 }
@@ -413,6 +468,9 @@ namespace EliteGST.Forms
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
             FindInvoices(textEdit1.Text); 
         }
 
@@ -422,6 +480,9 @@ namespace EliteGST.Forms
             {
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    customerChanged = true;
+                    morePages = true;
+                    pageIndex = 0;
                     textEdit1.Text = "";
                     FindInvoices();
                 }
@@ -436,6 +497,9 @@ namespace EliteGST.Forms
             {
                 _irepo.Delete(_invoices[dataGridView1.SelectedRows[0].Index].Id);
                 Helpers.ShowSuccess("Invoice deleted successfully");
+                customerChanged = true;
+                morePages = true;
+                pageIndex = 0;
                 FindInvoices(textEdit1.Text);
             }
             catch (MySqlException)

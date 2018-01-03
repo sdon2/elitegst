@@ -24,6 +24,12 @@ namespace EliteGST.Forms
         private PurchaseOrderRepository _porepo = ServiceContainer.GetInstance<PurchaseOrderRepository>();
         private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
 
+        // Paging helpers
+        private int pageIndex = 0;
+        private int pageSize = 20;
+        private bool morePages = true;
+        private bool customerChanged;
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -69,9 +75,23 @@ namespace EliteGST.Forms
         {
             try
             {
-                _purchaseOrders.Clear();
-                var px = _porepo.GetByPartyName(customer).OrderByDescending(p => Convert.ToInt32(p.PurchaseOrderStringId)).ToList();
-                if (SelectMode) px = px.Where(p => p.IsCancelled == true).ToList();
+                if (customerChanged)
+                {
+                    _purchaseOrders.Clear();
+                }
+
+                if (!morePages) return;
+
+                var px = _porepo.GetByPartyName(customer, pageSize, pageIndex * pageSize).ToList();
+
+                if (px.Count == pageSize)
+                {
+                    morePages = true;
+                }
+                else morePages = false;
+                customerChanged = false;
+
+                if (SelectMode) px = px.Where(p => p.IsCancelled == false).ToList();
                 foreach (var pi in px)
                 {
                     var totals = _porepo.GetTotals(pi.Id);
@@ -93,11 +113,37 @@ namespace EliteGST.Forms
 
         private void textEdit1_TextChanged(object sender, EventArgs e)
         {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
             FindPurchaseOrders(textEdit1.Text);
+        }
+
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            foreach (Control c in dataGridView1.Controls)
+            {
+                if (c is VScrollBar)
+                {
+                    var bar = c as VScrollBar;
+
+                    if (bar.Value + bar.LargeChange > (bar.Maximum + 10))
+                    {
+                        if (e.NewValue > e.OldValue)
+                        {
+                            pageIndex++;
+                            FindPurchaseOrders(textEdit1.Text);
+                        }
+                    }
+                }
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
             textEdit1.Text = "";
             FindPurchaseOrders();
         }
@@ -136,6 +182,9 @@ namespace EliteGST.Forms
             {
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    customerChanged = true;
+                    morePages = true;
+                    pageIndex = 0;
                     textEdit1.Text = "";
                     FindPurchaseOrders();
                 }
@@ -150,6 +199,9 @@ namespace EliteGST.Forms
                 pf.Id = Id;
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    customerChanged = true;
+                    morePages = true;
+                    pageIndex = 0;
                     FindPurchaseOrders(textEdit1.Text);
                 }
             }
@@ -284,6 +336,9 @@ namespace EliteGST.Forms
             {
                 _porepo.Delete(_purchaseOrders[dataGridView1.SelectedRows[0].Index].Id);
                 Helpers.ShowSuccess("Purchase order deleted successfully");
+                customerChanged = true;
+                morePages = true;
+                pageIndex = 0;
                 FindPurchaseOrders(textEdit1.Text);
             }
             catch (MySqlException)
