@@ -421,7 +421,7 @@ namespace EliteGST.Forms
                         if (_invoice.InvoiceType == InvoiceType.Normal)
                         {
                             pdf.Margins = 0.25f;
-                            var report = (IsPacksRequired) ? "reports/invoice-1.htm" : "reports/invoice.htm";
+                            var report = (IsPacksRequired) ? "reports/" + Config.config["Invoice-Pack Report"] : "reports/" + Config.config["Invoice Report"];
                             if (allPages)
                             {
                                 pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
@@ -436,7 +436,7 @@ namespace EliteGST.Forms
                         else
                         {
                             pdf.Margins = 0.25f;
-                            var report = "reports/fabric-invoice.htm";
+                            var report = "reports/" + Config.config["Fabric Invoice Report"];
                             if (allPages)
                             {
                                 pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
@@ -530,6 +530,22 @@ namespace EliteGST.Forms
         public string IGSTRate { get; set; }
         public string IGST { get; set; }
         public string Packs { get; set; }
+        public string Taxes
+        {
+            get
+            {
+                if (CGST == "&nbsp;" || SGST == "&nbsp;" || IGST == "&nbsp;") return "&nbsp;";
+                return (Convert.ToDecimal(CGST) + Convert.ToDecimal(SGST) + Convert.ToDecimal(IGST)).ToString("f2");
+            }
+        }
+        public string Total
+        {
+            get
+            {
+                if (CGST == "&nbsp;" || SGST == "&nbsp;" || IGST == "&nbsp;" || Taxable == "&nbsp;") return "&nbsp;";
+                return (Convert.ToDecimal(CGST) + Convert.ToDecimal(SGST) + Convert.ToDecimal(IGST) + Convert.ToDecimal(Taxable)).ToString("f2");
+            }
+        }
 
         public InvoiceProductsPrint()
         {

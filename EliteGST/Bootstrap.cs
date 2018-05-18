@@ -22,6 +22,10 @@ namespace EliteGST
             if (config["FabricInvoiceRequired"] == null) config["FabricInvoiceRequired"] = "false";
             if (config["MySqlDump Path"] == null) config["MySqlDump Path"] = "C:\\MySQL\\bin\\mysqldump.exe";
             if (config["MySql Path"] == null) config["MySql Path"] = "C:\\MySQL\\bin\\mysql.exe";
+            if (config["Invoice Report"] == null) config["Invoice Report"] = "invoice.htm";
+            if (config["Invoice-Pack Report"] == null) config["Invoice-Pack Report"] = "invoice-pack.htm";
+            if (config["Fabric Invoice Report"] == null) config["Fabric Invoice Report"] = "fabric-invoice.htm";
+            if (config["Purchase Order Report"] == null) config["Purchase Order Report"] = "purchase-order.htm";
             Config.config = config;
             WriteConfig(config);
             Database.Name = config["Database"];
@@ -44,6 +48,10 @@ namespace EliteGST
             result.Add("FabricInvoiceRequired", ConfigManager.ReadConfigFromFile(configFile, "Options", "FabricInvoiceRequired"));
             result.Add("MySqlDump Path", ConfigManager.ReadConfigFromFile(configFile, "Options", "MySqlDump Path"));
             result.Add("MySql Path", ConfigManager.ReadConfigFromFile(configFile, "Options", "MySql Path"));
+            result.Add("Invoice Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Invoice Report"));
+            result.Add("Invoice-Pack Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Invoice-Pack Report"));
+            result.Add("Fabric Invoice Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Fabric Invoice Report"));
+            result.Add("Purchase Order Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Purchase Order Report"));
             return result;
         }
 

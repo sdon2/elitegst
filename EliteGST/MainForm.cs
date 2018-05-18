@@ -214,12 +214,14 @@ namespace EliteGST
                     Arguments = arguments,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
+                    //RedirectStandardError = true,
                     CreateNoWindow = true
                 }
             };
 
             proc.Start();
             string output = "";
+
             while (!proc.StandardOutput.EndOfStream)
             {
                 output += proc.StandardOutput.ReadLine();
@@ -249,7 +251,7 @@ namespace EliteGST
                     {
                         var filename = opendlg.FileName;
                         this.Cursor = Cursors.WaitCursor;
-                        var arguments = string.Format("/c \"{0} --user=root --password=root {1}\" < {2}", mysqlpath, database, filename);
+                        var arguments = string.Format("/c {0} --user=root --password=root {1} < \"{2}\"", mysqlpath, database, filename);
                         RunProcess("cmd.exe", arguments);
                         UpdateTitle();
                         Helpers.ShowSuccess("Database restored successfully");
@@ -308,6 +310,11 @@ namespace EliteGST
                 if (opendlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var filename = opendlg.FileName;
+                    if (filename.Contains(' '))
+                    {
+                        Helpers.ShowError("File path must not contain spaces");
+                        return;
+                    }
                     Config.config["MySql Path"] = filename;
                     Bootstrap.WriteConfig(Config.config);
                     Helpers.ShowSuccess("MySql path set successfully");
@@ -331,6 +338,11 @@ namespace EliteGST
                 if (opendlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var filename = opendlg.FileName;
+                    if (filename.Contains(' '))
+                    {
+                        Helpers.ShowError("File path must not contain spaces");
+                        return;
+                    }
                     Config.config["MySqlDump Path"] = filename;
                     Bootstrap.WriteConfig(Config.config);
                     Helpers.ShowSuccess("MySqlDump path set successfully");

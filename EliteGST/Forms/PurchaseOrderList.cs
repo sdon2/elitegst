@@ -300,15 +300,16 @@ namespace EliteGST.Forms
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.Margins = 0.25f;
+                        var report = "reports/" + Config.config["Purchase Order Report"];
                         if (allPages)
                         {
-                            pdf.AddPage("reports/purchase-order.htm", new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
-                            pdf.AddPage("reports/purchase-order.htm", new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
-                            pdf.AddPage("reports/purchase-order.htm", new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
                         }
                         else
                         {
-                            pdf.AddPage("reports/purchase-order.htm", new { Page = "", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
                         }
                         pdfForm.ReportDocument = pdf;
                         pdfForm.ShowDialog();
@@ -368,6 +369,22 @@ namespace EliteGST.Forms
         public string SGST { get; set; }
         public string IGSTRate { get; set; }
         public string IGST { get; set; }
+        public string Taxes
+        {
+            get
+            {
+                if (CGST == "&nbsp;" || SGST == "&nbsp;" || IGST == "&nbsp;") return "&nbsp;";
+                return (Convert.ToDecimal(CGST) + Convert.ToDecimal(SGST) + Convert.ToDecimal(IGST)).ToString("f2");
+            }
+        }
+        public string Total
+        {
+            get
+            {
+                if (CGST == "&nbsp;" || SGST == "&nbsp;" || IGST == "&nbsp;" || Taxable == "&nbsp;") return "&nbsp;";
+                return (Convert.ToDecimal(CGST) + Convert.ToDecimal(SGST) + Convert.ToDecimal(IGST) + Convert.ToDecimal(Taxable)).ToString("f2");
+            }
+        }
 
         public PurchaseOrderProductsPrint()
         {

@@ -449,6 +449,7 @@ namespace EliteGST.Forms
                 }
                 else
                 {
+                    _irepo.Update(invoice, Id);
                     _iprepo.DeleteAllInvoiceProducts(Id);
                 }
 

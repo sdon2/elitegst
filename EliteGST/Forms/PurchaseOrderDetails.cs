@@ -401,6 +401,7 @@ namespace EliteGST.Forms
                 }
                 else
                 {
+                    _irepo.Update(purchaseOrder, Id);
                     _iprepo.DeleteAllPurchaseOrderProducts(Id);
                 }
 
