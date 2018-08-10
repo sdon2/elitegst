@@ -16,6 +16,7 @@ namespace EliteGST.Data.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string GSTIN { get; set; }
+        public decimal OpeningBalance { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -10,9 +10,30 @@ namespace EliteGST.Data
 {
     public class Database
     {
-        public static string Name { get; set; }
-
+        private static string _host { get; set; }
+        private static string _database { get; set; }
+        
         private static IDbConnection _connection { get; set; }
+
+        public static void SetHost(string host)
+        {
+            _host = host;
+        }
+
+        public static string GetHost()
+        {
+            return _host;
+        }
+
+        public static void SetDatabase(string database)
+        {
+            _database = database;
+        }
+
+        public static string GetDatabase()
+        {
+            return _database;
+        }
 
         public static IDbConnection Connection
         {
@@ -29,7 +50,7 @@ namespace EliteGST.Data
                 }
                 else
                 {
-                    _connection = new MySqlConnection("server=elitegstserver;uid=root;pwd=root;database=" + Name);
+                    _connection = new MySqlConnection(String.Format("server={0};uid=root;pwd=root;database={1}" , _host, _database));
                     _connection.Open();
                     return _connection;
                 }

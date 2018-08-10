@@ -57,7 +57,7 @@ namespace EliteGST.Forms
 
             _parties = new BindingList<Party>();
             dataGridView1.DataSource = _parties;
-            var cols = new List<int> { 0, 1, 6, 10 };
+            var cols = new List<int> { 0, 1, 6, 10, 11 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
             FindParties();
         }

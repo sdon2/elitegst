@@ -171,11 +171,17 @@ namespace EliteGST
         {
             try
             {
+                var database = Database.GetDatabase();
+
+                if (database != "localhost")
+                {
+                    throw new Exception("Can't backup database from foreign host");
+                }
+
                 var mysqldumppath = Config.config["MySqlDump Path"];
                 if (!File.Exists(mysqldumppath))
                     throw new Exception("MySqlDump.exe not found. Please set it first");
 
-                var database = Database.Name;
                 var dt = DateTime.Now;
                 var destdir = string.Format("{0}_{1}.sqlbak", database, dt.ToString("dd-MM-yyyy_h-mm-ss"));
 
@@ -234,11 +240,16 @@ namespace EliteGST
         {
             try
             {
+                var database = Database.GetDatabase();
+
+                if (database != "localhost")
+                {
+                    throw new Exception("Can't restore database to foreign host");
+                }
+
                 var mysqlpath = Config.config["MySql Path"];
                 if (!File.Exists(mysqlpath))
                     throw new Exception("MySql.exe not found. Please set it first");
-
-                var database = Database.Name;
 
                 using (var opendlg = new OpenFileDialog())
                 {
