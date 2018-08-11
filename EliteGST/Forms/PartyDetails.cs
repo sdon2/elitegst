@@ -67,6 +67,7 @@ namespace EliteGST.Forms
                 else if (PartyType == Data.PartyType.Supplier)
                 {
                     Text = "Supplier Details";
+                    txtOpeningBalance.Enabled = false;
                 }
                 else
                 {

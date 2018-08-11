@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title>Customer Report</title>
+	<style>
+		#container {
+			font-size: 12px;
+			font-family:'Calibri';
+			height: 11.15in;
+		}
+		.company-info {
+			font-weight: bold;
+			font-size: 17px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			margin: 4px;
+		}
+		.company-info div {
+			margin-top: 5px;
+		}
+		.company-title {
+			height: 30px;
+			font-size: 24px;
+			font-family:'Magnolia Script', 'Calibri';
+		}
+		.center {
+			text-align: center;
+		}
+		.report-title {
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 16px;
+			padding: 6px;
+			margin: 4px;
+			margin-bottom: 0;
+			color: brown;
+			height: 40px;
+		}
+		.report-details {
+			width: 100%;
+		}
+		td {
+		    font-size: 12px;
+			padding-bottom: 5px;
+		}
+		th {
+			padding-bottom: 10px;
+		}
+		.align-left {
+			text-align: left;
+		}
+		.align-right {
+			text-align: right;
+		}
+		#date {
+			position: absolute;
+			top: 10px;
+			right: -10px;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="date"><b>{{ Date }}</b></div>
+	<div class="company-info center">
+		<div class="company-title">{{ company.CompanyName }}</div>
+		<div>{{ company.Address }}</div>
+		<div>{{ company.City }}, {{ company.State }}</div>
+		<div>Phone: {{ company.Phone }}{{ #if company.Email }}, Email: {{ company.Email }}{{ /if }}</div>
+		<div>GSTIN: {{ company.GSTIN }}{{ #if company.Code }}, CODE: {{ company.Code }}{{ /if }}</div>
+	</div>
+	<div class="report-title">Customer Report<br/>{{ customer.CompanyName }} ~ From: {{ FromDate }} To: {{ ToDate }}</div>
+	<table class="report-details">
+		<thead>
+			<tr>
+				<th width="5%">S.No</th>
+				<th width="10%">Date</th>
+				<th width="35%"><div class="align-left">Particulars</div></th>
+				<th width="10%"><div class="align-right">Subtotal</div></th>
+				<th width="7%"><div class="align-right">CGST</div></th>
+				<th width="7%"><div class="align-right">SGST</div></th>
+				<th width="7%"><div class="align-right">IGST</div></th>
+				<th width="10%"><div class="align-right">Total</div></th>
+				<th width="10%"><div class="align-right">Balance</div></th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr class="row">
+			<td colspan="8"><div class="align-right">PREVIOUS OUTSTANDING</div></td>
+			<td><div class="align-right">{{{ outstanding }}}</div></td>
+		</tr>
+		{{ #each entries }}
+			<tr class="row">
+				<td><div>{{{ Id }}}</div></td>
+				<td><div>{{{ Date }}}</div></td>
+				<td><div class="align-left">{{{ Particulars }}}</div></td>
+				<td><div class="align-right">{{{ Subtotal }}}</div></td>
+				<td><div class="align-right">{{{ CGST }}}</div></td>
+				<td><div class="align-right">{{{ SGST }}}</div></td>
+				<td><div class="align-right">{{{ IGST }}}</div></td>
+				<td><div class="align-right">{{{ Total }}}</div></td>
+				<td><div class="align-right">{{{ Balance }}}</div></td>
+			</tr>
+		{{ /each }}
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

@@ -14,14 +14,10 @@ using MySql.Data.MySqlClient;
 
 namespace EliteGST.Forms
 {
-    public partial class PartyList : BaseForm
+    public partial class PaymentList : BaseForm
     {
-        public Party Party { get; set; }
-        public PartyType PartyType { get; set; }
-        public bool SelectMode { get; set; }
-
-        private BindingList<Party> _parties;
-        private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
+        private BindingList<Payment> _payments;
+        private PaymentRepository _prepo = ServiceContainer.GetInstance<PaymentRepository>();
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -46,30 +42,27 @@ namespace EliteGST.Forms
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        public PartyList()
+        public PaymentList()
         {
             InitializeComponent();
         }
 
         private void ProductList_Load(object sender, EventArgs e)
         {
-            Text = PartyType == (Data.PartyType.Customer) ? "Customer's List" : "Supplier's List";
-
-            _parties = new BindingList<Party>();
-            dataGridView1.DataSource = _parties;
-            var cols = new List<int> { 0, 1, 6, 10, 11 };
+            _payments = new BindingList<Payment>();
+            dataGridView1.DataSource = _payments;
+            var cols = new List<int> { 0, 3 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
-            FindParties();
+            FindPayments();
         }
 
-        private void FindParties(string name = "")
+        private void FindPayments(string name = "")
         {
             try
             {
-                _parties.Clear();
-                var px = _prepo.GetByPartyType(name, PartyType);
-                if (SelectMode) px = px.Where(p1 => p1.IsActive == true);
-                px.ToList().ForEach(pi => _parties.Add(pi));
+                _payments.Clear();
+                var px = _prepo.GetByPartyName(name);
+                px.ToList().ForEach(pi => _payments.Add(pi));
                 dataGridView1.Refresh();
             }
             catch (Exception ex)
@@ -80,13 +73,13 @@ namespace EliteGST.Forms
 
         private void textEdit1_TextChanged(object sender, EventArgs e)
         {
-            FindParties(textEdit1.Text);
+            FindPayments(textEdit1.Text);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             textEdit1.Text = "";
-            FindParties();
+            FindPayments();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -113,30 +106,28 @@ namespace EliteGST.Forms
             var singleRowSelected = dataGridView1.SelectedRows.Count == 1;
             editToolStripMenuItem.Visible = singleRowSelected;
             deleteToolStripMenuItem.Visible = singleRowSelected;
-            statementToolStripMenuItem.Visible = singleRowSelected && PartyType == Data.PartyType.Customer;
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var pf = new Forms.PartyDetails())
+            using (var pf = new Forms.PaymentDetails())
             {
-                pf.PartyType = PartyType;
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    FindParties(textEdit1.Text);
+                    FindPayments(textEdit1.Text);
                 }
             }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var pf = new Forms.PartyDetails())
+            using (var pf = new Forms.PaymentDetails())
             {
-                var Id = _parties[dataGridView1.SelectedRows[0].Index].Id;
+                var Id = _payments[dataGridView1.SelectedRows[0].Index].Id;
                 pf.Id = Id;
                 if (pf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    FindParties(textEdit1.Text);
+                    FindPayments(textEdit1.Text);
                 }
             }
         }
@@ -149,16 +140,7 @@ namespace EliteGST.Forms
         private void PerformSelect()
         {
             if (dataGridView1.SelectedRows.Count != 1) return;
-
-            if (SelectMode)
-            {
-                Party = _parties[dataGridView1.SelectedRows[0].Index];
-                DialogResult = System.Windows.Forms.DialogResult.OK;
-            }
-            else
-            {
-                editToolStripMenuItem.PerformClick();
-            }
+            editToolStripMenuItem.PerformClick();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -167,27 +149,17 @@ namespace EliteGST.Forms
             if (!Helpers.Confirm("Are you sure about deleting this party?")) return;
             try
             {
-                _prepo.Delete(_parties[dataGridView1.SelectedRows[0].Index].Id);
-                Helpers.ShowSuccess("Party deleted successfully");
-                FindParties(textEdit1.Text);
+                _prepo.Delete(_payments[dataGridView1.SelectedRows[0].Index].Id);
+                Helpers.ShowSuccess("Payment deleted successfully");
+                FindPayments(textEdit1.Text);
             }
             catch (MySqlException)
             {
-                Helpers.ShowError("Cannot delete party. Make sure you have no other transactions related to this party");
+                Helpers.ShowError("Cannot delete payment. Make sure you have no other transactions related to this party");
             }
             catch (Exception ex)
             {
                 Helpers.ShowError(ex.Message);
-            }
-        }
-
-        private void statementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var ds = new Forms.DateRangeSelect())
-            {
-                var Id = _parties[dataGridView1.SelectedRows[0].Index].Id;
-                ds.CustomerId = Id;
-                ds.ShowDialog();
             }
         }
     }

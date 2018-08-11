@@ -37,6 +37,7 @@ namespace EliteGST
             ServiceContainer.Register<PartyRepository>(() => new PartyRepository(), true);
             ServiceContainer.Register<ProductRepository>(() => new ProductRepository(), true);
             ServiceContainer.Register<InvoiceRepository>(() => new InvoiceRepository(), true);
+            ServiceContainer.Register<PaymentRepository>(() => new PaymentRepository(), true);
             ServiceContainer.Register<InvoiceProductRepository>(() => new InvoiceProductRepository(), true);
             ServiceContainer.Register<InvoiceFabricProductRepository>(() => new InvoiceFabricProductRepository(), true);
             ServiceContainer.Register<PurchaseOrderRepository>(() => new PurchaseOrderRepository(), true);

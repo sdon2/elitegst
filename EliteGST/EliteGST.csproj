@@ -115,6 +115,24 @@
     <Compile Include="Forms\CompanyInfo.Designer.cs">
       <DependentUpon>CompanyInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentDetails.Designer.cs">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentList.Designer.cs">
+      <DependentUpon>PaymentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DateRangeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DateRangeSelect.Designer.cs">
+      <DependentUpon>DateRangeSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DefaultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +213,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CompanyInfo.resx">
       <DependentUpon>CompanyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentDetails.resx">
+      <DependentUpon>PaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentList.resx">
+      <DependentUpon>PaymentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DateRangeSelect.resx">
+      <DependentUpon>DateRangeSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DefaultsForm.resx">
       <DependentUpon>DefaultsForm.cs</DependentUpon>
@@ -306,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\financial_32x32.png" />
     <None Include="Resources\Tools_48px.png" />
     <None Include="Resources\Delete_48px.png" />
     <None Include="Resources\Print_32px.png" />

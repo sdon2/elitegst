@@ -1,6 +1,6 @@
 ﻿namespace EliteGST.Forms
 {
-    partial class PartyList
+    partial class PaymentList
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
@@ -94,17 +93,16 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.statementToolStripMenuItem});
+            this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = global::EliteGST.Properties.Resources.File_32px;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -112,7 +110,7 @@
             // 
             this.editToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Create_New_32px;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -120,17 +118,9 @@
             // 
             this.deleteToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Delete_48px;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // statementToolStripMenuItem
-            // 
-            this.statementToolStripMenuItem.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            this.statementToolStripMenuItem.Name = "statementToolStripMenuItem";
-            this.statementToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.statementToolStripMenuItem.Text = "Statement";
-            this.statementToolStripMenuItem.Click += new System.EventHandler(this.statementToolStripMenuItem_Click);
             // 
             // simpleButton2
             // 
@@ -230,14 +220,14 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // PartyList
+            // PaymentList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 450);
             this.Controls.Add(this.layoutControl1);
-            this.Name = "PartyList";
-            this.Text = "Customer List";
+            this.Name = "PaymentList";
+            this.Text = "Payments";
             this.Load += new System.EventHandler(this.ProductList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -271,6 +261,5 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem statementToolStripMenuItem;
     }
 }

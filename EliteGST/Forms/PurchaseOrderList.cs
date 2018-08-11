@@ -235,7 +235,6 @@ namespace EliteGST.Forms
         private void PrintInvoice(bool allPages)
         {
             Cursor = Cursors.WaitCursor;
-
             try
             {
                 var _purchaseOrder = _purchaseOrders[dataGridView1.SelectedRows[0].Index];
@@ -320,8 +319,10 @@ namespace EliteGST.Forms
             {
                 Helpers.ShowError(ex.Message);
             }
-
-            Cursor = Cursors.Default;
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
         private void printSinglePageToolStripMenuItem_Click(object sender, EventArgs e)

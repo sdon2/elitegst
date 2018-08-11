@@ -30,6 +30,42 @@ namespace EliteGST.Data.Repositories
             return Connection.Query<Invoice>(sql, new { name = name });
         }
 
+        public decimal GetPreviousByPartyId(int id, DateTime fromDate)
+        {
+            var sql = string.Format("SELECT * FROM customerreport WHERE PartyId=@id");
+            var fromDateString = fromDate.ToString("yyyy-MM-dd HH:mm:ss");
+            sql += string.Format(" AND InvoiceDate < '{0}'", fromDateString);
+            var data = Connection.Query<dynamic>(sql, new { id = id }).ToList();
+
+            var result = 0.00M;
+            data.ForEach(e =>
+            {
+                result += (e.Subtotal + e.CGST + e.SGST + e.IGST) - e.Discount;
+            });
+            return result;
+        }
+
+        public IEnumerable<dynamic> GetByPartyId(int id, DateTime? fromDate = null, DateTime? toDate = null)
+        {
+            var sql = string.Format("SELECT * FROM customerreport WHERE PartyId=@id");
+            
+            if (fromDate != null)
+            {
+                var _fromDate = (DateTime)fromDate;
+                var fromDateString = _fromDate.ToString("yyyy-MM-dd HH:mm:ss");
+                sql += string.Format(" AND InvoiceDate >= '{0}'", fromDateString);
+            }
+
+            if (toDate != null)
+            {
+                var _toDate = (DateTime)toDate;
+                var toDateString = _toDate.ToString("yyyy-MM-dd HH:mm:ss");
+                sql += string.Format(" AND InvoiceDate <= '{0}'", toDateString);
+            }
+
+            return Connection.Query<dynamic>(sql, new { id = id });
+        }
+
         public Invoice GetTotalsByInvoiceType(int invoiceId, InvoiceType type)
         {
             var table = (type == InvoiceType.Normal) ? "invoicetotal" : "fabricinvoicetotal";

@@ -29,22 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tileControl1 = new DevExpress.XtraEditors.TileControl();
             this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
-            this.tileItem1 = new DevExpress.XtraEditors.TileItem();
             this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
-            this.tileItem2 = new DevExpress.XtraEditors.TileItem();
-            this.tileItem3 = new DevExpress.XtraEditors.TileItem();
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tileControl2 = new DevExpress.XtraEditors.TileControl();
             this.tileItem5 = new DevExpress.XtraEditors.TileItem();
             this.tileItem4 = new DevExpress.XtraEditors.TileItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tileItem1 = new DevExpress.XtraEditors.TileItem();
+            this.tileItem2 = new DevExpress.XtraEditors.TileItem();
+            this.tileItem3 = new DevExpress.XtraEditors.TileItem();
+            this.tileItem6 = new DevExpress.XtraEditors.TileItem();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,12 +70,6 @@
             this.setMySqlPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMySqlDumpPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tileControl2 = new DevExpress.XtraEditors.TileControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +82,7 @@
             this.tileControl1.Groups.Add(this.tileGroup3);
             this.tileControl1.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tileControl1.Location = new System.Drawing.Point(0, 28);
-            this.tileControl1.MaxId = 8;
+            this.tileControl1.MaxId = 9;
             this.tileControl1.Name = "tileControl1";
             this.tileControl1.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
             this.tileControl1.Size = new System.Drawing.Size(633, 187);
@@ -92,6 +94,123 @@
             // 
             this.tileGroup2.Items.Add(this.tileItem1);
             this.tileGroup2.Name = "tileGroup2";
+            // 
+            // tileGroup3
+            // 
+            this.tileGroup3.Items.Add(this.tileItem2);
+            this.tileGroup3.Items.Add(this.tileItem3);
+            this.tileGroup3.Items.Add(this.tileItem6);
+            this.tileGroup3.Name = "tileGroup3";
+            // 
+            // tileGroup4
+            // 
+            this.tileGroup4.Items.Add(this.tileItem5);
+            this.tileGroup4.Items.Add(this.tileItem4);
+            this.tileGroup4.Name = "tileGroup4";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.databaseToolStripMenuItem,
+            this.optionsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4);
+            this.menuStrip1.Size = new System.Drawing.Size(633, 28);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.statusTime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 381);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(633, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel1.Text = "Ready";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(447, 17);
+            this.toolStripStatusLabel2.Spring = true;
+            this.toolStripStatusLabel2.Text = "Designed By: The Elite Solutions | Phone: 9500442332";
+            // 
+            // statusTime
+            // 
+            this.statusTime.Name = "statusTime";
+            this.statusTime.Size = new System.Drawing.Size(132, 17);
+            this.statusTime.Text = "10:10:10 AM 10/01/2017";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tileControl2
+            // 
+            this.tileControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tileControl2.DragSize = new System.Drawing.Size(0, 0);
+            this.tileControl2.Groups.Add(this.tileGroup4);
+            this.tileControl2.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tileControl2.Location = new System.Drawing.Point(0, 221);
+            this.tileControl2.Name = "tileControl2";
+            this.tileControl2.Size = new System.Drawing.Size(633, 158);
+            this.tileControl2.TabIndex = 3;
+            this.tileControl2.Text = "tileControl2";
+            // 
+            // tileItem5
+            // 
+            this.tileItem5.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tileItem5.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Olive;
+            this.tileItem5.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Olive;
+            this.tileItem5.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem5.AppearanceItem.Normal.Options.UseBorderColor = true;
+            this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement5.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
+            tileItemElement5.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement5.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement5.Text = "Suppliers";
+            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tileItem5.Elements.Add(tileItemElement5);
+            this.tileItem5.Id = 7;
+            this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem5.Name = "tileItem5";
+            this.tileItem5.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem5_ItemClick);
+            // 
+            // tileItem4
+            // 
+            this.tileItem4.AppearanceItem.Normal.BackColor = System.Drawing.Color.Fuchsia;
+            this.tileItem4.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.tileItem4.AppearanceItem.Normal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.tileItem4.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem4.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem4.AppearanceItem.Normal.Options.UseBorderColor = true;
+            this.tileItem4.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement6.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
+            tileItemElement6.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement6.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement6.Text = "Purchase Orders";
+            this.tileItem4.Elements.Add(tileItemElement6);
+            this.tileItem4.Id = 6;
+            this.tileItem4.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem4.Name = "tileItem4";
+            this.tileItem4.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem4_ItemClick);
             // 
             // tileItem1
             // 
@@ -111,12 +230,6 @@
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
             this.tileItem1.Name = "tileItem1";
             this.tileItem1.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem1_ItemClick);
-            // 
-            // tileGroup3
-            // 
-            this.tileGroup3.Items.Add(this.tileItem2);
-            this.tileGroup3.Items.Add(this.tileItem3);
-            this.tileGroup3.Name = "tileGroup3";
             // 
             // tileItem2
             // 
@@ -156,65 +269,23 @@
             this.tileItem3.Name = "tileItem3";
             this.tileItem3.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem3_ItemClick);
             // 
-            // tileGroup4
+            // tileItem6
             // 
-            this.tileGroup4.Items.Add(this.tileItem5);
-            this.tileGroup4.Items.Add(this.tileItem4);
-            this.tileGroup4.Name = "tileGroup4";
-            // 
-            // tileItem5
-            // 
-            this.tileItem5.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tileItem5.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Olive;
-            this.tileItem5.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Olive;
-            this.tileItem5.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
-            this.tileItem5.AppearanceItem.Normal.Options.UseBorderColor = true;
-            this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement4.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
+            this.tileItem6.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Green;
+            this.tileItem6.AppearanceItem.Hovered.Options.UseBackColor = true;
+            this.tileItem6.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem6.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement4.Image = global::EliteGST.Properties.Resources.financial_32x32;
             tileItemElement4.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileItemElement4.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
-            tileItemElement4.Text = "Suppliers";
-            tileItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tileItem5.Elements.Add(tileItemElement4);
-            this.tileItem5.Id = 7;
-            this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem5.Name = "tileItem5";
-            this.tileItem5.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem5_ItemClick);
-            // 
-            // tileItem4
-            // 
-            this.tileItem4.AppearanceItem.Normal.BackColor = System.Drawing.Color.Fuchsia;
-            this.tileItem4.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.tileItem4.AppearanceItem.Normal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.tileItem4.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem4.AppearanceItem.Normal.Options.UseBackColor = true;
-            this.tileItem4.AppearanceItem.Normal.Options.UseBorderColor = true;
-            this.tileItem4.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement5.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            tileItemElement5.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement5.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
-            tileItemElement5.Text = "Purchase Orders";
-            this.tileItem4.Elements.Add(tileItemElement5);
-            this.tileItem4.Id = 6;
-            this.tileItem4.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
-            this.tileItem4.Name = "tileItem4";
-            this.tileItem4.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem4_ItemClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.databaseToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4);
-            this.menuStrip1.Size = new System.Drawing.Size(633, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            tileItemElement4.Text = "Payments";
+            this.tileItem6.Elements.Add(tileItemElement4);
+            this.tileItem6.Id = 8;
+            this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem6.Name = "tileItem6";
+            this.tileItem6.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem6_ItemClick);
             // 
             // mainToolStripMenuItem
             // 
@@ -361,56 +432,6 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.statusTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 381);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(633, 22);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Ready";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(447, 17);
-            this.toolStripStatusLabel2.Spring = true;
-            this.toolStripStatusLabel2.Text = "Designed By: The Elite Solutions | Phone: 9500442332";
-            // 
-            // statusTime
-            // 
-            this.statusTime.Name = "statusTime";
-            this.statusTime.Size = new System.Drawing.Size(132, 17);
-            this.statusTime.Text = "10:10:10 AM 10/01/2017";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // tileControl2
-            // 
-            this.tileControl2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tileControl2.DragSize = new System.Drawing.Size(0, 0);
-            this.tileControl2.Groups.Add(this.tileGroup4);
-            this.tileControl2.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tileControl2.Location = new System.Drawing.Point(0, 221);
-            this.tileControl2.Name = "tileControl2";
-            this.tileControl2.Size = new System.Drawing.Size(633, 158);
-            this.tileControl2.TabIndex = 3;
-            this.tileControl2.Text = "tileControl2";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,6 +494,7 @@
         private System.Windows.Forms.ToolStripMenuItem setMySqlPathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setMySqlDumpPathToolStripMenuItem;
         private DevExpress.XtraEditors.TileControl tileControl2;
+        private DevExpress.XtraEditors.TileItem tileItem6;
     }
 }
 

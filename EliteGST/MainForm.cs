@@ -360,5 +360,13 @@ namespace EliteGST
                 }
             }
         }
+
+        private void tileItem6_ItemClick(object sender, TileItemEventArgs e)
+        {
+            using (var form = new Forms.PaymentList())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }
