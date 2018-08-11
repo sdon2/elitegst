@@ -22,6 +22,7 @@ namespace EliteGST.Forms
 
         private BindingList<Party> _parties;
         private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
+        private InvoiceRepository _irepo = ServiceContainer.GetInstance<InvoiceRepository>();
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -59,6 +60,7 @@ namespace EliteGST.Forms
             dataGridView1.DataSource = _parties;
             var cols = new List<int> { 0, 1, 6, 10, 11 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
+            if (PartyType == Data.PartyType.Supplier) dataGridView1.Columns[12].Visible = false;
             FindParties();
         }
 
@@ -69,7 +71,12 @@ namespace EliteGST.Forms
                 _parties.Clear();
                 var px = _prepo.GetByPartyType(name, PartyType);
                 if (SelectMode) px = px.Where(p1 => p1.IsActive == true);
-                px.ToList().ForEach(pi => _parties.Add(pi));
+                px.ToList().ForEach(pi =>
+                {
+                    if (PartyType == Data.PartyType.Customer)
+                        pi.Balance = pi.OpeningBalance + _irepo.GetPreviousByPartyId(pi.Id, DateTime.Now);
+                    _parties.Add(pi);
+                });
                 dataGridView1.Refresh();
             }
             catch (Exception ex)
