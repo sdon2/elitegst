@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EliteGST.Data;
-using Elite.Utilities;
 using EliteGST.Data.Models;
 using EliteGST.Data.Repositories;
 using MySql.Data.MySqlClient;
+using Elite.Utilities;
 
 namespace EliteGST.Forms
 {
