@@ -13,7 +13,6 @@
 
 
 -- Dumping database structure for elitegst
-DROP DATABASE IF EXISTS `elitegst`;
 CREATE DATABASE IF NOT EXISTS `elitegst` /*!40100 DEFAULT CHARACTER SET utf32 */;
 USE `elitegst`;
 
@@ -64,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `invoiceproducts` (
   KEY `FK_invoiceproducts_products` (`ProductId`),
   CONSTRAINT `FK_invoiceproducts_invoices` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_invoiceproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.invoices
@@ -88,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   KEY `FK_invoices_parties_shipping` (`ShippingId`),
   CONSTRAINT `FK_invoices_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE,
   CONSTRAINT `FK_invoices_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.options
@@ -107,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `options` (
   `BankAccNo` varchar(50) DEFAULT NULL,
   `BankBranch` varchar(100) DEFAULT NULL,
   `BankIFSC` varchar(20) DEFAULT NULL,
+  `Password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `OpeningBalance` decimal(10,2) NOT NULL DEFAULT '0.00',
   `IsActive` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.payments

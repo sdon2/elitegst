@@ -20,5 +20,6 @@ namespace EliteGST.Data.Models
         public string BankAccNo { get; set; }
         public string BankBranch { get; set; }
         public string BankIFSC { get; set; }
+        public string Password { get; set; }
     }
 }

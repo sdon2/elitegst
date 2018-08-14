@@ -17,6 +17,7 @@ namespace EliteGST
     public partial class MainForm : XtraForm
     {
         private PartyRepository _prepo;
+        private OptionRepository _orepo;
         private bool isPacksRequired;
         private bool isFabricInvoiceRequired;
 
@@ -53,8 +54,26 @@ namespace EliteGST
 
             try
             {
-                var config = new Dictionary<string, string>();
                 Bootstrap.Init();
+
+                // Check password
+                _orepo = ServiceContainer.GetInstance<OptionRepository>();
+                var options = _orepo.GetAll().FirstOrDefault();
+                if (options != null && !String.IsNullOrEmpty(options.Password))
+                {
+                    using (var pf = new Forms.LoginForm())
+                    {
+                        if (pf.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        {
+                            Close();
+                            return;
+                        }
+                    }
+                }
+
+                // Initiate before loading
+                _prepo = ServiceContainer.GetInstance<PartyRepository>();
+                UpdateTitle();
 
                 // Include purchase order facility
                 if (Config.config["IncludePurchaseOrder"] == "true")
@@ -83,10 +102,6 @@ namespace EliteGST
                 {
                     isFabricInvoiceRequired = true;
                 }
-
-                // Initiate before loading
-                _prepo = ServiceContainer.GetInstance<PartyRepository>();
-                UpdateTitle();
             }
             catch (Exception ex)
             {
@@ -366,6 +381,14 @@ namespace EliteGST
             using (var form = new Forms.PaymentList())
             {
                 form.ShowDialog();
+            }
+        }
+
+        private void setPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var pf = new Forms.SetPasswordForm())
+            {
+                pf.ShowDialog();
             }
         }
     }
