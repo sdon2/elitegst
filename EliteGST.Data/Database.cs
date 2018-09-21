@@ -45,7 +45,7 @@ namespace EliteGST.Data
                     else
                     {
                         _connection.Open();
-                        return Connection;
+                        return _connection;
                     }
                 }
                 else
