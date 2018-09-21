@@ -29,7 +29,7 @@ namespace EliteGST.Data
                 }
                 else
                 {
-                    _connection = new MySqlConnection("server=elitegstserver;uid=root;pwd=root;database=" + Name);
+                    _connection = new MySqlConnection("server=127.0.0.1;uid=root;pwd=root;database=" + Name);
                     _connection.Open();
                     return _connection;
                 }

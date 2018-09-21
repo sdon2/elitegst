@@ -25,6 +25,7 @@ namespace EliteGST.Forms
         private BindingList<Invoice> _invoices;
         private InvoiceRepository _irepo = ServiceContainer.GetInstance<InvoiceRepository>();
         private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
+        private List<string> _years;
 
         // Paging helpers
         private int pageIndex = 0;
@@ -71,6 +72,15 @@ namespace EliteGST.Forms
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
             dataGridView1.Columns[22].DefaultCellStyle.Format = "c";
             dataGridView1.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            _years = new List<string>();
+            _years.Add("All");
+            var years = _irepo.GetYears().ToList();
+            years.ForEach(y => _years.Add(y.ToString()));
+
+            comboBox1.DataSource = _years;
+            comboBox1.SelectedIndex = 0;
+
             FindInvoices();
         }
 
@@ -85,7 +95,10 @@ namespace EliteGST.Forms
                 
                 if (!morePages) return;
 
-                var px = _irepo.GetByPartyName(customer, pageSize, pageIndex * pageSize).ToList();
+                int year = 0;
+                if (comboBox1.SelectedIndex > 0) year = Convert.ToInt32(comboBox1.Text);
+
+                var px = _irepo.GetByPartyName(customer, pageSize, pageIndex * pageSize, year).ToList();
                 
                 if (px.Count == pageSize)
                 {
@@ -124,7 +137,7 @@ namespace EliteGST.Forms
                 {
                     var bar = c as VScrollBar;
 
-                    if (bar.Value + bar.LargeChange > (bar.Maximum + 10))
+                    if (bar.Value + bar.LargeChange > (bar.Maximum - 20))
                     {
                         if (e.NewValue > e.OldValue)
                         {
@@ -510,6 +523,14 @@ namespace EliteGST.Forms
             {
                 Helpers.ShowError(ex.Message);
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            customerChanged = true;
+            morePages = true;
+            pageIndex = 0;
+            FindInvoices(textEdit1.Text);
         }
     }
 
