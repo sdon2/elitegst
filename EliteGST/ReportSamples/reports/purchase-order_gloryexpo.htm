@@ -1,0 +1,225 @@
+<html>
+    <head>
+        <title>Invoice</title>
+        <style type="text/css">
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                width: 800px;
+                margin: 0 auto;
+            }
+            .table {
+                border-collapse: collapse;
+                font-size: 12px;
+                width:100%;
+            }
+            .table .heading {
+                text-align: center;
+                color: #cc0000;
+                text-transform: uppercase;
+                font-size: 24px;
+				padding: 40px 0;
+            }
+			.logo-container{
+				float:left;
+				position: relative;
+				top: 10;
+				min-height: 80px;
+				padding-right: 10px;
+			}
+			.company-data {
+				
+			}
+            .company-name {
+                color: #cc0000;
+				font-size: 18px;
+                font-weight: bolder;
+                text-transform: uppercase;
+                line-height: 2;
+            }
+            .company-gstdata {
+                font-size: 10px;
+                width: 100%;
+            }
+            .product-table {
+                font-size: 10px;
+				border-collapse: collapse;
+				border: 1px solid #888;
+            }
+			.product-table td, .product-table th {
+				padding: 10px 5px;
+			}
+			.product-table th {
+				background: #cc0000;
+				color: #fff;
+				text-align: left;
+			}
+			.totals td {
+				background: #cc0000;
+				color: #fff;
+				font-weight: bold;
+			}
+			.amount-in-words {
+				text-align: right;
+				padding-right: 10px;
+			}
+			.signature {
+				text-align:right;
+				padding-right: 10px;
+			}
+			.authorised-signatory {
+				margin-top: 40px;
+			}
+			.align-right {
+				text-align: right !important;
+				padding-right: 10px;
+			}
+			.notes {
+				padding: 20px 10px;
+			}
+        </style>
+    </head>
+
+    <body>
+        <table class="table">
+            <tr>
+                <td colspan="3">
+                    <div class="heading">PURCHASE ORDER</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" valign="top">
+					<div class="logo-container"><img src="{{DIR}}\reports\logo.jpg" alt="Logo" width="60px" /></div>
+					<div class="company-data">
+						<span class="company-name">{{company.CompanyName}}</span><br/>
+						{{company.Address}}<br/>
+						{{company.City}}<br/>
+						{{company.State}}
+					</div>
+                </td>
+                <td>
+                    <table class="table company-gstdata">
+                        <tr>
+                            <tr>
+                                <td><strong>GSTIN</strong></td>
+                                <td>{{company.GSTIN}}</td>
+							</tr>
+							<tr>
+                                <td><strong>PO Date.</strong></td>
+                                <td>{{purchaseOrder.Date}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>State</strong></td>
+                                <td>{{company.Code}} - {{company.State}}</td>
+							</tr>
+							<tr>
+                                <td><strong>PO No.</strong></td>
+                                <td>#{{purchaseOrder.Id}}</td>
+                            </tr>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="33.333%">
+                    <div style="margin: 10px 0;">
+                    <strong>Supplier Name</strong><br/>
+                    {{billing.CompanyName}}<br/>
+                    <strong>Supplier GSTIN</strong><br/>
+                    {{billing.GSTIN}}
+                    </div>
+                </td>
+                <td  width="33.333%">
+                    <strong>Billing Address</strong><br/>
+                    {{billing.CompanyName}}<br/>
+                    {{billing.Address}}<br/>
+                    {{billing.City}}<br/>
+					{{billing.State}}
+                </td>
+                <td width="33.333%">
+                    <!--<strong>Shipping Address</strong><br/>
+                    {{shipping.CompanyName}}<br/>
+                    {{shipping.Address}}<br/>
+                    {{shipping.City}}<br/>
+					{{shipping.State}}-->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div style="margin: 10px 0;">Place of Supply: {{company.State}}</div>
+                </td>
+            </tr>
+            <tr>
+                <table class="table product-table">
+                    <tr>
+                        <th># </th>
+                        <th>Item</th>
+                        <th class="align-right">HSN/SAC</th>
+                        <th class="align-right">Quantity</th>
+                        <th class="align-right">Rate/Item</th>
+                        <th class="align-right">Discount</th>
+                        <th class="align-right">Taxable Value</th>
+                        <th class="align-right">CGST</th>
+                        <th class="align-right">SGST</th>
+                        <th class="align-right">CESS</th>
+                        <th class="align-right">Total</th>
+                    </tr>
+					{{ #each products }}
+					<tr>
+						<td>{{{ Id }}}</td>
+						<td>{{{ Description }}}</td>
+						<td class="align-right">{{{ HSN }}}</td>
+						<td class="align-right">{{{ Qty }}} {{{ UOM }}}</td>
+						<td class="align-right">{{{ Rate }}}</td>
+						<td class="align-right">{{{ Discount }}}</td>
+						<td class="align-right">{{{ Taxable }}}</td>
+						<td class="align-right">{{{ CGST }}}</td>
+						<td class="align-right">{{{ SGST }}}</td>
+						<td class="align-right">{{{ IGST }}}</td>
+						<td class="align-right">{{{ Total }}}</td>
+					</tr>
+					{{ /each }}
+					<tr class="totals">
+						<td colspan="6" class="align-right">Total</td>
+						<td class="align-right">{{purchaseOrder.Taxable}}</td>
+						<td class="align-right">{{purchaseOrder.CGST}}</td>
+						<td class="align-right">{{purchaseOrder.SGST}}</td>
+						<td class="align-right">{{purchaseOrder.IGST}}</td>
+						<td class="align-right">{{purchaseOrder.TotalAmount}}</td>
+					</tr>
+					<tr>
+						<td colspan="10" class="align-right">Total Taxes</td>
+						<td class="align-right">{{purchaseOrder.TotalTaxes}}</td>
+					</tr>
+					<tr>
+						<td colspan="10" class="align-right"><strong>Purchase Order Total</strong></td>
+						<td class="align-right"><strong>{{purchaseOrder.TotalAmount}}</strong></td>
+					</tr>
+					<tr>
+						<td colspan="11" class="amount-in-words align-right">
+							Total amount(in words) {{purchaseOrder.AmountInWords}} Only
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="signature">
+							<div class="for">Purchase Manager Signature</div>
+							<div class="authorised-signatory">Authorised Signatory</div>
+						</td>
+						<td colspan="5">&nbsp;</td>
+						<td colspan="3" class="signature">
+							<div class="for">For {{company.CompanyName}}</div>
+							<div class="authorised-signatory">Authorised Signatory</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="11" valign="top">
+							<div class="notes">
+								<strong>Notes:</strong>
+								{{{purchaseOrder.Remarks}}}
+							</div>
+						</td>
+					</tr>
+                </table>
+            </tr>
+        </table>
+    </body>
+</html>
