@@ -12,6 +12,7 @@ namespace EliteGST.Forms
     {
         public int Id { get; set; }
         private PartyRepository _prepo = ServiceContainer.GetInstance<PartyRepository>();
+        private InvoiceRepository _irepo = ServiceContainer.GetInstance<InvoiceRepository>();
         private PaymentRepository _payrepo = ServiceContainer.GetInstance<PaymentRepository>();
         private Payment _payment;
 
@@ -60,9 +61,9 @@ namespace EliteGST.Forms
             try
             {
                 var selectedParty = (dynamic)comboBox1.SelectedItem;
-                _payment.Id = selectedParty.Id;
+                _payment.CustomerId = selectedParty.Id;
                 _payment.PaymentDate = paymentDate.DateTime.Date;
-                if (_payment.Id == 0)
+                if (_payment.CustomerId == 0)
                 {
                     throw new Exception("Please select customer");
                 }
@@ -77,6 +78,27 @@ namespace EliteGST.Forms
                 }
                 Helpers.ShowSuccess("Details saved successfully");
                 DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                Helpers.ShowError(ex.Message);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int customerId = ((dynamic)comboBox1.SelectedItem).Id;
+                if (customerId == 0)
+                {
+                    lblBalance.Text = "Current Balance: N/A";
+                }
+                else
+                {
+                    var balance = _prepo.GetById(customerId, "OpeningBalance").OpeningBalance + _irepo.GetPreviousByPartyId(customerId, DateTime.Now); ;
+                    lblBalance.Text = "Current Balance: " + balance.ToString("n");
+                }
             }
             catch (Exception ex)
             {

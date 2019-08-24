@@ -11,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for elitegst
-CREATE DATABASE IF NOT EXISTS `elitegst` /*!40100 DEFAULT CHARACTER SET utf32 */;
-USE `elitegst`;
-
 -- Dumping structure for table elitegst.invoicefabricproducts
 DROP TABLE IF EXISTS `invoicefabricproducts`;
 CREATE TABLE IF NOT EXISTS `invoicefabricproducts` (
@@ -37,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `invoicefabricproducts` (
   PRIMARY KEY (`Id`),
   KEY `invoicefabricproducts_ibfk_1` (`InvoiceId`),
   KEY `invoicefabricproducts_ibfk_2` (`ProductId`),
-  CONSTRAINT `invoicefabricproducts_ibfk_1` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `invoicefabricproducts_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `invoicefabricproducts_ibfk_1` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `invoicefabricproducts_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
 
 -- Data exporting was unselected.
@@ -61,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `invoiceproducts` (
   PRIMARY KEY (`Id`),
   KEY `FK_invoiceproducts_invoices` (`InvoiceId`),
   KEY `FK_invoiceproducts_products` (`ProductId`),
-  CONSTRAINT `FK_invoiceproducts_invoices` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_invoiceproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
+  CONSTRAINT `FK_invoiceproducts_invoices` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_invoiceproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.invoices
@@ -85,9 +80,9 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   PRIMARY KEY (`Id`),
   KEY `FK_invoices_parties` (`BillingId`),
   KEY `FK_invoices_parties_shipping` (`ShippingId`),
-  CONSTRAINT `FK_invoices_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_invoices_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
+  CONSTRAINT `FK_invoices_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`),
+  CONSTRAINT `FK_invoices_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.options
@@ -108,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `options` (
   `BankIFSC` varchar(20) DEFAULT NULL,
   `Password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.parties
@@ -127,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `OpeningBalance` decimal(10,2) NOT NULL DEFAULT '0.00',
   `IsActive` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.payments
@@ -140,8 +135,8 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `Remarks` varchar(200) NOT NULL DEFAULT 'N/A',
   PRIMARY KEY (`Id`),
   KEY `FK_payments_parties` (`CustomerId`),
-  CONSTRAINT `FK_payments_parties` FOREIGN KEY (`CustomerId`) REFERENCES `parties` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+  CONSTRAINT `FK_payments_parties` FOREIGN KEY (`CustomerId`) REFERENCES `parties` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.products
@@ -154,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `Rate` decimal(10,2) NOT NULL DEFAULT '0.00',
   `IsActive` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.purchaseorderproducts
@@ -177,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `purchaseorderproducts` (
   KEY `FK_purchaseorderproducts_products` (`ProductId`),
   CONSTRAINT `FK_purchaseorderproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON UPDATE CASCADE,
   CONSTRAINT `FK_purchaseorderproducts_purchaseorders` FOREIGN KEY (`PurchaseOrderId`) REFERENCES `purchaseorders` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for table elitegst.purchaseorders
@@ -193,9 +188,9 @@ CREATE TABLE IF NOT EXISTS `purchaseorders` (
   PRIMARY KEY (`Id`),
   KEY `FK_purchaseorders_parties` (`BillingId`),
   KEY `FK_purchaseorders_parties_shipping` (`ShippingId`),
-  CONSTRAINT `FK_purchaseorders_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_purchaseorders_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+  CONSTRAINT `FK_purchaseorders_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`),
+  CONSTRAINT `FK_purchaseorders_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for view elitegst.customerreport

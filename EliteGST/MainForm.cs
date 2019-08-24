@@ -208,7 +208,7 @@ namespace EliteGST
                     {
                         var filename = savedlg.FileName;
                         this.Cursor = Cursors.WaitCursor;
-                        var arguments = string.Format("--user=\"root\" --password=\"root\" --add-drop-table --complete-insert --databases \"{0}\" --tables \"parties\" \"products\" \"invoices\" \"invoiceproducts\" \"invoicefabricproducts\" \"purchaseorders\" \"purchaseorderproducts\" \"options\" --result-file=\"{1}\"", database, filename);
+                        var arguments = string.Format("--user=\"root\" --password=\"root\" --add-drop-table --complete-insert --databases \"{0}\" --tables \"parties\" \"products\" \"invoices\" \"invoiceproducts\" \"invoicefabricproducts\" \"purchaseorders\" \"purchaseorderproducts\" \"options\" \"payments\" --result-file=\"{1}\"", database, filename);
                         RunProcess(mysqldumppath, arguments);
                         Helpers.ShowSuccess("Database backup created successfully");
                         this.Cursor = Cursors.Default;
