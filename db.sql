@@ -11,24 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for elitegst
-DROP DATABASE IF EXISTS `elitegst`;
-CREATE DATABASE IF NOT EXISTS `elitegst` /*!40100 DEFAULT CHARACTER SET utf32 */;
-USE `elitegst`;
-
--- Dumping structure for view elitegst.fabricinvoicetotal
-DROP VIEW IF EXISTS `fabricinvoicetotal`;
--- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `fabricinvoicetotal` (
-	`Id` INT(11) NOT NULL,
-	`Quantity` DECIMAL(33,2) NULL,
-	`Subtotal` DECIMAL(42,2) NULL,
-	`CGST` DECIMAL(32,2) NULL,
-	`SGST` DECIMAL(32,2) NULL,
-	`IGST` DECIMAL(32,2) NULL
-) ENGINE=MyISAM;
-
 -- Dumping structure for table elitegst.invoicefabricproducts
 DROP TABLE IF EXISTS `invoicefabricproducts`;
 CREATE TABLE IF NOT EXISTS `invoicefabricproducts` (
@@ -50,14 +32,11 @@ CREATE TABLE IF NOT EXISTS `invoicefabricproducts` (
   PRIMARY KEY (`Id`),
   KEY `invoicefabricproducts_ibfk_1` (`InvoiceId`),
   KEY `invoicefabricproducts_ibfk_2` (`ProductId`),
-  CONSTRAINT `invoicefabricproducts_ibfk_1` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `invoicefabricproducts_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `invoicefabricproducts_ibfk_1` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `invoicefabricproducts_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table elitegst.invoicefabricproducts: ~0 rows (approximately)
-/*!40000 ALTER TABLE `invoicefabricproducts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `invoicefabricproducts` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.invoiceproducts
 DROP TABLE IF EXISTS `invoiceproducts`;
 CREATE TABLE IF NOT EXISTS `invoiceproducts` (
@@ -77,14 +56,11 @@ CREATE TABLE IF NOT EXISTS `invoiceproducts` (
   PRIMARY KEY (`Id`),
   KEY `FK_invoiceproducts_invoices` (`InvoiceId`),
   KEY `FK_invoiceproducts_products` (`ProductId`),
-  CONSTRAINT `FK_invoiceproducts_invoices` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_invoiceproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`) ON UPDATE CASCADE
+  CONSTRAINT `FK_invoiceproducts_invoices` FOREIGN KEY (`InvoiceId`) REFERENCES `invoices` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_invoiceproducts_products` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table elitegst.invoiceproducts: ~1 rows (approximately)
-/*!40000 ALTER TABLE `invoiceproducts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `invoiceproducts` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.invoices
 DROP TABLE IF EXISTS `invoices`;
 CREATE TABLE IF NOT EXISTS `invoices` (
@@ -104,27 +80,11 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   PRIMARY KEY (`Id`),
   KEY `FK_invoices_parties` (`BillingId`),
   KEY `FK_invoices_parties_shipping` (`ShippingId`),
-  CONSTRAINT `FK_invoices_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_invoices_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE
+  CONSTRAINT `FK_invoices_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`),
+  CONSTRAINT `FK_invoices_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.invoices: ~0 rows (approximately)
-/*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-/*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
-
--- Dumping structure for view elitegst.invoicetotal
-DROP VIEW IF EXISTS `invoicetotal`;
--- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `invoicetotal` (
-	`Id` INT(11) NOT NULL,
-	`Quantity` DECIMAL(32,2) NULL,
-	`Subtotal` DECIMAL(41,2) NULL,
-	`CGST` DECIMAL(32,2) NULL,
-	`SGST` DECIMAL(32,2) NULL,
-	`IGST` DECIMAL(32,2) NULL,
-	`Discount` DECIMAL(32,2) NULL
-) ENGINE=MyISAM;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.options
 DROP TABLE IF EXISTS `options`;
 CREATE TABLE IF NOT EXISTS `options` (
@@ -141,15 +101,11 @@ CREATE TABLE IF NOT EXISTS `options` (
   `BankAccNo` varchar(50) DEFAULT NULL,
   `BankBranch` varchar(100) DEFAULT NULL,
   `BankIFSC` varchar(20) DEFAULT NULL,
+  `Password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.options: ~0 rows (approximately)
-/*!40000 ALTER TABLE `options` DISABLE KEYS */;
-INSERT INTO `options` (`Id`, `DefaultCGSTRate`, `DefaultSGSTRate`, `DefaultIGSTRate`, `DefaultDiscountRate`, `DefaultFoldingLossRate`, `DefaultInvoiceRemarks`, `DefaultPurchaseOrderRemarks`, `DefaultFabricInvoiceRemarks`, `BankAccName`, `BankAccNo`, `BankBranch`, `BankIFSC`) VALUES
-	(1, 2.50, 2.50, 0.00, 0.00, 3.00, 'Declaration\r\nWe declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.', NULL, NULL, 'THE ELITE SOLUTIONS', '1234567890', 'CANARA BANK', 'CNRB0003453');
-/*!40000 ALTER TABLE `options` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.parties
 DROP TABLE IF EXISTS `parties`;
 CREATE TABLE IF NOT EXISTS `parties` (
@@ -163,16 +119,26 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `Phone` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `GSTIN` varchar(30) DEFAULT NULL,
+  `OpeningBalance` decimal(10,2) NOT NULL DEFAULT '0.00',
   `IsActive` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.parties: ~1 rows (approximately)
-/*!40000 ALTER TABLE `parties` DISABLE KEYS */;
-INSERT INTO `parties` (`Id`, `PartyType`, `CompanyName`, `Address`, `City`, `State`, `Code`, `Phone`, `Email`, `GSTIN`, `IsActive`) VALUES
-	(1, 1, 'The Elite Solutions', '2/113, Kodangipalayam', 'Palladam', 'Tamil Nadu', '33', '9500442332', 'info@theelitesoltuions.com', 'BQ4HKYXGXVVD6J89FMYBHH7QM', 1);
-/*!40000 ALTER TABLE `parties` ENABLE KEYS */;
+-- Data exporting was unselected.
+-- Dumping structure for table elitegst.payments
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE IF NOT EXISTS `payments` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerId` int(11) NOT NULL,
+  `PaymentDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `Remarks` varchar(200) NOT NULL DEFAULT 'N/A',
+  PRIMARY KEY (`Id`),
+  KEY `FK_payments_parties` (`CustomerId`),
+  CONSTRAINT `FK_payments_parties` FOREIGN KEY (`CustomerId`) REFERENCES `parties` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.products
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
@@ -185,10 +151,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.products: ~1 rows (approximately)
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.purchaseorderproducts
 DROP TABLE IF EXISTS `purchaseorderproducts`;
 CREATE TABLE IF NOT EXISTS `purchaseorderproducts` (
@@ -211,10 +174,7 @@ CREATE TABLE IF NOT EXISTS `purchaseorderproducts` (
   CONSTRAINT `FK_purchaseorderproducts_purchaseorders` FOREIGN KEY (`PurchaseOrderId`) REFERENCES `purchaseorders` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.purchaseorderproducts: ~0 rows (approximately)
-/*!40000 ALTER TABLE `purchaseorderproducts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `purchaseorderproducts` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table elitegst.purchaseorders
 DROP TABLE IF EXISTS `purchaseorders`;
 CREATE TABLE IF NOT EXISTS `purchaseorders` (
@@ -228,13 +188,68 @@ CREATE TABLE IF NOT EXISTS `purchaseorders` (
   PRIMARY KEY (`Id`),
   KEY `FK_purchaseorders_parties` (`BillingId`),
   KEY `FK_purchaseorders_parties_shipping` (`ShippingId`),
-  CONSTRAINT `FK_purchaseorders_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_purchaseorders_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`) ON UPDATE CASCADE
+  CONSTRAINT `FK_purchaseorders_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`),
+  CONSTRAINT `FK_purchaseorders_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Dumping data for table elitegst.purchaseorders: ~0 rows (approximately)
-/*!40000 ALTER TABLE `purchaseorders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `purchaseorders` ENABLE KEYS */;
+-- Data exporting was unselected.
+-- Dumping structure for view elitegst.customerreport
+DROP VIEW IF EXISTS `customerreport`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `customerreport` (
+	`Id` BIGINT(20) NOT NULL,
+	`InvoiceDate` DATETIME NOT NULL,
+	`InvoiceStringId` VARCHAR(50) NOT NULL COLLATE 'utf32_general_ci',
+	`PartyId` INT(11) NOT NULL,
+	`CompanyName` VARCHAR(223) NOT NULL COLLATE 'utf32_general_ci',
+	`Quantity` DECIMAL(32,2) NULL,
+	`Subtotal` DECIMAL(41,2) NULL,
+	`CGST` DECIMAL(32,2) NULL,
+	`SGST` DECIMAL(32,2) NULL,
+	`IGST` DECIMAL(32,2) NULL,
+	`Discount` DECIMAL(32,2) NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view elitegst.fabricinvoicetotal
+DROP VIEW IF EXISTS `fabricinvoicetotal`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `fabricinvoicetotal` (
+	`Id` INT(11) NOT NULL,
+	`Quantity` DECIMAL(33,2) NULL,
+	`Subtotal` DECIMAL(42,2) NULL,
+	`CGST` DECIMAL(32,2) NULL,
+	`SGST` DECIMAL(32,2) NULL,
+	`IGST` DECIMAL(32,2) NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view elitegst.invoicetotal
+DROP VIEW IF EXISTS `invoicetotal`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `invoicetotal` (
+	`Id` INT(11) NOT NULL,
+	`InvoiceDate` TIMESTAMP NOT NULL,
+	`InvoiceStringId` VARCHAR(50) NOT NULL COLLATE 'utf32_general_ci',
+	`PartyId` INT(11) NOT NULL,
+	`CompanyName` VARCHAR(100) NOT NULL COLLATE 'utf32_general_ci',
+	`Quantity` DECIMAL(32,2) NULL,
+	`Subtotal` DECIMAL(41,2) NULL,
+	`CGST` DECIMAL(32,2) NULL,
+	`SGST` DECIMAL(32,2) NULL,
+	`IGST` DECIMAL(32,2) NULL,
+	`Discount` DECIMAL(32,2) NULL
+) ENGINE=MyISAM;
+
+-- Dumping structure for view elitegst.paymentsext
+DROP VIEW IF EXISTS `paymentsext`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `paymentsext` (
+	`Id` INT(11) NOT NULL,
+	`PaymentDate` DATETIME NOT NULL,
+	`Customer` VARCHAR(100) NOT NULL COLLATE 'utf32_general_ci',
+	`CustomerId` INT(11) NOT NULL,
+	`Remarks` VARCHAR(200) NOT NULL COLLATE 'utf32_general_ci',
+	`Amount` DECIMAL(10,2) NOT NULL
+) ENGINE=MyISAM;
 
 -- Dumping structure for view elitegst.purchaseordertotal
 DROP VIEW IF EXISTS `purchaseordertotal`;
@@ -247,6 +262,18 @@ CREATE TABLE `purchaseordertotal` (
 	`SGST` DECIMAL(32,2) NULL,
 	`IGST` DECIMAL(32,2) NULL
 ) ENGINE=MyISAM;
+
+-- Dumping structure for view elitegst.customerreport
+DROP VIEW IF EXISTS `customerreport`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `customerreport`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `customerreport` AS SELECT * from invoicetotal i
+union all
+select 0 as Id, p.PaymentDate as InvoiceDate, 0 as InvoiceStringId, p.CustomerId as PartyId,
+concat('CUSTOMER PAYMENT #REF: ', p.Remarks) as CompanyName,
+0 as Quantity, -1 * p.Amount as Subtotal, 0 as CGST, 0 as SGST, 0 as IGST, 0 as Discount
+from paymentsext p
+order by InvoiceDate ;
 
 -- Dumping structure for view elitegst.fabricinvoicetotal
 DROP VIEW IF EXISTS `fabricinvoicetotal`;
@@ -265,14 +292,24 @@ GROUP BY ipt.InvoiceId ;
 DROP VIEW IF EXISTS `invoicetotal`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `invoicetotal`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `invoicetotal` AS SELECT ipt.InvoiceId AS Id, ROUND(SUM(ipt.Quantity), 2) AS Quantity, ROUND(SUM(ipt.Subtotal), 2) AS Subtotal, ROUND(SUM(ipt.CGST), 2) AS CGST, ROUND(SUM(ipt.SGST), 2) AS SGST, ROUND(SUM(ipt.IGST), 2) AS IGST, ROUND(SUM(ipt.Discount), 2) AS Discount
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `invoicetotal` AS SELECT ipt.InvoiceId AS Id, i.InvoiceDate, i.InvoiceStringId, p.Id as PartyId, p.CompanyName, ROUND(SUM(ipt.Quantity), 2) AS Quantity, ROUND(SUM(ipt.Subtotal), 2) AS Subtotal, ROUND(SUM(ipt.CGST), 2) AS CGST, ROUND(SUM(ipt.SGST), 2) AS SGST, ROUND(SUM(ipt.IGST), 2) AS IGST, ROUND(SUM(ipt.Discount), 2) AS Discount
 FROM (
 	SELECT ip.InvoiceId, ip.ProductId, ip.Quantity, ip.Rate, ip.Quantity * ip.Rate AS Subtotal, ip.CGST, ip.SGST, ip.IGST, ip.Discount
 	FROM invoiceproducts ip
 	WHERE 1
 	) ipt
+join invoices i on i.Id=ipt.InvoiceId
+join parties p on p.Id=i.BillingId
 WHERE 1
 GROUP BY ipt.InvoiceId ;
+
+-- Dumping structure for view elitegst.paymentsext
+DROP VIEW IF EXISTS `paymentsext`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `paymentsext`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `paymentsext` AS SELECT p.Id, p.PaymentDate, c.CompanyName as Customer, p.CustomerId, p.Remarks, p.Amount from
+payments p
+join parties c on c.Id=p.CustomerId ;
 
 -- Dumping structure for view elitegst.purchaseordertotal
 DROP VIEW IF EXISTS `purchaseordertotal`;

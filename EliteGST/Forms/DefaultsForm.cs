@@ -26,7 +26,11 @@ namespace EliteGST.Forms
         {
             var config = Config.config;
             if (config["IncludePurchaseOrder"].ToLower() == "false") txtPurchaseOrderRemarks.Enabled = false;
-            if (config["FabricInvoiceRequired"].ToLower() == "false") txtFabricInvoiceRemarks.Enabled = false;
+            if (config["FabricInvoiceRequired"].ToLower() == "false")
+            {
+                txtFabricInvoiceRemarks.Enabled = false;
+                txtFoldingLossRate.Enabled = false;
+            }
 
             option = _repo.GetAll().FirstOrDefault();
             if (option == null) option = new Option();

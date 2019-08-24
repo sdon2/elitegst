@@ -1,6 +1,6 @@
 ﻿namespace EliteGST.Forms
 {
-    partial class PartyList
+    partial class PaymentList
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
@@ -68,7 +67,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(770, 450);
+            this.layoutControl1.Size = new System.Drawing.Size(680, 450);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -85,7 +84,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(656, 386);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -94,17 +93,16 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.statementToolStripMenuItem});
+            this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Image = global::EliteGST.Properties.Resources.File_32px;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -112,7 +110,7 @@
             // 
             this.editToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Create_New_32px;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -120,22 +118,14 @@
             // 
             this.deleteToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Delete_48px;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // statementToolStripMenuItem
-            // 
-            this.statementToolStripMenuItem.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            this.statementToolStripMenuItem.Name = "statementToolStripMenuItem";
-            this.statementToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.statementToolStripMenuItem.Text = "Statement";
-            this.statementToolStripMenuItem.Click += new System.EventHandler(this.statementToolStripMenuItem_Click);
             // 
             // simpleButton2
             // 
             this.simpleButton2.Image = global::EliteGST.Properties.Resources.export;
-            this.simpleButton2.Location = new System.Drawing.Point(475, 12);
+            this.simpleButton2.Location = new System.Drawing.Point(430, 12);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(85, 36);
             this.simpleButton2.StyleController = this.layoutControl1;
@@ -146,7 +136,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = global::EliteGST.Properties.Resources.reset;
-            this.simpleButton1.Location = new System.Drawing.Point(387, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(342, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(84, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -158,7 +148,7 @@
             // 
             this.textEdit1.Location = new System.Drawing.Point(12, 28);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(371, 20);
+            this.textEdit1.Size = new System.Drawing.Size(326, 20);
             this.textEdit1.StyleController = this.layoutControl1;
             this.textEdit1.TabIndex = 4;
             this.textEdit1.TextChanged += new System.EventHandler(this.textEdit1_TextChanged);
@@ -175,7 +165,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(770, 450);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(680, 450);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -183,7 +173,7 @@
             this.layoutControlItem1.Control = this.textEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(375, 40);
+            this.layoutControlItem1.Size = new System.Drawing.Size(330, 40);
             this.layoutControlItem1.Text = "Search by Company Name";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(126, 13);
@@ -192,7 +182,7 @@
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.BottomLeft;
-            this.layoutControlItem2.Location = new System.Drawing.Point(375, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(330, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(88, 40);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(88, 40);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -204,7 +194,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.simpleButton2;
-            this.layoutControlItem3.Location = new System.Drawing.Point(463, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(418, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(89, 40);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(89, 40);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -216,9 +206,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(552, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(507, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(198, 40);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(153, 40);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -226,18 +216,18 @@
             this.layoutControlItem4.Control = this.dataGridView1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(750, 390);
+            this.layoutControlItem4.Size = new System.Drawing.Size(660, 390);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // PartyList
+            // PaymentList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 450);
+            this.ClientSize = new System.Drawing.Size(680, 450);
             this.Controls.Add(this.layoutControl1);
-            this.Name = "PartyList";
-            this.Text = "Customer List";
+            this.Name = "PaymentList";
+            this.Text = "Payments";
             this.Load += new System.EventHandler(this.ProductList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -271,6 +261,5 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem statementToolStripMenuItem;
     }
 }

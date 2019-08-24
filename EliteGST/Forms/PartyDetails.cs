@@ -32,19 +32,6 @@ namespace EliteGST.Forms
             comboBox1.ValueMember = "Code";
             comboBox1.DisplayMember = "State";
 
-            if (PartyType == Data.PartyType.Customer)
-            {
-                Text = "Customer Details";
-            }
-            else if (PartyType == Data.PartyType.Supplier)
-            {
-                Text = "Supplier Details";
-            }
-            else
-            {
-                Text = "Company Info";
-            }
-
             try
             {
                 _party = _prepo.GetById(Id);
@@ -63,11 +50,29 @@ namespace EliteGST.Forms
                 txtPhone.DataBindings.Add("Text", _party, "Phone");
                 txtEmail.DataBindings.Add("Text", _party, "Email");
                 txtGSTIN.DataBindings.Add("Text", _party, "GSTIN");
+                txtOpeningBalance.DataBindings.Add("Text", _party, "OpeningBalance");
                 chkIsActive.DataBindings.Add("Checked", _party, "IsActive");
                 if (!string.IsNullOrEmpty(_party.Code))
                     comboBox1.SelectedIndex = comboBox1.FindStringExact(string.Format("{0} - {1}", _party.State, _party.Code), 0);
                 else
                     comboBox1.SelectedIndex = 0;
+
+                PartyType = _party.PartyType;
+
+                // Set form title
+                if (PartyType == Data.PartyType.Customer)
+                {
+                    Text = "Customer Details";
+                }
+                else if (PartyType == Data.PartyType.Supplier)
+                {
+                    Text = "Supplier Details";
+                    txtOpeningBalance.Enabled = false;
+                }
+                else
+                {
+                    Text = "Company Info";
+                }
             }
             catch (Exception ex)
             {

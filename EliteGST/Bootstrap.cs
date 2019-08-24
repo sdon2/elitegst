@@ -16,6 +16,7 @@ namespace EliteGST
         public static void Init()
         {
             var config = ReadConfig();
+            if (config["Host"] == null) config["Host"] = "localhost";
             if (config["Database"] == null) config["Database"] = "elitegst";
             if (config["IncludePurchaseOrder"] == null) config["IncludePurchaseOrder"] = "false";
             if (config["PacksRequired"] == null) config["PacksRequired"] = "false";
@@ -26,12 +27,17 @@ namespace EliteGST
             if (config["Invoice-Pack Report"] == null) config["Invoice-Pack Report"] = "invoice-pack.htm";
             if (config["Fabric Invoice Report"] == null) config["Fabric Invoice Report"] = "fabric-invoice.htm";
             if (config["Purchase Order Report"] == null) config["Purchase Order Report"] = "purchase-order.htm";
+            
             Config.config = config;
             WriteConfig(config);
-            Database.Name = config["Database"];
+            
+            Database.SetHost(config["Host"]);
+            Database.SetDatabase(config["Database"]);
+
             ServiceContainer.Register<PartyRepository>(() => new PartyRepository(), true);
             ServiceContainer.Register<ProductRepository>(() => new ProductRepository(), true);
             ServiceContainer.Register<InvoiceRepository>(() => new InvoiceRepository(), true);
+            ServiceContainer.Register<PaymentRepository>(() => new PaymentRepository(), true);
             ServiceContainer.Register<InvoiceProductRepository>(() => new InvoiceProductRepository(), true);
             ServiceContainer.Register<InvoiceFabricProductRepository>(() => new InvoiceFabricProductRepository(), true);
             ServiceContainer.Register<PurchaseOrderRepository>(() => new PurchaseOrderRepository(), true);
@@ -42,6 +48,7 @@ namespace EliteGST
         public static Dictionary<string, string> ReadConfig()
         {
             var result =  new Dictionary<string, string>();
+            result.Add("Host", ConfigManager.ReadConfigFromFile(configFile, "Options", "Host"));
             result.Add("Database", ConfigManager.ReadConfigFromFile(configFile, "Options", "Database"));
             result.Add("IncludePurchaseOrder", ConfigManager.ReadConfigFromFile(configFile, "Options", "IncludePurchaseOrder"));
             result.Add("PacksRequired", ConfigManager.ReadConfigFromFile(configFile, "Options", "PacksRequired"));

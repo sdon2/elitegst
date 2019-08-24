@@ -34,6 +34,7 @@
             DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tileControl1 = new DevExpress.XtraEditors.TileControl();
             this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
@@ -41,6 +42,7 @@
             this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
             this.tileItem2 = new DevExpress.XtraEditors.TileItem();
             this.tileItem3 = new DevExpress.XtraEditors.TileItem();
+            this.tileItem6 = new DevExpress.XtraEditors.TileItem();
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
             this.tileItem5 = new DevExpress.XtraEditors.TileItem();
             this.tileItem4 = new DevExpress.XtraEditors.TileItem();
@@ -68,6 +70,7 @@
             this.statusTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tileControl2 = new DevExpress.XtraEditors.TileControl();
+            this.setPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +83,7 @@
             this.tileControl1.Groups.Add(this.tileGroup3);
             this.tileControl1.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tileControl1.Location = new System.Drawing.Point(0, 28);
-            this.tileControl1.MaxId = 8;
+            this.tileControl1.MaxId = 9;
             this.tileControl1.Name = "tileControl1";
             this.tileControl1.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
             this.tileControl1.Size = new System.Drawing.Size(633, 187);
@@ -116,6 +119,7 @@
             // 
             this.tileGroup3.Items.Add(this.tileItem2);
             this.tileGroup3.Items.Add(this.tileItem3);
+            this.tileGroup3.Items.Add(this.tileItem6);
             this.tileGroup3.Name = "tileGroup3";
             // 
             // tileItem2
@@ -156,6 +160,24 @@
             this.tileItem3.Name = "tileItem3";
             this.tileItem3.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem3_ItemClick);
             // 
+            // tileItem6
+            // 
+            this.tileItem6.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Green;
+            this.tileItem6.AppearanceItem.Hovered.Options.UseBackColor = true;
+            this.tileItem6.AppearanceItem.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem6.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
+            tileItemElement4.Image = global::EliteGST.Properties.Resources.financial_32x32;
+            tileItemElement4.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement4.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement4.Text = "Payments";
+            this.tileItem6.Elements.Add(tileItemElement4);
+            this.tileItem6.Id = 8;
+            this.tileItem6.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
+            this.tileItem6.Name = "tileItem6";
+            this.tileItem6.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem6_ItemClick);
+            // 
             // tileGroup4
             // 
             this.tileGroup4.Items.Add(this.tileItem5);
@@ -171,12 +193,12 @@
             this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem5.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement4.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
-            tileItemElement4.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement4.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
-            tileItemElement4.Text = "Suppliers";
-            tileItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tileItem5.Elements.Add(tileItemElement4);
+            tileItemElement5.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
+            tileItemElement5.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement5.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement5.Text = "Suppliers";
+            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tileItem5.Elements.Add(tileItemElement5);
             this.tileItem5.Id = 7;
             this.tileItem5.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
             this.tileItem5.Name = "tileItem5";
@@ -191,11 +213,11 @@
             this.tileItem4.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem4.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileItem4.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement5.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            tileItemElement5.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement5.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
-            tileItemElement5.Text = "Purchase Orders";
-            this.tileItem4.Elements.Add(tileItemElement5);
+            tileItemElement6.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
+            tileItemElement6.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement6.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement6.Text = "Purchase Orders";
+            this.tileItem4.Elements.Add(tileItemElement6);
             this.tileItem4.Id = 6;
             this.tileItem4.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium;
             this.tileItem4.Name = "tileItem4";
@@ -220,6 +242,7 @@
             // 
             this.mainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.companyInfoToolStripMenuItem,
+            this.setPasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.mainToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Home;
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
@@ -230,7 +253,7 @@
             // 
             this.companyInfoToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Application;
             this.companyInfoToolStripMenuItem.Name = "companyInfoToolStripMenuItem";
-            this.companyInfoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.companyInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.companyInfoToolStripMenuItem.Text = "Company Info";
             this.companyInfoToolStripMenuItem.Click += new System.EventHandler(this.companyInfoToolStripMenuItem_Click);
             // 
@@ -238,7 +261,7 @@
             // 
             this.exitToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -411,6 +434,14 @@
             this.tileControl2.TabIndex = 3;
             this.tileControl2.Text = "tileControl2";
             // 
+            // setPasswordToolStripMenuItem
+            // 
+            this.setPasswordToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Favourites;
+            this.setPasswordToolStripMenuItem.Name = "setPasswordToolStripMenuItem";
+            this.setPasswordToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setPasswordToolStripMenuItem.Text = "&Set Password";
+            this.setPasswordToolStripMenuItem.Click += new System.EventHandler(this.setPasswordToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,6 +504,8 @@
         private System.Windows.Forms.ToolStripMenuItem setMySqlPathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setMySqlDumpPathToolStripMenuItem;
         private DevExpress.XtraEditors.TileControl tileControl2;
+        private DevExpress.XtraEditors.TileItem tileItem6;
+        private System.Windows.Forms.ToolStripMenuItem setPasswordToolStripMenuItem;
     }
 }
 

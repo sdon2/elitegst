@@ -68,7 +68,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(451, 100);
             this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "Copyright © 2010 - 2017  The Elite Solutions";
+            this.groupControl1.Text = "Copyright © 2010 - 2019  The Elite Solutions";
             // 
             // labelControl2
             // 

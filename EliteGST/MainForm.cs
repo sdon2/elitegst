@@ -17,6 +17,7 @@ namespace EliteGST
     public partial class MainForm : XtraForm
     {
         private PartyRepository _prepo;
+        private OptionRepository _orepo;
         private bool isPacksRequired;
         private bool isFabricInvoiceRequired;
 
@@ -53,8 +54,26 @@ namespace EliteGST
 
             try
             {
-                var config = new Dictionary<string, string>();
                 Bootstrap.Init();
+
+                // Check password
+                _orepo = ServiceContainer.GetInstance<OptionRepository>();
+                var options = _orepo.GetAll().FirstOrDefault();
+                if (options != null && !String.IsNullOrEmpty(options.Password))
+                {
+                    using (var pf = new Forms.LoginForm())
+                    {
+                        if (pf.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        {
+                            Close();
+                            return;
+                        }
+                    }
+                }
+
+                // Initiate before loading
+                _prepo = ServiceContainer.GetInstance<PartyRepository>();
+                UpdateTitle();
 
                 // Include purchase order facility
                 if (Config.config["IncludePurchaseOrder"] == "true")
@@ -83,10 +102,6 @@ namespace EliteGST
                 {
                     isFabricInvoiceRequired = true;
                 }
-
-                // Initiate before loading
-                _prepo = ServiceContainer.GetInstance<PartyRepository>();
-                UpdateTitle();
             }
             catch (Exception ex)
             {
@@ -171,11 +186,17 @@ namespace EliteGST
         {
             try
             {
+                var database = Database.GetDatabase();
+
+                if (database != "localhost")
+                {
+                    throw new Exception("Can't backup database from foreign host");
+                }
+
                 var mysqldumppath = Config.config["MySqlDump Path"];
                 if (!File.Exists(mysqldumppath))
                     throw new Exception("MySqlDump.exe not found. Please set it first");
 
-                var database = Database.Name;
                 var dt = DateTime.Now;
                 var destdir = string.Format("{0}_{1}.sqlbak", database, dt.ToString("dd-MM-yyyy_h-mm-ss"));
 
@@ -187,7 +208,7 @@ namespace EliteGST
                     {
                         var filename = savedlg.FileName;
                         this.Cursor = Cursors.WaitCursor;
-                        var arguments = string.Format("--user=\"root\" --password=\"root\" --add-drop-table --complete-insert --databases \"{0}\" --tables \"parties\" \"products\" \"invoices\" \"invoiceproducts\" \"invoicefabricproducts\" \"purchaseorders\" \"purchaseorderproducts\" \"options\" --result-file=\"{1}\"", database, filename);
+                        var arguments = string.Format("--user=\"root\" --password=\"root\" --add-drop-table --complete-insert --databases \"{0}\" --tables \"parties\" \"products\" \"invoices\" \"invoiceproducts\" \"invoicefabricproducts\" \"purchaseorders\" \"purchaseorderproducts\" \"options\" \"payments\" --result-file=\"{1}\"", database, filename);
                         RunProcess(mysqldumppath, arguments);
                         Helpers.ShowSuccess("Database backup created successfully");
                         this.Cursor = Cursors.Default;
@@ -234,11 +255,16 @@ namespace EliteGST
         {
             try
             {
+                var database = Database.GetDatabase();
+
+                if (database != "localhost")
+                {
+                    throw new Exception("Can't restore database to foreign host");
+                }
+
                 var mysqlpath = Config.config["MySql Path"];
                 if (!File.Exists(mysqlpath))
                     throw new Exception("MySql.exe not found. Please set it first");
-
-                var database = Database.Name;
 
                 using (var opendlg = new OpenFileDialog())
                 {
@@ -347,6 +373,22 @@ namespace EliteGST
                     Bootstrap.WriteConfig(Config.config);
                     Helpers.ShowSuccess("MySqlDump path set successfully");
                 }
+            }
+        }
+
+        private void tileItem6_ItemClick(object sender, TileItemEventArgs e)
+        {
+            using (var form = new Forms.PaymentList())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void setPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var pf = new Forms.SetPasswordForm())
+            {
+                pf.ShowDialog();
             }
         }
     }
