@@ -43,6 +43,7 @@ namespace EliteGST
             ServiceContainer.Register<PurchaseOrderRepository>(() => new PurchaseOrderRepository(), true);
             ServiceContainer.Register<PurchaseOrderProductRepository>(() => new PurchaseOrderProductRepository(), true);
             ServiceContainer.Register<OptionRepository>(() => new OptionRepository(), true);
+            ServiceContainer.Register<FinancialYearRepository>(() => new FinancialYearRepository(), true);
         }
 
         public static Dictionary<string, string> ReadConfig()

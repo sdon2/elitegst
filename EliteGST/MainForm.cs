@@ -11,6 +11,7 @@ using EliteGST.Data;
 using Elite.Utilities;
 using EliteGST.Data.Repositories;
 using System.IO;
+using EliteGST.Data.Models;
 
 namespace EliteGST
 {
@@ -20,6 +21,7 @@ namespace EliteGST
         private OptionRepository _orepo;
         private bool isPacksRequired;
         private bool isFabricInvoiceRequired;
+        public static FinancialYear financialYear;
 
         public MainForm()
         {
@@ -44,7 +46,7 @@ namespace EliteGST
             var company = _prepo.GetByPartyType(string.Empty, PartyType.Self, "CompanyName").FirstOrDefault();
             if (company != null)
             {
-                Text = "Elite GST - Easy Solution for GST Accounting - " + company.CompanyName;
+                Text = String.Format("Easy Solution for GST Accounting - {0} - [{1}]", company.CompanyName, MainForm.financialYear.FinancialYearString);
             }
         }
 
@@ -56,19 +58,15 @@ namespace EliteGST
             {
                 Bootstrap.Init();
 
-                // Check password
-                _orepo = ServiceContainer.GetInstance<OptionRepository>();
-                var options = _orepo.GetAll().FirstOrDefault();
-                if (options != null && !String.IsNullOrEmpty(options.Password))
+                using (var pf = new Forms.LoginForm())
                 {
-                    using (var pf = new Forms.LoginForm())
+                    if (pf.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     {
-                        if (pf.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                        {
-                            Close();
-                            return;
-                        }
+                        Close();
+                        return;
                     }
+
+                    financialYear = pf.financialYear();
                 }
 
                 // Initiate before loading

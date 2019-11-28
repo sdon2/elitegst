@@ -51,8 +51,10 @@ namespace EliteGST.Forms
         {
             _payments = new BindingList<Payment>();
             dataGridView1.DataSource = _payments;
-            var cols = new List<int> { 0, 3 };
+            var cols = new List<int> { 0, 1, 4 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns[6].DefaultCellStyle.Format = "c";
             FindPayments();
         }
 
@@ -61,7 +63,7 @@ namespace EliteGST.Forms
             try
             {
                 _payments.Clear();
-                var px = _prepo.GetByPartyName(name);
+                var px = _prepo.GetByPartyName(name, MainForm.financialYear.Id);
                 px.ToList().ForEach(pi => _payments.Add(pi));
                 dataGridView1.Refresh();
             }

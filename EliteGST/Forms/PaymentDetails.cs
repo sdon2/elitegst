@@ -39,6 +39,7 @@ namespace EliteGST.Forms
                 {
                     _payment = new Payment
                     {
+                        FinancialYearId = MainForm.financialYear.Id,
                         PaymentDate = DateTime.Now.Date,
                         Remarks = "N/A",
                         Customer = "--SELECT--"

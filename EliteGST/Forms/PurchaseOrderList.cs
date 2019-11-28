@@ -65,9 +65,10 @@ namespace EliteGST.Forms
         {
             _purchaseOrders = new BindingList<PurchaseOrder>();
             dataGridView1.DataSource = _purchaseOrders;
-            var cols = new List<int> { 0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16 };
+            var cols = new List<int> { 0, 1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
-            dataGridView1.Columns[9].DefaultCellStyle.Format = "c";
+            dataGridView1.Columns[15].DefaultCellStyle.Format = "c";
+            dataGridView1.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
             FindPurchaseOrders();
         }
 
@@ -82,7 +83,7 @@ namespace EliteGST.Forms
 
                 if (!morePages) return;
 
-                var px = _porepo.GetByPartyName(customer, pageSize, pageIndex * pageSize).ToList();
+                var px = _porepo.GetByPartyName(customer, pageSize, pageIndex * pageSize, MainForm.financialYear.Id).ToList();
 
                 if (px.Count == pageSize)
                 {

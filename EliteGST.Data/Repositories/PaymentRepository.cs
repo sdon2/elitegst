@@ -24,11 +24,11 @@ namespace EliteGST.Data.Repositories
             return Connection.QueryFirstOrDefault<Payment>(sql, new { id = id });
         }
 
-        public IEnumerable<Payment> GetByPartyName(string name, params string[] columns)
+        public IEnumerable<Payment> GetByPartyName(string name, int year, params string[] columns)
         {
             var cols = "*";
             if (columns.Count() > 0) cols = string.Join(",", columns);
-            var sql = string.Format("SELECT {0} FROM paymentsext WHERE Customer LIKE CONCAT('%', @name, '%')", cols);
+            var sql = string.Format("SELECT {0} FROM paymentsext WHERE Customer LIKE CONCAT('%', @name, '%') AND FinancialYearId = {1}", cols, year);
             return Connection.Query<Payment>(sql, new { name = name });
         }
 

@@ -8,6 +8,8 @@ namespace EliteGST.Data.Models
     public class PurchaseOrder
     {
         public int Id { get; set; }
+        [DisplayName("Financial Year")]
+        public int FinancialYearId { get; set; }
         [DisplayName("Purchase Order #")]
         public string PurchaseOrderStringId { get; set; }
         [DisplayName("Date")]

@@ -57,6 +57,7 @@ namespace EliteGST.Forms
             dataGridView1.DataSource = _parties;
             var cols = new List<int> { 0, 1, 6, 10, 11 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
+            dataGridView1.Columns[12].DefaultCellStyle.Format = "c";
             if (PartyType == Data.PartyType.Supplier) dataGridView1.Columns[12].Visible = false;
             FindParties();
         }

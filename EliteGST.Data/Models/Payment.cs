@@ -8,6 +8,7 @@ namespace EliteGST.Data.Models
     public class Payment
     {
         public int Id { get; set; }
+        public int FinancialYearId { get; set; }
         [DisplayName("Date")]
         public DateTime PaymentDate { get; set; }
         [IgnoreProperty(true)]

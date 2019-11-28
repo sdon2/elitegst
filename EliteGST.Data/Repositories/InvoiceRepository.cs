@@ -29,12 +29,12 @@ namespace EliteGST.Data.Repositories
             return Connection.Query<int>(sql);
         }
 
-        public IEnumerable<Invoice> GetByPartyName(string name, int limit, int offset, int year = 0)
+        public IEnumerable<Invoice> GetByPartyName(string name, int limit, int offset, int finyear)
         {
             var cols = Table + ".*";
             var sql = string.Format("SELECT {0}, parties.CompanyName AS Customer, parties.GSTIN AS GSTIN FROM {1} INNER JOIN parties ON parties.Id={1}.BillingId", cols, Table);
             sql += " WHERE parties.CompanyName LIKE CONCAT('%', @name, '%')";
-            if (year != 0) sql += string.Format(" AND YEAR({0}.InvoiceDate) = {1}", Table, year);
+            if (finyear != 0) sql += string.Format(" AND {0}.FinancialYearId = {1}", Table, finyear);
             sql += string.Format(" ORDER BY CAST({0}.InvoiceStringId AS UNSIGNED) DESC LIMIT {1} OFFSET {2}", Table, limit, offset);
             return Connection.Query<Invoice>(sql, new { name = name });
         }

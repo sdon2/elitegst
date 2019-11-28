@@ -72,6 +72,7 @@ namespace EliteGST.Forms
                 {
                     chkCancelled.Enabled = false;
                     _invoice = new Invoice();
+                    _invoice.FinancialYearId = MainForm.financialYear.Id;
                     _invoice.InvoiceType = InvoiceType.Fabric;
                     _invoice.InvoiceDate = DateTime.Now;
                     _invoice.TransportMode = "By Road";
@@ -404,6 +405,7 @@ namespace EliteGST.Forms
                 {
                     invoice = new Invoice();
                 }
+                invoice.FinancialYearId = MainForm.financialYear.Id;
                 invoice.InvoiceType = InvoiceType.Fabric;
                 invoice.InvoiceDate = txtDate.DateTime.Date;
                 invoice.InvoiceStringId = txtInvoiceId.Text;

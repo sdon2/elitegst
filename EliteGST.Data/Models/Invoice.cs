@@ -8,6 +8,7 @@ namespace EliteGST.Data.Models
     public class Invoice
     {
         public int Id { get; set; }
+        public int FinancialYearId { get; set; }
         public InvoiceType InvoiceType { get; set; }
         [DisplayName("Invoice #")]
         public string InvoiceStringId { get; set; }
