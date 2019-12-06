@@ -28,30 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkEdit1 = new DevExpress.XtraEditors.HyperLinkEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(5, 37);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
-            this.pictureEdit1.Size = new System.Drawing.Size(451, 129);
-            this.pictureEdit1.TabIndex = 0;
             // 
             // labelControl1
             // 
@@ -68,7 +55,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(451, 100);
             this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "Copyright © 2010 - 2019  The Elite Solutions";
+            this.groupControl1.Text = "Copyright © 2010 - 2019  SVP Infotech";
             // 
             // labelControl2
             // 
@@ -89,7 +76,7 @@
             // 
             // hyperLinkEdit1
             // 
-            this.hyperLinkEdit1.EditValue = "http://www.theelitesolutions.com";
+            this.hyperLinkEdit1.EditValue = "http://www.svpinfotech.co.in";
             this.hyperLinkEdit1.Location = new System.Drawing.Point(117, 15);
             this.hyperLinkEdit1.Name = "hyperLinkEdit1";
             this.hyperLinkEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -97,8 +84,20 @@
             this.hyperLinkEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.hyperLinkEdit1.Properties.Appearance.Options.UseBorderColor = true;
             this.hyperLinkEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.hyperLinkEdit1.Size = new System.Drawing.Size(169, 18);
+            this.hyperLinkEdit1.Size = new System.Drawing.Size(153, 18);
             this.hyperLinkEdit1.TabIndex = 4;
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureEdit1.EditValue = global::EliteGST.Properties.Resources.About;
+            this.pictureEdit1.Location = new System.Drawing.Point(5, 37);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
+            this.pictureEdit1.Size = new System.Drawing.Size(451, 129);
+            this.pictureEdit1.TabIndex = 0;
             // 
             // About
             // 
@@ -117,10 +116,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
             this.Load += new System.EventHandler(this.About_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hyperLinkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

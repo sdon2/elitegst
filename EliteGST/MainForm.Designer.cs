@@ -49,6 +49,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,6 @@
             this.statusTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tileControl2 = new DevExpress.XtraEditors.TileControl();
-            this.setPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -253,15 +253,23 @@
             // 
             this.companyInfoToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Application;
             this.companyInfoToolStripMenuItem.Name = "companyInfoToolStripMenuItem";
-            this.companyInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.companyInfoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.companyInfoToolStripMenuItem.Text = "Company Info";
             this.companyInfoToolStripMenuItem.Click += new System.EventHandler(this.companyInfoToolStripMenuItem_Click);
+            // 
+            // setPasswordToolStripMenuItem
+            // 
+            this.setPasswordToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Favourites;
+            this.setPasswordToolStripMenuItem.Name = "setPasswordToolStripMenuItem";
+            this.setPasswordToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.setPasswordToolStripMenuItem.Text = "&Set Password";
+            this.setPasswordToolStripMenuItem.Click += new System.EventHandler(this.setPasswordToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -274,7 +282,7 @@
             this.mSWordToolStripMenuItem});
             this.toolsToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Favourites;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // calculatorToolStripMenuItem
@@ -406,9 +414,9 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(447, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(416, 17);
             this.toolStripStatusLabel2.Spring = true;
-            this.toolStripStatusLabel2.Text = "Designed By: The Elite Solutions | Phone: 9500442332";
+            this.toolStripStatusLabel2.Text = "Designed By: SVP Infotech | Phone: 9500442332";
             // 
             // statusTime
             // 
@@ -433,14 +441,6 @@
             this.tileControl2.Size = new System.Drawing.Size(633, 158);
             this.tileControl2.TabIndex = 3;
             this.tileControl2.Text = "tileControl2";
-            // 
-            // setPasswordToolStripMenuItem
-            // 
-            this.setPasswordToolStripMenuItem.Image = global::EliteGST.Properties.Resources.Favourites;
-            this.setPasswordToolStripMenuItem.Name = "setPasswordToolStripMenuItem";
-            this.setPasswordToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.setPasswordToolStripMenuItem.Text = "&Set Password";
-            this.setPasswordToolStripMenuItem.Click += new System.EventHandler(this.setPasswordToolStripMenuItem_Click);
             // 
             // MainForm
             // 

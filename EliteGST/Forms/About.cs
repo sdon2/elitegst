@@ -19,7 +19,7 @@ namespace EliteGST.Forms
 
         private void About_Load(object sender, EventArgs e)
         {
-            labelControl2.Text = "Warning: Please do not distribute this computer program without permission of The Elite Solutions. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted under the maximum extent possible under law.";
+            labelControl2.Text = "Warning: Please do not distribute this computer program without permission of SVP Infotech. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted under the maximum extent possible under law.";
         }
     }
 }

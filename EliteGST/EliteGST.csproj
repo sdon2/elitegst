@@ -295,9 +295,6 @@
     <None Include="Resources\bofileattachment_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\About.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Application.png" />
   </ItemGroup>
   <ItemGroup>
@@ -347,7 +344,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Enabled="0" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="ALL" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Deploy="0" />
+      <UserProperties Reactor_Deploy="0" Reactor_Output="&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" Reactor_Configuration="ALL" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="0" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
