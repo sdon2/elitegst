@@ -261,6 +261,7 @@ DROP VIEW IF EXISTS `paymentsext`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `paymentsext` (
 	`Id` INT(11) NOT NULL,
+	`FinancialYearId` INT(11) NOT NULL,
 	`PaymentDate` DATETIME NOT NULL,
 	`Customer` VARCHAR(100) NOT NULL COLLATE 'utf32_general_ci',
 	`CustomerId` INT(11) NOT NULL,
@@ -324,7 +325,7 @@ GROUP BY ipt.InvoiceId ;
 DROP VIEW IF EXISTS `paymentsext`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `paymentsext`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `paymentsext` AS SELECT p.Id, p.PaymentDate, c.CompanyName as Customer, p.CustomerId, p.Remarks, p.Amount from
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `paymentsext` AS SELECT p.Id, p.FinancialYearId, p.PaymentDate, c.CompanyName as Customer, p.CustomerId, p.Remarks, p.Amount from
 payments p
 join parties c on c.Id=p.CustomerId ;
 

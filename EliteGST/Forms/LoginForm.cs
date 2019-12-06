@@ -14,8 +14,6 @@ namespace EliteGST.Forms
 {
     public partial class LoginForm : BaseForm
     {
-        private OptionRepository _orepo;
-        private FinancialYearRepository _frepo;
         private string _password;
 
         private List<FinancialYear> financialYears = new List<FinancialYear>();
@@ -23,13 +21,11 @@ namespace EliteGST.Forms
         public LoginForm()
         {
             InitializeComponent();
-            _orepo = ServiceContainer.GetInstance<OptionRepository>();
         }
 
         private bool isPasswordRequired()
-        {            
-            var options = _orepo.GetAll().FirstOrDefault();
-            return options != null && !String.IsNullOrEmpty(options.Password);
+        {
+            return !String.IsNullOrEmpty(_password);
         }
 
         public FinancialYear financialYear()
@@ -64,9 +60,11 @@ namespace EliteGST.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            _frepo = ServiceContainer.GetInstance<FinancialYearRepository>();
+			var _orepo = ServiceContainer.GetInstance<OptionRepository>();
             var options = _orepo.GetAll().FirstOrDefault();
-            _password = options.Password;
+			if (options != null) _password = options.Password;
+			
+			var _frepo = ServiceContainer.GetInstance<FinancialYearRepository>();
             financialYears = _frepo.GetAllDesc().ToList();
             comboBox1.DataSource = financialYears;
             comboBox1.ValueMember = "Id";
