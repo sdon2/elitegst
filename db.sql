@@ -108,7 +108,10 @@ CREATE TABLE IF NOT EXISTS `options` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
--- Data exporting was unselected.
+-- Dumping data for table elitegst.options
+INSERT INTO `options` (`Id`, `DefaultCGSTRate`, `DefaultSGSTRate`, `DefaultIGSTRate`, `DefaultDiscountRate`, `DefaultFoldingLossRate`, `DefaultInvoiceRemarks`, `DefaultPurchaseOrderRemarks`, `DefaultFabricInvoiceRemarks`, `BankAccName`, `BankAccNo`, `BankBranch`, `BankIFSC`, `Password`) VALUES
+	(1, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
 -- Dumping structure for table elitegst.parties
 DROP TABLE IF EXISTS `parties`;
 CREATE TABLE IF NOT EXISTS `parties` (
@@ -132,7 +135,8 @@ DROP TABLE IF EXISTS `financialyears`;
 CREATE TABLE IF NOT EXISTS `financialyears` (
   `Id` int(10) NOT NULL AUTO_INCREMENT,
   `FinancialYearString` varchar(20) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `FinancialYearString` (`FinancialYearString`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
@@ -207,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `purchaseorders` (
   CONSTRAINT `FK_purchaseorders_financialyears` FOREIGN KEY (`FinancialYearId`) REFERENCES `financialyears` (`Id`),
   CONSTRAINT `FK_purchaseorders_parties` FOREIGN KEY (`BillingId`) REFERENCES `parties` (`Id`),
   CONSTRAINT `FK_purchaseorders_parties_shipping` FOREIGN KEY (`ShippingId`) REFERENCES `parties` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- Data exporting was unselected.
 -- Dumping structure for view elitegst.customerreport
