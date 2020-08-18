@@ -300,16 +300,17 @@ namespace EliteGST.Forms
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.Margins = 0.25f;
+                        pdf.AddCSS("reports/css/purchase-order-style.css");
                         var report = "reports/" + Config.config["Purchase Order Report"];
                         if (allPages)
                         {
-                            pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
-                            pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
-                            pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
+                            pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
+                            pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
                         }
                         else
                         {
-                            pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts });
+                            pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
                         }
                         pdfForm.ReportDocument = pdf;
                         pdfForm.ShowDialog();

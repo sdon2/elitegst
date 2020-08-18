@@ -68,7 +68,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(770, 450);
+            this.layoutControl1.Size = new System.Drawing.Size(814, 450);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -85,7 +85,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(790, 386);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -135,7 +135,7 @@
             // simpleButton2
             // 
             this.simpleButton2.Image = global::EliteGST.Properties.Resources.export;
-            this.simpleButton2.Location = new System.Drawing.Point(475, 12);
+            this.simpleButton2.Location = new System.Drawing.Point(497, 12);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(85, 36);
             this.simpleButton2.StyleController = this.layoutControl1;
@@ -146,7 +146,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = global::EliteGST.Properties.Resources.reset;
-            this.simpleButton1.Location = new System.Drawing.Point(387, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(409, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(84, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -158,7 +158,7 @@
             // 
             this.textEdit1.Location = new System.Drawing.Point(12, 28);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(371, 20);
+            this.textEdit1.Size = new System.Drawing.Size(393, 20);
             this.textEdit1.StyleController = this.layoutControl1;
             this.textEdit1.TabIndex = 4;
             this.textEdit1.TextChanged += new System.EventHandler(this.textEdit1_TextChanged);
@@ -175,7 +175,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(770, 450);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(814, 450);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -183,7 +183,7 @@
             this.layoutControlItem1.Control = this.textEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(375, 40);
+            this.layoutControlItem1.Size = new System.Drawing.Size(397, 40);
             this.layoutControlItem1.Text = "Search by Company Name";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(126, 13);
@@ -192,7 +192,7 @@
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.BottomLeft;
-            this.layoutControlItem2.Location = new System.Drawing.Point(375, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(397, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(88, 40);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(88, 40);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -204,7 +204,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.simpleButton2;
-            this.layoutControlItem3.Location = new System.Drawing.Point(463, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(485, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(89, 40);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(89, 40);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -216,9 +216,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(552, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(574, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(198, 40);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(220, 40);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -226,7 +226,7 @@
             this.layoutControlItem4.Control = this.dataGridView1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(750, 390);
+            this.layoutControlItem4.Size = new System.Drawing.Size(794, 390);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 450);
+            this.ClientSize = new System.Drawing.Size(814, 450);
             this.Controls.Add(this.layoutControl1);
             this.Name = "PartyList";
             this.Text = "Customer List";

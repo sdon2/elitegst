@@ -313,6 +313,7 @@ namespace EliteGST.Forms
                     TotalTaxes = _invoice.TotalTaxes.ToString("c"),
                     LoadingCharges = _invoice.LoadingCharges.ToString("c"),
                     OtherCharges = _invoice.OtherCharges.ToString("c"),
+                    RoundingOff = _invoice.RoundingOff.ToString("c"),
                     TotalAmount = _invoice.Amount.ToString("c"),
                     AmountInWords = Convert.ToInt32(_invoice.Amount).ConvertToWords(),
                     Remarks = _invoice.Remarks.Replace(Environment.NewLine, "<br/>")
@@ -418,19 +419,20 @@ namespace EliteGST.Forms
                     {
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
+                        pdf.AddCSS("reports/css/invoice-style.css");
                         if (_invoice.InvoiceType == InvoiceType.Normal)
                         {
                             pdf.Margins = 0.25f;
                             var report = (IsPacksRequired) ? "reports/" + Config.config["Invoice-Pack Report"] : "reports/" + Config.config["Invoice Report"];
                             if (allPages)
                             {
-                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
-                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
-                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
+                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
+                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
+                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
                             }
                             else
                             {
-                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
+                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
                             }
                         }
                         else
@@ -439,13 +441,13 @@ namespace EliteGST.Forms
                             var report = "reports/" + Config.config["Fabric Invoice Report"];
                             if (allPages)
                             {
-                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
-                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
-                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
+                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
+                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
+                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS= "" });
                             }
                             else
                             {
-                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank });
+                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
                             }
                         }
                         pdfForm.ReportDocument = pdf;

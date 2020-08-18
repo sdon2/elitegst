@@ -384,6 +384,7 @@ namespace EliteGST.Forms
                     purchaseOrder = new PurchaseOrder();
                 }
 
+                purchaseOrder.FinancialYearId = MainForm.financialYear.Id;
                 purchaseOrder.PurchaseOrderDate = txtDate.DateTime.Date;
                 purchaseOrder.PurchaseOrderStringId = txtInvoiceId.Text;
                 purchaseOrder.BillingId = _billingId;

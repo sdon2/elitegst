@@ -1,0 +1,233 @@
+<html>
+    <head>
+        <title>Invoice</title>
+        <style type="text/css">
+            body {
+                font-family: Calibri, Helvetica, sans-serif;
+                width: 800px;
+                margin: 0 auto;
+				height: 11.15in;
+            }
+            .table {
+                border-collapse: collapse;
+                font-size: 14px;
+                width: 100%;
+            }
+            .table .heading {
+                text-align: center;
+                color: #1b4377;
+                text-transform: uppercase;
+                font-size: 200%;
+				font-weight: 600;
+				padding: 40px 0;
+            }
+			.logo-container{
+				float:left;
+				position: relative;
+				padding-right: 10px;
+				min-height: 80px;
+			}
+			.logo-container img{
+				width: 60px;
+			}
+			.company-data {
+				
+			}
+            .company-name {
+                color: #1b4377;
+				font-size: 150%;
+                font-weight: bolder;
+                text-transform: uppercase;
+            }
+            .company-gstdata {
+                font-size: 80%;
+                width: 100%;
+            }
+            .product-table {
+                font-size: 70%;
+				border-collapse: collapse;
+				border: 1px solid #888;
+            }
+			.product-table th {
+				padding: 10px 5px;
+			}
+			.product-table td {
+				padding: 20px 5px;
+			}
+			.product-table th {
+				background: #1b4377;
+				color: #fff;
+				text-align: left;
+			}
+			.totals td {
+				background: #1b4377;
+				color: #fff;
+				font-weight: bold;
+			}
+			.amount-in-words {
+				text-align: right;
+				padding-right: 10px;
+			}
+			.signature {
+				text-align:right;
+				padding-right: 10px;
+			}
+			.authorised-signatory {
+				margin-top: 40px;
+			}
+			.align-right {
+				text-align: right !important;
+				padding-right: 10px;
+			}
+			.align-left {
+				text-align: left !important;
+				padding-right: 10px;
+			}
+			.align-center {
+				text-align: center !important;
+			}
+        </style>
+    </head>
+
+    <body>
+        <table class="table">
+            <tr>
+                <td colspan="3">
+					<div id="docType" class="align-right"><b>{{ Page }}</b></div>
+                    <div class="heading">TAX INVOICE</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" valign="top">
+					<!--<div class="logo-container"><img src="{{DIR}}\reports\invoices\invoice-2\logo.png" alt="Logo" /></div>-->
+					<div class="company-data">
+						<span class="company-name">{{company.CompanyName}}</span><br/>
+						{{company.Address}}<br/>
+						{{company.City}}<br/>
+						{{company.State}}
+					</div>
+                </td>
+                <td>
+                    <table class="table company-gstdata">
+                        <tr>
+                            <tr>
+                                <td><strong>GSTIN</strong></td>
+								<td><strong>State</strong></td>
+                            </tr>
+                            <tr>
+                                <td>{{company.GSTIN}}</td>
+								<td>{{company.Code}} - {{company.State}}</td>
+							</tr>
+							<tr><td colspan="2">&nbsp;</td></tr>
+							<tr>
+                                <td><strong>Invoice Date.</strong></td>
+								<td><strong>Invoice No.</strong></td>
+							</tr>
+							<tr>
+                                <td>{{invoice.Date}}</td>
+                                <td>#{{invoice.Id}}</td>
+                            </tr>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="33.333%">
+                    <div style="margin: 20px 0;">
+                    <strong>Customer Name</strong><br/>
+                    {{billing.CompanyName}}<br/>
+                    <strong>Customer GSTIN</strong><br/>
+                    {{billing.GSTIN}}
+                    </div>
+                </td>
+                <td  width="33.333%">
+                    <strong>Billing Address</strong><br/>
+                    {{billing.CompanyName}}<br/>
+                    {{billing.Address}}<br/>
+                    {{billing.City}}<br/>
+					{{billing.State}}
+                </td>
+                <td width="33.333%">
+                    <strong>Shipping Address</strong><br/>
+                    {{shipping.CompanyName}}<br/>
+                    {{shipping.Address}}<br/>
+                    {{shipping.City}}<br/>
+					{{shipping.State}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div style="margin: 10px 0;">Place of Supply: {{shipping.State}}</div>
+                </td>
+            </tr>
+            <tr>
+                <table class="table product-table">
+                    <tr>
+                        <th># </th>
+                        <th>Item</th>
+                        <th class="align-right">HSN/SAC</th>
+                        <th class="align-right">Quantity</th>
+                        <th class="align-right">Rate/Item</th>
+                        <!--<th class="align-right">Discount</th>-->
+                        <th class="align-right">Taxable Value</th>
+                        <th class="align-right">CGST</th>
+                        <th class="align-right">SGST</th>
+                        <th class="align-right">CESS</th>
+                        <th class="align-right">Total</th>
+                    </tr>
+					{{ #each products }}
+					<tr>
+						<td>{{{ Id }}}</td>
+						<td>{{{ Description }}}</td>
+						<td class="align-right">{{{ HSN }}}</td>
+						<td class="align-right">{{{ Qty }}} {{{ UOM }}}</td>
+						<td class="align-right">{{{ Rate }}}</td>
+						<!--<td class="align-right">{{{ Discount }}}</td>-->
+						<td class="align-right">{{{ Taxable }}}</td>
+						<td class="align-right">{{{ CGST }}}</td>
+						<td class="align-right">{{{ SGST }}}</td>
+						<td class="align-right">{{{ IGST }}}</td>
+						<td class="align-right">{{{ Total }}}</td>
+					</tr>
+					{{ /each }}
+					<tr class="totals">
+						<th colspan="5" class="align-right">Total</th>
+						<th class="align-right">{{invoice.Taxable}}</th>
+						<th class="align-right">{{invoice.CGST}}</th>
+						<th class="align-right">{{invoice.SGST}}</th>
+						<th class="align-right">{{invoice.IGST}}</th>
+						<th class="align-right">{{invoice.TotalAmount}}</th>
+					</tr>
+					<tr>
+						<td colspan="9" class="align-right">Total Taxes</td>
+						<td class="align-right">{{invoice.TotalTaxes}}</td>
+					</tr>
+					<tr>
+						<td colspan="8" class="amount-in-words align-left">
+							Total amount(in words) {{invoice.AmountInWords}} Only
+						</td>
+						<td class="align-right"><strong>Invoice Total</strong></td>
+						<td class="align-right"><strong>{{invoice.TotalAmount}}</strong></td>
+					</tr>
+					<tr>
+						<td colspan="7">
+							<div class="notes">
+								<strong>Remarks:</strong><br/>
+								<b>Declaration</b><br/>
+								We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.<br/>
+								{{{invoice.Remarks}}}
+							</div>
+						</td>
+						<td colspan="3" class="signature">
+							<div class="for">For {{company.CompanyName}}</div>
+							<div class="authorised-signatory">Authorised Signatory</div>
+						</td>
+					</tr>
+                </table>
+            </tr>
+			<tr>
+				<td colspan="3"><p class="align-center"><small>THIS IS A COMPUTER GENERATED INVOICE</small></p></td>
+			</tr>
+        </table>
+    </body>
+</html>

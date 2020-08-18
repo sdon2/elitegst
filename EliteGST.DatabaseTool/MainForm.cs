@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace EliteGST.DatabaseTool
 {
@@ -97,6 +98,15 @@ namespace EliteGST.DatabaseTool
                     connection.Dispose();
                 }
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            string sqlFile = Application.StartupPath + "\\db.sql";
+            if (File.Exists(sqlFile))
+            {
+                txtSqlText.Text = File.ReadAllText(sqlFile);
             }
         }
     }
