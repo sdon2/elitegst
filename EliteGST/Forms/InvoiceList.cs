@@ -13,6 +13,7 @@ using Elite.Utilities;
 using EliteGST.Data.Models;
 using EliteGST.Data.Repositories;
 using MySql.Data.MySqlClient;
+using System.Dynamic;
 
 namespace EliteGST.Forms
 {
@@ -417,39 +418,48 @@ namespace EliteGST.Forms
                 {
                     using (var pdf = new ReportDocument())
                     {
+                        pdf.Margins = 0.25f;
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.AddCSS("reports/css/invoice-style.css");
+
+                        string report = null;
+                        
+                        dynamic data = new ExpandoObject();
+                        data.Page = "";
+                        data.DIR = Application.StartupPath;
+                        data.company = company;
+                        data.invoice = i;
+                        data.billing = billing;
+                        data.shipping = shipping;
+                        data.products = rproducts;
+                        data.bank = bank;
+                        data.CSS = null;
+
                         if (_invoice.InvoiceType == InvoiceType.Normal)
                         {
-                            pdf.Margins = 0.25f;
-                            var report = (IsPacksRequired) ? "reports/" + Config.config["Invoice-Pack Report"] : "reports/" + Config.config["Invoice Report"];
-                            if (allPages)
-                            {
-                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                            }
-                            else
-                            {
-                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                            }
+                            report = (IsPacksRequired) ? "reports/" + Config.config["Invoice-Pack Report"] : "reports/" + Config.config["Invoice Report"];
                         }
                         else
                         {
-                            pdf.Margins = 0.25f;
-                            var report = "reports/" + Config.config["Fabric Invoice Report"];
-                            if (allPages)
-                            {
-                                pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                                pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                                pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS= "" });
-                            }
-                            else
-                            {
-                                pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, invoice = i, billing = billing, shipping = shipping, products = rproducts, bank = bank, CSS = "" });
-                            }
+                            report = "reports/" + Config.config["Fabric Invoice Report"];
                         }
+
+                        if (allPages)
+                        {
+                            data.Page = "(ORIGINAL)";
+                            pdf.AddPage(report, data);
+                            data.Page = "(DUPLICATE)";
+                            pdf.AddPage(report, data);
+                            data.Page = "(TRIPLICATE)";
+                            pdf.AddPage(report, data);
+                        }
+                        else
+                        {
+                            data.Page = "";
+                            pdf.AddPage(report, data);
+                        }
+
                         pdfForm.ReportDocument = pdf;
                         pdfForm.ShowDialog();
                     }

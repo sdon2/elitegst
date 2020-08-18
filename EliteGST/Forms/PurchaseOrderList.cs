@@ -13,6 +13,7 @@ using Elite.Utilities;
 using EliteGST.Data.Models;
 using EliteGST.Data.Repositories;
 using MySql.Data.MySqlClient;
+using System.Dynamic;
 
 namespace EliteGST.Forms
 {
@@ -297,21 +298,37 @@ namespace EliteGST.Forms
                 {
                     using (var pdf = new ReportDocument())
                     {
+                        pdf.Margins = 0.25f;
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
-                        pdf.Margins = 0.25f;
                         pdf.AddCSS("reports/css/purchase-order-style.css");
+                        
                         var report = "reports/" + Config.config["Purchase Order Report"];
+                        
+                        dynamic data = new ExpandoObject();
+                        data.Page = "";
+                        data.DIR = Application.StartupPath;
+                        data.company = company;
+                        data.purchaseOrder = i;
+                        data.billing = billing;
+                        data.shipping = shipping;
+                        data.products = rproducts;
+
                         if (allPages)
                         {
-                            pdf.AddPage(report, new { Page = "(ORIGINAL)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
-                            pdf.AddPage(report, new { Page = "(DUPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
-                            pdf.AddPage(report, new { Page = "(TRIPLICATE)", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
+                            data.Page = "(ORIGINAL)";
+                            pdf.AddPage(report, data);
+                            data.Page = "(DUPLICATE)";
+                            pdf.AddPage(report, data);
+                            data.Page = "(TRIPLICATE)";
+                            pdf.AddPage(report, data);
                         }
                         else
                         {
-                            pdf.AddPage(report, new { Page = "", DIR = Application.StartupPath, company = company, purchaseOrder = i, billing = billing, shipping = shipping, products = rproducts, CSS = "" });
+                            data.Page = "";
+                            pdf.AddPage(report, data);
                         }
+
                         pdfForm.ReportDocument = pdf;
                         pdfForm.ShowDialog();
                     }
