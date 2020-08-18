@@ -313,6 +313,7 @@ namespace EliteGST.Forms
                         data.billing = billing;
                         data.shipping = shipping;
                         data.products = rproducts;
+                        data.CSS = null;
 
                         if (allPages)
                         {
