@@ -298,7 +298,7 @@ namespace EliteGST.Forms
                 {
                     using (var pdf = new ReportDocument())
                     {
-                        pdf.Margins = 0.25f;
+                        //pdf.Margins = 0.25f;
                         pdf.PageSize = PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.AddCSS("reports/css/purchase-order-style.css");
