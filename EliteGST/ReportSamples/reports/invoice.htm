@@ -2,11 +2,17 @@
 <head>
 	<title>Invoice - {{ invoice.Id }}</title>
 	<style>
+		body {
+			width: 100%;
+		}
+		.container-wrapper {
+			height: 11.15in;
+			padding: 20px;
+		}
 		#container {
 			font-size: 12px;
 			font-family:'Calibri';
 			border: 1px solid black;
-			height: 11.15in;
 		}
 		.company-info {
 			font-weight: bold;
@@ -185,154 +191,156 @@
 	</style>
 </head>
 <body>
-<div id="container">
-	<div id="docType"><b>{{ Page }}</b></div>
-	<div class="company-info center">
-		<div class="company-title">{{ company.CompanyName }}</div>
-		<div>{{ company.Address }}</div>
-		<div>{{ company.City }}, {{ company.State }}</div>
-		<div>Phone: {{ company.Phone }}{{ #if company.Email }}, Email: {{ company.Email }}{{ /if }}</div>
-		<div>GSTIN: {{ company.GSTIN }}{{ #if company.Code }}, CODE: {{ company.Code }}{{ /if }}</div>
-	</div>
-	<div class="invoice-title">Tax Invoice</div>
-	<div class="invoice-details">
-		<div class="invoice-details-1">
-			<table>
+	<div class="container-wrapper">
+		<div id="container">
+			<div id="docType"><b>{{ Page }}</b></div>
+			<div class="company-info center">
+				<div class="company-title">{{ company.CompanyName }}</div>
+				<div>{{ company.Address }}</div>
+				<div>{{ company.City }}, {{ company.State }}</div>
+				<div>Phone: {{ company.Phone }}{{ #if company.Email }}, Email: {{ company.Email }}{{ /if }}</div>
+				<div>GSTIN: {{ company.GSTIN }}{{ #if company.Code }}, CODE: {{ company.Code }}{{ /if }}</div>
+			</div>
+			<div class="invoice-title">Tax Invoice</div>
+			<div class="invoice-details">
+				<div class="invoice-details-1">
+					<table>
+						<tbody>
+							<tr><td><b>Invoice No:</b></td><td><b>{{ invoice.Id }}</b></td></tr>
+							<tr><td><b>Invoice Date:</b></td><td><b>{{ invoice.Date }}</b></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="invoice-details-2">
+					<table>
+						<tbody>
+							<tr><td><b>Transport Mode:</b></td><td><b>{{ invoice.TransportMode }}</b></td></tr>
+							<tr><td><b>Vehicle Number:</b></td><td><b>{{ invoice.VehicleNumber }}</b></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="billing-details">
+				<div class="billing-details-1">
+					<p><b>Billing To:</b></p>
+					<p>{{ billing.CompanyName }}</p>
+					<p>{{ billing.Address }}</p>
+					<p>{{ billing.City }}, {{ billing.State }}</p>
+					<p>Code: {{ billing.Code }}</p>
+					<p>GSTIN: {{ billing.GSTIN }}</p>
+				</div>
+				<div class="billing-details-2">
+					<p><b>Shipping To:</b></p>
+					<p>{{ shipping.CompanyName }}</p>
+					<p>{{ shipping.Address }}</p>
+					<p>{{ shipping.City }}, {{ shipping.State }}</p>
+					<p>Code: {{ shipping.Code }}</p>
+					<p>GSTIN: {{ shipping.GSTIN }}</p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<table class="particulars">
+				<thead>
+					<tr>
+						<th rowspan="2" width="4%">S.No</th>
+						<th rowspan="2" width="18%" class="goods-description">Description of Goods</th>
+						<th rowspan="2" width="8%">HSN Code</th>
+						<th rowspan="2" width="5%">Qty</th>
+						<th rowspan="2" width="6%">UOM</th>
+						<th rowspan="2" width="6%">Rate</th>
+						<th rowspan="2" width="6%">Discount</th>
+						<th rowspan="2" width="11%">Taxable Value</th>
+						<th colspan="2" width="12%">CGST</th>
+						<th colspan="2" width="12%">SGST</th>
+						<th colspan="2" width="12%">IGST</th>
+					</tr>
+					<tr>
+						<th width="3%"> % </th>
+						<th width="9%">Amount</th>
+						<th width="3%"> % </th>
+						<th width="9%">Amount</th>
+						<th width="3%"> % </th>
+						<th width="9%">Amount</th>
+					</tr>
+				</thead>
 				<tbody>
-					<tr><td><b>Invoice No:</b></td><td><b>{{ invoice.Id }}</b></td></tr>
-					<tr><td><b>Invoice Date:</b></td><td><b>{{ invoice.Date }}</b></td></tr>
+				{{ #each products }}
+					<tr class="row">
+						<td><div>{{{ Id }}}</div></td>
+						<td><div class="goods-description">{{{ Description }}}</div></td>
+						<td><div>{{{ HSN }}}</div></td>
+						<td><div>{{{ Qty }}}</div></td>
+						<td><div>{{{ UOM }}}</div></td>
+						<td><div>{{{ Rate }}}</div></td>
+						<td><div>{{{ Discount }}}</div></td>
+						<td><div>{{{ Taxable }}}</div></td>
+						<td><div>{{{ CGSTRate }}}</div></td>
+						<td><div>{{{ CGST }}}</div></td>
+						<td><div>{{{ SGSTRate }}}</div></td>
+						<td><div>{{{ SGST }}}</div></td>
+						<td><div>{{{ IGSTRate }}}</div></td>
+						<td><div>{{{ IGST }}}</div></td>
+					</tr>
+				{{ /each }}
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>TOTAL</b></td>
+						<td><b>{{ invoice.Quantity }}</b></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td><b>{{ invoice.Discount }}</b></td>
+						<td><b>{{ invoice.Taxable }}</b></td>
+						<td>&nbsp;</td>
+						<td><b>{{ invoice.CGST }}</b></td>
+						<td>&nbsp;</td>
+						<td><b>{{ invoice.SGST }}</b></td>
+						<td>&nbsp;</td>
+						<td><b>{{ invoice.IGST }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="7" rowspan="5" class="remarks"><p><b><u>Remarks:</u></b></p>{{{ invoice.Remarks }}}</td>
+						<td colspan="4" class="totals"><b>TOTAL AMOUNT BEFORE TAX</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.Taxable1 }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="4" class="totals"><b>TOTAL TAX</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.TotalTaxes }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="4" class="totals"><b>LOADING/FORWARDING CHARGES</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.LoadingCharges }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="4" class="totals"><b>OTHER CHARGES</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.OtherCharges }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="4" class="totals"><b>TOTAL AMOUNT</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.TotalAmount }}</b></td>
+					</tr>
 				</tbody>
 			</table>
+			<div class="amount-in-words">Rupees {{ invoice.AmountInWords }} Only</div>
+			<div class="signatures">
+				<div class="signature-bank">
+					{{ #if bank.BankAccName }}
+					<p>
+						<b><u>Bank Details</u></b><br>
+						<b>Acc Name:</b> {{{ bank.BankAccName }}}<br>
+						<b>Acc Number:</b> {{{ bank.BankAccNo }}}<br>
+						<b>Bank/Branch:</b> {{{ bank.BankBranch }}}<br>
+						<b>IFSC Code:</b> {{{ bank.BankIFSC }}}
+					</p>
+					{{ /if }}
+				</div>
+				<!--<div class="signature-receiver"><p><b>Receiver's Signature</p></b></div>-->
+				<div class="signature-authorized">
+					<p><b>For {{ company.CompanyName }}</b></p>
+					<p id="authorized"><b>Authorized Signatory</b></p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
 		</div>
-		<div class="invoice-details-2">
-			<table>
-				<tbody>
-					<tr><td><b>Transport Mode:</b></td><td><b>{{ invoice.TransportMode }}</b></td></tr>
-					<tr><td><b>Vehicle Number:</b></td><td><b>{{ invoice.VehicleNumber }}</b></td></tr>
-				</tbody>
-			</table>
-		</div>
-		<div style="clear:both;"></div>
 	</div>
-	<div class="billing-details">
-		<div class="billing-details-1">
-			<p><b>Billing To:</b></p>
-			<p>{{ billing.CompanyName }}</p>
-			<p>{{ billing.Address }}</p>
-			<p>{{ billing.City }}, {{ billing.State }}</p>
-			<p>Code: {{ billing.Code }}</p>
-			<p>GSTIN: {{ billing.GSTIN }}</p>
-		</div>
-		<div class="billing-details-2">
-			<p><b>Shipping To:</b></p>
-			<p>{{ shipping.CompanyName }}</p>
-			<p>{{ shipping.Address }}</p>
-			<p>{{ shipping.City }}, {{ shipping.State }}</p>
-			<p>Code: {{ shipping.Code }}</p>
-			<p>GSTIN: {{ shipping.GSTIN }}</p>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<table class="particulars">
-		<thead>
-			<tr>
-				<th rowspan="2" width="4%">S.No</th>
-				<th rowspan="2" width="18%" class="goods-description">Description of Goods</th>
-				<th rowspan="2" width="8%">HSN Code</th>
-				<th rowspan="2" width="5%">Qty</th>
-				<th rowspan="2" width="6%">UOM</th>
-				<th rowspan="2" width="6%">Rate</th>
-				<th rowspan="2" width="6%">Discount</th>
-				<th rowspan="2" width="11%">Taxable Value</th>
-				<th colspan="2" width="12%">CGST</th>
-				<th colspan="2" width="12%">SGST</th>
-				<th colspan="2" width="12%">IGST</th>
-			</tr>
-			<tr>
-				<th width="3%"> % </th>
-				<th width="9%">Amount</th>
-				<th width="3%"> % </th>
-				<th width="9%">Amount</th>
-				<th width="3%"> % </th>
-				<th width="9%">Amount</th>
-			</tr>
-		</thead>
-		<tbody>
-		{{ #each products }}
-			<tr class="row">
-				<td><div>{{{ Id }}}</div></td>
-				<td><div class="goods-description">{{{ Description }}}</div></td>
-				<td><div>{{{ HSN }}}</div></td>
-				<td><div>{{{ Qty }}}</div></td>
-				<td><div>{{{ UOM }}}</div></td>
-				<td><div>{{{ Rate }}}</div></td>
-				<td><div>{{{ Discount }}}</div></td>
-				<td><div>{{{ Taxable }}}</div></td>
-				<td><div>{{{ CGSTRate }}}</div></td>
-				<td><div>{{{ CGST }}}</div></td>
-				<td><div>{{{ SGSTRate }}}</div></td>
-				<td><div>{{{ SGST }}}</div></td>
-				<td><div>{{{ IGSTRate }}}</div></td>
-				<td><div>{{{ IGST }}}</div></td>
-			</tr>
-		{{ /each }}
-			<tr class="row sub-totals">
-				<td colspan="3" class="totals"><b>TOTAL</b></td>
-				<td><b>{{ invoice.Quantity }}</b></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td><b>{{ invoice.Discount }}</b></td>
-				<td><b>{{ invoice.Taxable }}</b></td>
-				<td>&nbsp;</td>
-				<td><b>{{ invoice.CGST }}</b></td>
-				<td>&nbsp;</td>
-				<td><b>{{ invoice.SGST }}</b></td>
-				<td>&nbsp;</td>
-				<td><b>{{ invoice.IGST }}</b></td>
-			</tr>
-			<tr class="row sub-totals">
-				<td colspan="7" rowspan="5" class="remarks"><p><b><u>Remarks:</u></b></p>{{{ invoice.Remarks }}}</td>
-				<td colspan="4" class="totals"><b>TOTAL AMOUNT BEFORE TAX</b></td>
-				<td colspan="3" class="totals"><b>{{ invoice.Taxable1 }}</b></td>
-			</tr>
-			<tr class="row sub-totals">
-				<td colspan="4" class="totals"><b>TOTAL TAX</b></td>
-				<td colspan="3" class="totals"><b>{{ invoice.TotalTaxes }}</b></td>
-			</tr>
-			<tr class="row sub-totals">
-				<td colspan="4" class="totals"><b>LOADING/FORWARDING CHARGES</b></td>
-				<td colspan="3" class="totals"><b>{{ invoice.LoadingCharges }}</b></td>
-			</tr>
-			<tr class="row sub-totals">
-				<td colspan="4" class="totals"><b>OTHER CHARGES</b></td>
-				<td colspan="3" class="totals"><b>{{ invoice.OtherCharges }}</b></td>
-			</tr>
-			<tr class="row sub-totals">
-				<td colspan="4" class="totals"><b>TOTAL AMOUNT</b></td>
-				<td colspan="3" class="totals"><b>{{ invoice.TotalAmount }}</b></td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="amount-in-words">Rupees {{ invoice.AmountInWords }} Only</div>
-	<div class="signatures">
-		<div class="signature-bank">
-			{{ #if bank.BankAccName }}
-			<p>
-				<b><u>Bank Details</u></b><br>
-				<b>Acc Name:</b> {{{ bank.BankAccName }}}<br>
-				<b>Acc Number:</b> {{{ bank.BankAccNo }}}<br>
-				<b>Bank/Branch:</b> {{{ bank.BankBranch }}}<br>
-				<b>IFSC Code:</b> {{{ bank.BankIFSC }}}
-			</p>
-			{{ /if }}
-		</div>
-		<!--<div class="signature-receiver"><p><b>Receiver's Signature</p></b></div>-->
-		<div class="signature-authorized">
-			<p><b>For {{ company.CompanyName }}</b></p>
-			<p id="authorized"><b>Authorized Signatory</b></p>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-</div>
 </body>
 </html>
