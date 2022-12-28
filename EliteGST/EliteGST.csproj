@@ -44,17 +44,50 @@
       <HintPath>..\packages\Dapper.1.50.2\lib\net40\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v16.1.Drawing, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPdfViewer.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.Data.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.Pdf.v16.1.Core.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Drawing, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.Pdf.v16.1.Drawing.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.Printing.v16.1.Core.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.Utils.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraBars.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraEditors.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraLayout.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraPdfViewer.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraPrinting.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=8a4da9f2a93feb8e, processorArchitecture=MSIL">
+	<HintPath>..\dlls\DevExpress.XtraTreeList.v16.1.dll</HintPath>
+      <Private>True</Private>
+	</Reference>
     <Reference Include="Elite.Reports">
       <HintPath>..\..\..\COMPONENTS\Elite.Reports\Elite.Reports\bin\Release\Elite.Reports.dll</HintPath>
     </Reference>

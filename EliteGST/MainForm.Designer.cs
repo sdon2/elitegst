@@ -414,7 +414,7 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(416, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(447, 17);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "Designed By: SVP Infotech | Phone: 9500442332";
             // 

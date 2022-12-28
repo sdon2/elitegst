@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EliteGST.Data.Models;
-using EliteGST.Data.Interfaces;
-using Dapper;
+﻿using EliteGST.Data.Models;
 
 namespace EliteGST.Data.Repositories
 {

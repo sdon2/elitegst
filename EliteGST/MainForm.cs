@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EliteGST.Data;
@@ -18,7 +13,6 @@ namespace EliteGST
     public partial class MainForm : XtraForm
     {
         private PartyRepository _prepo;
-        private OptionRepository _orepo;
         private bool isPacksRequired;
         private bool isFabricInvoiceRequired;
         public static FinancialYear financialYear;

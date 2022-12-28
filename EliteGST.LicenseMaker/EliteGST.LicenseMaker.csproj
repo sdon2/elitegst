@@ -42,7 +42,7 @@
   <ItemGroup>
     <Reference Include="EliteLicenseMakerBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\COMPONENTS\EliteLicenseMakerBase\EliteLicenseMakerBase\bin\Release\EliteLicenseMakerBase.dll</HintPath>
+      <HintPath>..\dlls\EliteLicenseMakerBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
