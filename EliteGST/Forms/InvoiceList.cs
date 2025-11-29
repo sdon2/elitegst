@@ -354,7 +354,7 @@ namespace EliteGST.Forms
                     }
 
                     var rpc = rproducts.Count;
-                    var ttp = 8;
+                    var ttp = 5;
                     //if (IsPacksRequired) ttp = 7;
                     if (rpc < ttp)
                     {
@@ -417,7 +417,7 @@ namespace EliteGST.Forms
                     using (var pdf = new ReportDocument())
                     {
                         //pdf.Margins = 0.25f;
-                        pdf.PageSize = PageSizes.A4;
+                        pdf.PageSize = PageSizes.A5;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.AddCSS("reports/css/invoice-style.css");
 
