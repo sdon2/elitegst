@@ -8,28 +8,13 @@ namespace EliteGST
 {
     internal static class Bootstrap
     {
-        private static string configFile = Application.StartupPath + "\\Config.xml";
-
         public static void Init()
         {
             var config = ReadConfig();
-            if (config["Host"] == null) config["Host"] = "localhost";
-            if (config["Database"] == null) config["Database"] = "elitegst";
-            if (config["IncludePurchaseOrder"] == null) config["IncludePurchaseOrder"] = "false";
-            if (config["PacksRequired"] == null) config["PacksRequired"] = "false";
-            if (config["FabricInvoiceRequired"] == null) config["FabricInvoiceRequired"] = "false";
-            if (config["MySqlDump Path"] == null) config["MySqlDump Path"] = "C:\\MySQL\\bin\\mysqldump.exe";
-            if (config["MySql Path"] == null) config["MySql Path"] = "C:\\MySQL\\bin\\mysql.exe";
-            if (config["Invoice Report"] == null) config["Invoice Report"] = "invoice.htm";
-            if (config["Invoice-Pack Report"] == null) config["Invoice-Pack Report"] = "invoice-pack.htm";
-            if (config["Fabric Invoice Report"] == null) config["Fabric Invoice Report"] = "fabric-invoice.htm";
-            if (config["Purchase Order Report"] == null) config["Purchase Order Report"] = "purchase-order.htm";
             
             Config.config = config;
-            WriteConfig(config);
             
-            Database.SetHost(config["Host"]);
-            Database.SetDatabase(config["Database"]);
+            Database.SetCredentials(config["host"].ToString(), config["database"].ToString(), config["user"].ToString(), config["password"].ToString());
 
             ServiceContainer.Register<PartyRepository>(() => new PartyRepository(), true);
             ServiceContainer.Register<ProductRepository>(() => new ProductRepository(), true);
@@ -43,30 +28,25 @@ namespace EliteGST
             ServiceContainer.Register<FinancialYearRepository>(() => new FinancialYearRepository(), true);
         }
 
-        public static Dictionary<string, string> ReadConfig()
+        public static Dictionary<string, object> ReadConfig()
         {
-            var result =  new Dictionary<string, string>();
-            result.Add("Host", ConfigManager.ReadConfigFromFile(configFile, "Options", "Host"));
-            result.Add("Database", ConfigManager.ReadConfigFromFile(configFile, "Options", "Database"));
-            result.Add("IncludePurchaseOrder", ConfigManager.ReadConfigFromFile(configFile, "Options", "IncludePurchaseOrder"));
-            result.Add("PacksRequired", ConfigManager.ReadConfigFromFile(configFile, "Options", "PacksRequired"));
-            result.Add("FabricInvoiceRequired", ConfigManager.ReadConfigFromFile(configFile, "Options", "FabricInvoiceRequired"));
-            result.Add("MySqlDump Path", ConfigManager.ReadConfigFromFile(configFile, "Options", "MySqlDump Path"));
-            result.Add("MySql Path", ConfigManager.ReadConfigFromFile(configFile, "Options", "MySql Path"));
-            result.Add("Invoice Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Invoice Report"));
-            result.Add("Invoice-Pack Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Invoice-Pack Report"));
-            result.Add("Fabric Invoice Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Fabric Invoice Report"));
-            result.Add("Purchase Order Report", ConfigManager.ReadConfigFromFile(configFile, "Options", "Purchase Order Report"));
+            var result =  new Dictionary<string, object>();
+            result.Add("host", Config.GetStringValue("host", string.Empty));
+            result.Add("database", Config.GetStringValue("database", string.Empty));
+            result.Add("user", Config.GetStringValue("user", string.Empty));
+            result.Add("password", Config.GetStringValue("password", string.Empty));
+            result.Add("include_purchase_order", Config.GetBoolValue("include_purchase_order", false));
+            result.Add("packs_required", Config.GetBoolValue("packs_required", false));
+            result.Add("fabric_invoice_required", Config.GetBoolValue("fabric_invoice_required", false));
+            result.Add("mysql_dump_path", Config.GetStringValue("mysql_dump_path", string.Empty));
+            result.Add("mysql_path", Config.GetStringValue("mysql_path", string.Empty));
+            result.Add("invoice_a4", Config.GetStringValue("invoice_a4", string.Empty));
+            result.Add("a5_invoice", Config.GetBoolValue("a5_invoice", false));
+            result.Add("invoice_a5", Config.GetStringValue("invoice_a5", string.Empty));
+            result.Add("invoice_pack", Config.GetStringValue("invoice_pack", string.Empty));
+            result.Add("fabric_invoice", Config.GetStringValue("fabric_invoice", string.Empty));
+            result.Add("purchase_order", Config.GetStringValue("purchase_order", string.Empty));
             return result;
-        }
-
-        public static void WriteConfig(Dictionary<string, string> config)
-        {
-
-            foreach (var conf in config)
-            {
-                ConfigManager.WriteConfigToFile(configFile, "Options", conf.Key, conf.Value);
-            }
         }
     }
 }

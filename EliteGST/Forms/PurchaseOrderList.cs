@@ -300,7 +300,7 @@ namespace EliteGST.Forms
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.AddCSS("reports/css/purchase-order-style.css");
                         
-                        var report = "reports/" + Config.config["Purchase Order Report"];
+                        var report = "reports/" + Config.config["purchase_order"].ToString();
                         
                         dynamic data = new ExpandoObject();
                         data.Page = "";

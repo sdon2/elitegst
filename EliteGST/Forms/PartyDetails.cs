@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
+using Elite.Utilities;
 using EliteGST.Data;
 using EliteGST.Data.Models;
 using EliteGST.Data.Repositories;
-using Elite.Utilities;
 
 namespace EliteGST.Forms
 {

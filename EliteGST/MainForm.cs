@@ -68,7 +68,7 @@ namespace EliteGST
                 UpdateTitle();
 
                 // Include purchase order facility
-                if (Config.config["IncludePurchaseOrder"] == "true")
+                if ((bool) Config.config["include_purchase_order"])
                 {
                     Height = 430;
                     tileItem4.Visible = true;
@@ -84,13 +84,13 @@ namespace EliteGST
                 }
 
                 // Include packs?
-                if (Config.config["PacksRequired"] == "true")
+                if ((bool) Config.config["packs_required"])
                 {
                     isPacksRequired = true;
                 }
 
                 // Include fabric invoices?
-                if (Config.config["FabricInvoiceRequired"] == "true")
+                if ((bool) Config.config["fabric_invoice_required"])
                 {
                     isFabricInvoiceRequired = true;
                 }
@@ -178,14 +178,16 @@ namespace EliteGST
         {
             try
             {
-                var database = Database.GetDatabase();
+                var host = Database.GetCredentials("host");
 
-                if (database != "localhost")
+                if (host != "localhost")
                 {
                     throw new Exception("Can't backup database from foreign host");
                 }
 
-                var mysqldumppath = Config.config["MySqlDump Path"];
+                var database = Database.GetCredentials("database");
+
+                var mysqldumppath = Config.config["mysql_dump_path"].ToString();
                 if (!File.Exists(mysqldumppath))
                     throw new Exception("MySqlDump.exe not found. Please set it first");
 
@@ -247,14 +249,16 @@ namespace EliteGST
         {
             try
             {
-                var database = Database.GetDatabase();
+                var host = Database.GetCredentials("host");
 
-                if (database != "localhost")
+                if (host != "localhost")
                 {
                     throw new Exception("Can't restore database to foreign host");
                 }
 
-                var mysqlpath = Config.config["MySql Path"];
+                var database = Database.GetCredentials("database");
+
+                var mysqlpath = Config.config["mysql_path"].ToString();
                 if (!File.Exists(mysqlpath))
                     throw new Exception("MySql.exe not found. Please set it first");
 
@@ -314,7 +318,7 @@ namespace EliteGST
 
         private void setMySqlPathToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Config.config["MySql Path"]))
+            if (File.Exists(Config.config["mysql_path"].ToString()))
             {
                 if (!Helpers.Confirm("MySql path already set and verified. Do you want to set it again?")) return;
             }
@@ -333,8 +337,7 @@ namespace EliteGST
                         Helpers.ShowError("File path must not contain spaces");
                         return;
                     }
-                    Config.config["MySql Path"] = filename;
-                    Bootstrap.WriteConfig(Config.config);
+                    ConfigManager.SaveValue("mysql_path", filename);
                     Helpers.ShowSuccess("MySql path set successfully");
                 }
             }
@@ -342,7 +345,7 @@ namespace EliteGST
 
         private void setMySqlDumpPathToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Config.config["MySqlDump Path"]))
+            if (File.Exists(Config.config["mysql_dump_path"].ToString()))
             {
                 if (!Helpers.Confirm("MySQLDump path already set and verified. Do you want to set it again?")) return;
             }
@@ -361,8 +364,7 @@ namespace EliteGST
                         Helpers.ShowError("File path must not contain spaces");
                         return;
                     }
-                    Config.config["MySqlDump Path"] = filename;
-                    Bootstrap.WriteConfig(Config.config);
+                    ConfigManager.SaveValue("mysql_dump_path", filename);
                     Helpers.ShowSuccess("MySqlDump path set successfully");
                 }
             }

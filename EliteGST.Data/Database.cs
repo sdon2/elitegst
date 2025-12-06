@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 
@@ -7,29 +8,21 @@ namespace EliteGST.Data
 {
     public class Database
     {
-        private static string _host { get; set; }
-        private static string _database { get; set; }
-        
+        private static Dictionary<string, string> _credentials = new Dictionary<string, string>();
+
         private static IDbConnection _connection { get; set; }
 
-        public static void SetHost(string host)
+        public static void SetCredentials(string host, string database, string user, string password)
         {
-            _host = host;
+            _credentials["host"] = host;
+            _credentials["database"] = database;
+            _credentials["user"] = user;
+            _credentials["password"] = password;
         }
 
-        public static string GetHost()
+        public static string GetCredentials(string name)
         {
-            return _host;
-        }
-
-        public static void SetDatabase(string database)
-        {
-            _database = database;
-        }
-
-        public static string GetDatabase()
-        {
-            return _database;
+            return _credentials[name];
         }
 
         public static IDbConnection Connection
@@ -47,7 +40,7 @@ namespace EliteGST.Data
                 }
                 else
                 {
-                    _connection = new MySqlConnection(String.Format("server={0};uid=root;pwd=root;database={1}" , _host, _database));
+                    _connection = new MySqlConnection(String.Format("server={0};database={1};uid={2};pwd={3}", _credentials["host"], _credentials["database"], _credentials["user"], _credentials["password"]));
                     _connection.Open();
                     return _connection;
                 }

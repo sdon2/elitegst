@@ -354,7 +354,7 @@ namespace EliteGST.Forms
                     }
 
                     var rpc = rproducts.Count;
-                    var ttp = 5;
+                    var ttp = (bool)Config.config["a5_invoice"] ? 5 : 8;
                     //if (IsPacksRequired) ttp = 7;
                     if (rpc < ttp)
                     {
@@ -417,7 +417,7 @@ namespace EliteGST.Forms
                     using (var pdf = new ReportDocument())
                     {
                         //pdf.Margins = 0.25f;
-                        pdf.PageSize = PageSizes.A5;
+                        pdf.PageSize = (bool) Config.config["a5_invoice"] ? PageSizes.A5 : PageSizes.A4;
                         pdf.PageOrientation = PageOrientations.Portrait;
                         pdf.AddCSS("reports/css/invoice-style.css");
 
@@ -433,14 +433,18 @@ namespace EliteGST.Forms
                         data.products = rproducts;
                         data.bank = bank;
                         data.CSS = null;
+                        data.financial_year = MainForm.financialYear.FinancialYearString;
 
                         if (_invoice.InvoiceType == InvoiceType.Normal)
                         {
-                            report = (IsPacksRequired) ? "reports/" + Config.config["Invoice-Pack Report"] : "reports/" + Config.config["Invoice Report"];
+                            report = Config.config["invoice_a4"].ToString();
+                            report = (bool) Config.config["a5_invoice"] ? Config.config["invoice_a5"].ToString() : report;
+                            report = (IsPacksRequired) ? Config.config["invoice_pack"].ToString() : report;
+                            report = String.Format("reports/{0}", report);
                         }
                         else
                         {
-                            report = "reports/" + Config.config["Fabric Invoice Report"];
+                            report = "reports/" + Config.config["fabric_invoice"].ToString();
                         }
 
                         if (allPages)

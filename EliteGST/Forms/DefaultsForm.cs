@@ -19,8 +19,11 @@ namespace EliteGST.Forms
         private void DefaultsForm_Load(object sender, EventArgs e)
         {
             var config = Config.config;
-            if (config["IncludePurchaseOrder"].ToLower() == "false") txtPurchaseOrderRemarks.Enabled = false;
-            if (config["FabricInvoiceRequired"].ToLower() == "false")
+            if (!(bool)config["include_purchase_order"])
+            {
+                txtPurchaseOrderRemarks.Enabled = false;
+            }
+            if (!(bool) config["fabric_invoice_required"])
             {
                 txtFabricInvoiceRemarks.Enabled = false;
                 txtFoldingLossRate.Enabled = false;
