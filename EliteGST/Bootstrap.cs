@@ -36,6 +36,7 @@ namespace EliteGST
             {
                 Utils.ShowError("Unable to create Database.\n Try creating yourself!");
                 Application.Exit();
+                return;
             }
 
             if (ConfigManager.GetValue("database_imported", "false") == "false")
@@ -44,6 +45,7 @@ namespace EliteGST
                 {
                     Utils.ShowError("Unable to import Database.\n Try importing yourself!");
                     Application.Exit();
+                    return;
                 }
 
                 ConfigManager.SaveValue("database_imported", "true");
