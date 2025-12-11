@@ -187,7 +187,7 @@ namespace EliteGST
 
                 var database = Database.GetCredentials("database");
 
-                var mysqldumppath = Config.config["mysql_dump_path"].ToString();
+                var mysqldumppath = ConfigManager.GetValue("mysql_dump_path");
                 if (!File.Exists(mysqldumppath))
                     throw new Exception("MySqlDump.exe not found. Please set it first");
 
@@ -258,7 +258,7 @@ namespace EliteGST
 
                 var database = Database.GetCredentials("database");
 
-                var mysqlpath = Config.config["mysql_path"].ToString();
+                var mysqlpath = ConfigManager.GetValue("mysql_path");
                 if (!File.Exists(mysqlpath))
                     throw new Exception("MySql.exe not found. Please set it first");
 

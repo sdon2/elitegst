@@ -16,6 +16,8 @@ namespace EliteGST
             
             Database.SetCredentials(config["host"].ToString(), config["database"].ToString(), config["user"].ToString(), config["password"].ToString());
 
+            InitDatabase();
+
             ServiceContainer.Register<PartyRepository>(() => new PartyRepository(), true);
             ServiceContainer.Register<ProductRepository>(() => new ProductRepository(), true);
             ServiceContainer.Register<InvoiceRepository>(() => new InvoiceRepository(), true);
@@ -26,6 +28,26 @@ namespace EliteGST
             ServiceContainer.Register<PurchaseOrderProductRepository>(() => new PurchaseOrderProductRepository(), true);
             ServiceContainer.Register<OptionRepository>(() => new OptionRepository(), true);
             ServiceContainer.Register<FinancialYearRepository>(() => new FinancialYearRepository(), true);
+        }
+
+        private static void InitDatabase()
+        {
+            if (!Database.CreateDatabaseIfNotExists())
+            {
+                Utils.ShowError("Unable to create Database.\n Try creating yourself!");
+                Application.Exit();
+            }
+
+            if (ConfigManager.GetValue("database_imported", "false") == "false")
+            {
+                if (!Database.ImportMySQL())
+                {
+                    Utils.ShowError("Unable to import Database.\n Try importing yourself!");
+                    Application.Exit();
+                }
+
+                ConfigManager.SaveValue("database_imported", "true");
+            }
         }
 
         public static Dictionary<string, object> ReadConfig()

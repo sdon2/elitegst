@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EliteGST.DatabaseTool.Properties {
+namespace EliteGST.Data.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace EliteGST.DatabaseTool.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace EliteGST.DatabaseTool.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EliteGST.DatabaseTool.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EliteGST.Data.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,25 @@ namespace EliteGST.DatabaseTool.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- --------------------------------------------------------
+        ///-- Host:                         127.0.0.1
+        ///-- Server version:               5.7.11 - MySQL Community Server (GPL)
+        ///-- Server OS:                    Win32
+        ///-- HeidiSQL Version:             9.4.0.5125
+        ///-- --------------------------------------------------------
+        ///
+        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+        ////*!40101 SET NAMES utf8 */;
+        ////*!50503 SET NAMES utf8mb4 */;
+        ////*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string db {
+            get {
+                return ResourceManager.GetString("db", resourceCulture);
             }
         }
     }
