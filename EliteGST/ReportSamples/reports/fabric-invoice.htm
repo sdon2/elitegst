@@ -6,259 +6,320 @@
 			width: 100%;
 		}
 		.container-wrapper {
-			padding: 20px;
-		}
-		table {
-			font-family:'Calibri';
-			font-size: 13px;
+			height: 11.15in;
+			padding: 40px;
 		}
 		#container {
-			border-collapse: collapse;
-			border: 2px solid black;
+			font-size: 12px;
+			font-family:'Calibri';
+			border: 1px solid black;
 		}
-		#container h2, #container h3, #container h4 {
-			margin: 0;
-			padding: 2px;
+		.company-info {
+			font-weight: bold;
+			font-size: 17px;
+			border: 1px solid black;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			margin: 4px;
+		}
+		.company-info div {
+			margin-top: 5px;
+		}
+		.company-title {
+			height: 30px;
+			font-size: 24px;
+			font-family:'Magnolia Script', 'Calibri';
+		}
+		.center {
 			text-align: center;
 		}
-		#container h2 {
-			font-size: 22px;
-		}
-		#container h3 {
-			font-size: 18px;
-		}
-		.contaner h4 {
-			font-size: 16px;
-		}
-		#container td > p{
-			padding: 5px;
-		}
-		.align-right {
-			text-align: right;
-		}
-		.align-center {
+		.invoice-title {
 			text-align: center;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 20px;
+			padding: 6px;
+			margin: 4px;
+			margin-bottom: 0;
+			border: 1px solid black;
+			color: brown;
+			height: 24px;
 		}
-		.align-left {
-			text-align: left !important;
+		.invoice-details {
+			padding: 4px;
 		}
-		.no-wrap {
-			height: 21px !important;
-			overflow: hidden;
+		.invoice-details table {
+			font-size: 14px;
 		}
-		.border-top {
-			border-top: 2px solid black;
-		}
-		.border-bottom {
-			border-bottom: 2px solid black;
-		}
-		.border-top-bottom {
-			border-top: 2px solid black;
-			border-bottom: 2px solid black;
-		}
-		.border-right {
-			border-right: 2px solid black;
-		}
-		.border-left {
-			border-left: 2px solid black;
-		}
-		.customer-details {
-			width: 50% !important;
-			height: 140px !important;
-			overflow: hidden;
+		.invoice-details-1 {
+			border: 1px solid black;
+			padding: 10px;
 			float: left;
-			border-collapse: collapse;
+			width: 46.735%;
 		}
-		.customer-details td {
-			padding-left: 5px;
+		.invoice-details-2 {
+			border: 1px solid black;
+			padding: 10px;
+			float: right;
+			width: 46.735%;
+		}
+		.billing-details {
+			padding: 4px;
+			padding-top: 0;
+			font-size: 14px;
+		}
+		.billing-details p {
+			margin: 0;
+			margin-bottom: 4px;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		.billing-details-1 {
+			border: 1px solid black;
+			padding: 10px;
+			float: left;
+			width: 46.735%;
+		}
+		.billing-details-2 {
+			border: 1px solid black;
+			padding: 10px;
+			float: right;
+			width: 46.735%;
 		}
 		.particulars {
-			width: 100%;
+			width: 99%;
+			font-size: 12px;
+			margin: 4px;
+			margin-top: 0;
 			border-collapse: collapse;
-			border: 2px solid black;
-		}
-		.particulars td > p{
-			width: 250px !important;
-			overflow: hidden;
-		}
-		.particulars p, .particulars div {
-			height: 28px !important;
-			text-align: center;
-		}
-		.particulars .goods-description {
-			text-align: left !important;
-			padding-left: 5px;
-		}
-		.particulars th, .particulars td {
-			padding-left: 2px;
-			padding-right: 2px;
-			border-right: 2px solid black;
+			border-bottom: 1px solid black;
 		}
 		.particulars th {
+			border: 1px solid black;
+		}
+		.particulars td {
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			vertical-align: top;
 			text-align: center;
-			padding-top: 5px;
-			padding-bottom: 5px;
-			padding-left: 2px;
-			border-bottom: 2px solid black;
 		}
-		.particulars span {
-			display: inline-block;
-			padding: 2px;
-			text-align: right !important;
-			font-weight: bold;
-		}
-		.particulars .remarks {
-			padding: 5px;
-			max-width: 450px;
-		}
-		.bank-details {
+		.particulars td > div {
+			height: 22px !important;
 			width: 100%;
-			border-collapse: collapse;
-			border: 2px solid black;
+			overflow: hidden;
+			padding-top: 3px;
+			padding-bottom: 3px;
 		}
-		.bank-details td {
-			padding: 2px;
-			height: 90px !important;
+		.particulars tr:first-child td > div {
+			padding-top: 6px;
 		}
-		.signature {
+		.goods-description {
+			text-align: left !important;
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+		.sub-totals td {
+			border-top: 1px solid black;
+			vertical-align: middle;
+			height: 28px;
+		}
+		.remarks {
+			padding: 5px;
+			vertical-align: top !important;
+			text-align: left !important;
+		}
+		.totals {
+			text-align: right !important;
+			vertical-align: middle;
+			padding-right: 5px;
+			height: 28px;
+		}
+		.amount-in-words {
+			margin: 4px;
+			margin-bottom: 0;
+			padding: 5px;
+			min-height: 50px;
+			border: 1px solid black;
+		}
+		.signatures {
+			margin: 4px;
+			height: 84px;
+			border: 1px solid black;
+		}
+		.signature-bank {
+			float: left;
+			height: 84px;
+			width: 33.3%;
+			border-right: 1px solid black;
+		}
+		.signature-bank p {
+			margin: 0;
+			padding: 5px;
+		}
+		.signature-receiver {
+			float: left;
+			height: 84px;
+			width: 33%;
+		}
+		.signature-receiver p {
+			margin: 0;
+			padding: 5px;
+		}
+		.signature-authorized {
+			float: right;
+			width: 33.3%;
+			height: 84px;
+			border-left: 1px solid black;
+		}
+		.signature-authorized p {
+			margin: 0;
+			padding: 5px;
+		}
+		#docType {
+			position: absolute;
+			top: 10;
+			right: 40;
+			font-family: "Arial";
+			text-decoration: italic;
+		}
+		#authorized {
+			text-align: right;
 			position: relative;
-			bottom: -55px;
-			text-align:right;
-			padding-right:4px;
-			font-weight:bold;
+			bottom: -35;
+			right: 0;
 		}
 	</style>
 </head>
 <body>
-<table id="container">
-	<tr>
-		<td width="50%">&nbsp;</td>
-		<td width="50%" class="align-right"><p><b>{{ Page }}&nbsp;</b></p></td>
-	</tr>
-	<tr>
-		<td colspan="2"><h2>{{ company.CompanyName }}</h2></td>
-	</tr>
-	<tr>
-		<td colspan="2"><h3>{{ company.Address }}</h3></td>
-	</tr>
-	<tr>
-		<td colspan="2"><h3>{{ company.City }}, {{ company.State }}</h3></td>
-	</tr>
-	<tr><td colspan="2" class="border-bottom"><h4>Phone: {{ company.Phone }}{{ #if company.Email }}, Email: {{ company.Email }}{{ /if }}&nbsp;<h4></td></tr>
-	<tr>
-		<td class="align-left no-wrap"><p>GSTIN: {{ company.GSTIN }}</p></td>
-		<td class="align-right"><p>{{ #if company.Code }}CODE: {{ company.Code }}&nbsp;{{ /if }}</p></td>
-	</tr>
-	<tr><td colspan="2" class="border-top-bottom"><h2>TAX INVOICE</h2></td></tr>
-	<tr>
-		<td class="align-left no-wrap border-bottom"><table><tr><td>Invoice No: </td><td>{{ invoice.Id }}</td></tr><tr><td>Invoice Date: </td><td>{{ invoice.Date }}</td></tr></table></td>
-		<td class="align-right border-bottom"><table align="right"><tr><td>Vehicle Number: </td><td>{{ invoice.VehicleNumber }}</td></tr><tr><td>Transport Mode: </td><td>{{ invoice.TransportMode }}</td></tr></table></td>
-	</tr>
-	<tr>
-		<td colspan="2" class="border-bottom">
-			<table class="customer-details">
-				<tr><td><b>Billing To:</b></td></tr>
-				<tr><td>{{ billing.CompanyName }}</td></tr>
-				<tr><td>{{ billing.Address }}</td></tr>
-				<tr><td>{{ billing.City }}, {{ billing.State }}</td></tr>
-				<tr><td>Code: {{ billing.Code }}</td></tr>
-				<tr><td>GSTIN: {{ billing.GSTIN }}</td></tr>
-			</table>
-			<table class="customer-details border-left">
-				<tr><td><b>Shipping To:</b></td></tr>
-				<tr><td>{{ shipping.CompanyName }}</td></tr>
-				<tr><td>{{ shipping.Address }}</td></tr>
-				<tr><td>{{ shipping.City }}, {{ shipping.State }}</td></tr>
-				<tr><td>Code: {{ shipping.Code }}</td></tr>
-				<tr><td>GSTIN: {{ shipping.GSTIN }}</td></tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
+	<div class="container-wrapper">
+		<div id="container">
+			<div id="docType"><b>{{ Page }}</b></div>
+			<div class="company-info center">
+				<div class="company-title">{{ company.CompanyName }}</div>
+				<div>{{ company.Address }}</div>
+				<div>{{ company.City }}, {{ company.State }}</div>
+				<div>Phone: {{ company.Phone }}{{ #if company.Email }}, Email: {{ company.Email }}{{ /if }}</div>
+				<div>GSTIN: {{ company.GSTIN }}{{ #if company.Code }}, CODE: {{ company.Code }}{{ /if }}</div>
+			</div>
+			<div class="invoice-title">Tax Invoice</div>
+			<div class="invoice-details">
+				<div class="invoice-details-1">
+					<table>
+						<tbody>
+							<tr><td><b>Invoice No:</b></td><td><b>{{ invoice.Id }}</b></td></tr>
+							<tr><td><b>Invoice Date:</b></td><td><b>{{ invoice.Date }}</b></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="invoice-details-2">
+					<table>
+						<tbody>
+							<tr><td><b>Transport Mode:</b></td><td><b>{{ invoice.TransportMode }}</b></td></tr>
+							<tr><td><b>Vehicle Number:</b></td><td><b>{{ invoice.VehicleNumber }}</b></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="billing-details">
+				<div class="billing-details-1">
+					<p><b>Billing To:</b></p>
+					<p>{{ billing.CompanyName }}</p>
+					<p>{{ billing.Address }}</p>
+					<p>{{ billing.City }}, {{ billing.State }}</p>
+					<p>Code: {{ billing.Code }}</p>
+					<p>GSTIN: {{ billing.GSTIN }}</p>
+				</div>
+				<div class="billing-details-2">
+					<p><b>Shipping To:</b></p>
+					<p>{{ shipping.CompanyName }}</p>
+					<p>{{ shipping.Address }}</p>
+					<p>{{ shipping.City }}, {{ shipping.State }}</p>
+					<p>Code: {{ shipping.Code }}</p>
+					<p>GSTIN: {{ shipping.GSTIN }}</p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
 			<table class="particulars">
-				<tr>
-					<th>S.No</th>
-					<th class="goods-description">Description of Goods</th>
-					<th>HSN Code</th>
-					<th>Bale(s)</th>
-					<th>Piece(s)</th>
-					<th>Meter(s)</th>
-					<th>Folding Loss @ {{{ products.0.FoldingLossRate }}} %</th>
-					<th>Total Meter(s)</th>
-					<th>Rate/Meter</th>
-					<th>Amount</th>
-				</tr>
+				<thead>
+					<tr>
+						<th width="4%">S.No</th>
+						<th width="18%" class="goods-description">Description of Goods</th>
+						<th>HSN Code</th>
+						<th>Bale(s)</th>
+						<th>Piece(s)</th>
+						<th>Meter(s)</th>
+						<th>Folding Loss @ {{{ products.0.FoldingLossRate }}} %</th>
+						<th>Total Meter(s)</th>
+						<th>Rate/Meter</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
 				{{ #each products }}
-				<tr class="row">
-					<td><div>{{{ Id }}}</div></td>
-					<td><p class="goods-description">{{{ Description }}}</p></td>
-					<td><div>{{{ HSN }}}</div></td>
-					<td><div>{{{ Bales }}}</div></td>
-					<td><div>{{{ Pieces }}}</div></td>
-					<td><div>{{{ Meters }}}</div></td>
-					<td><div>{{{ FoldingLoss }}}</div></td>
-					<td><div>{{{ MetersAfterFoldingLoss }}}</div></td>
-					<td><div>{{{ Rate }}}</div></td>
-					<td><div>{{{ Amount }}}</div></td>
-				</tr>
+					<tr class="row">
+						<td><div>{{{ Id }}}</div></td>
+						<td><div class="goods-description">{{{ Description }}}</div></td>
+						<td><div>{{{ HSN }}}</div></td>
+						<td><div>{{{ Bales }}}</div></td>
+						<td><div>{{{ Pieces }}}</div></td>
+						<td><div>{{{ Meters }}}</div></td>
+						<td><div>{{{ FoldingLoss }}}</div></td>
+						<td><div>{{{ MetersAfterFoldingLoss }}}</div></td>
+						<td><div>{{{ Rate }}}</div></td>
+						<td><div>{{{ Amount }}}</div></td>
+					</tr>
 				{{ /each }}
-				<tr>
-					<td colspan="5" valign="top" rowspan="6" class="border-top"><div class="remarks align-left">{{{ invoice.Remarks }}}</div></td>
-					<td colspan="3" class="border-top align-right"><span>TOTAL TAXABLE</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.Taxable }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>CGST @ {{ products.0.CGSTRate }}%</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.CGST }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>SGST @ {{ products.0.SGSTRate }}%</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.SGST }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>IGST @ {{ products.0.IGSTRate }}%</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.IGST }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>TOTAL TAXES</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.TotalTaxes }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>ROUNDING OFF</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.RoundingOff }}</span></td>
-				</tr>
-				<tr>
-					<td colspan="5" rowspan="2" valign="top" class="border-top"><div class="remarks align-left">Rupees {{ invoice.AmountInWords }} Only.</div></td>
-					<td colspan="3" class="border-top align-right"><span>&nbsp;</span></td>
-					<td colspan="2" class="border-top align-right"><span>&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="border-top align-right"><span>GRAND TOTAL</span></td>
-					<td colspan="2" class="border-top align-right"><span>{{ invoice.TotalAmount }}</span></td>
-				</tr>
+					<tr class="row sub-totals">
+						<td colspan="7" class="totals"><b>TOTAL</b></td>
+						<td><b>{{ invoice.Quantity }}</b></td>
+						<td>&nbsp;</td>
+						<td><b>{{ invoice.Taxable }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="6" rowspan="5" class="remarks"><p><b><u>Remarks:</u></b></p>{{{ invoice.Remarks }}}</td>
+						<td colspan="3" class="totals"><b>TOTAL TAXABLE</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.Taxable }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>TOTAL TAX</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.TotalTaxes }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>LOADING/FORWARDING CHARGES</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.LoadingCharges }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>OTHER CHARGES</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.OtherCharges }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>TOTAL AMOUNT</b></td>
+						<td colspan="3" class="totals"><b>{{ invoice.TotalAmount }}</b></td>
+					</tr>
+				</tbody>
 			</table>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<table class="bank-details">
-				<tr>
-					<td width="40%" valign="top">
-						{{ #if bank.BankAccName }}
-						<b><u>Bank Details:</u></b><br>
+			<div class="amount-in-words">Rupees {{ invoice.AmountInWords }} Only</div>
+			<div class="signatures">
+				<div class="signature-bank">
+					{{ #if bank.BankAccName }}
+					<p>
+						<b><u>Bank Details</u></b><br>
 						<b>Acc Name:</b> {{{ bank.BankAccName }}}<br>
 						<b>Acc Number:</b> {{{ bank.BankAccNo }}}<br>
 						<b>Bank/Branch:</b> {{{ bank.BankBranch }}}<br>
 						<b>IFSC Code:</b> {{{ bank.BankIFSC }}}
-						{{ /if }}
-					</td>
-					<td width="20%">&nbsp;</td>
-					<td width="40%" valign="top" class="border-left"><b>For {{ company.CompanyName }}</b><div class="signature">Authorised Signatory</div></td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+					</p>
+					{{ /if }}
+				</div>
+				<!--<div class="signature-receiver"><p><b>Receiver's Signature</p></b></div>-->
+				<div class="signature-authorized">
+					<p><b>For {{ company.CompanyName }}</b></p>
+					<p id="authorized"><b>Authorized Signatory</b></p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
