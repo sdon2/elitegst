@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using Elite.Utilities;
 using EliteGST.Data;
 using EliteGST.Data.Models;
@@ -17,6 +19,10 @@ namespace EliteGST.Forms
         public PartyDetails()
         {
             InitializeComponent();
+
+            txtCompanyName.KeyUp += ConvertToUpperCase;
+            txtAddress.KeyUp += ConvertToUpperCase;
+            txtGSTIN.KeyUp += ConvertToUpperCase;
         }
 
         private void CompanyInfo_Load(object sender, EventArgs e)
@@ -111,6 +117,13 @@ namespace EliteGST.Forms
             {
                 Helpers.ShowError(ex.Message);
             }
+        }
+
+        private void ConvertToUpperCase(object sender, KeyEventArgs e)
+        {
+            var textEdit = ((TextEdit)sender);
+            textEdit.Text = textEdit.Text.ToUpper();
+            textEdit.Select(textEdit.Text.Length, 0);
         }
     }
 }

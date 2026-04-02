@@ -4,6 +4,8 @@ using EliteGST.Data;
 using Elite.Utilities;
 using EliteGST.Data.Models;
 using EliteGST.Data.Repositories;
+using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace EliteGST.Forms
 {
@@ -17,6 +19,11 @@ namespace EliteGST.Forms
         public CompanyInfo()
         {
             InitializeComponent();
+
+            txtCompanyName.KeyUp += ConvertToUpperCase;
+            txtAddress.KeyUp += ConvertToUpperCase;
+            txtGSTIN.KeyUp += ConvertToUpperCase;
+            txtIFSC.KeyUp += ConvertToUpperCase;
         }
 
         private void CompanyInfo_Load(object sender, EventArgs e)
@@ -81,6 +88,13 @@ namespace EliteGST.Forms
             {
                 Helpers.ShowError(ex.Message);
             }
+        }
+
+        private void ConvertToUpperCase(object sender, KeyEventArgs e)
+        {
+            var textEdit = ((TextEdit)sender);
+            textEdit.Text = textEdit.Text.ToUpper();
+            textEdit.Select(textEdit.Text.Length, 0);
         }
     }
 }

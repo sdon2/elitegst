@@ -7,6 +7,7 @@ using EliteGST.Data;
 using Elite.Utilities;
 using EliteGST.Data.Repositories;
 using EliteGST.Data.Models;
+using DevExpress.XtraEditors;
 
 namespace EliteGST.Forms
 {
@@ -43,6 +44,8 @@ namespace EliteGST.Forms
         public FabricInvoiceDetails()
         {
             InitializeComponent();
+
+            txtVehicleNumber.KeyUp += ConvertToUpperCase;
         }
 
         private void InvoiceDetails_Load(object sender, EventArgs e)
@@ -497,6 +500,13 @@ namespace EliteGST.Forms
             var foldingLessRate = Convert.ToDecimal(txtFoldingLossRate.EditValue);
             var foldingLess = quantity -  (foldingLessRate / 100);
             txtFoldingLoss.EditValue = foldingLess.ToString("f2");
+        }
+
+        private void ConvertToUpperCase(object sender, KeyEventArgs e)
+        {
+            var textEdit = ((TextEdit)sender);
+            textEdit.Text = textEdit.Text.ToUpper();
+            textEdit.Select(textEdit.Text.Length, 0);
         }
     }
 

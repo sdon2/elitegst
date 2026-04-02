@@ -23,7 +23,7 @@ namespace EliteGST.Data.Repositories
         public int DeleteAllInvoiceProducts(int invoiceId)
         {
             var sql = string.Format("DELETE FROM {0} WHERE {0}.InvoiceId=@id", Table);
-            return Connection.Execute(sql);
+            return Connection.Execute(sql, new { id = invoiceId });
         }
     }
 }
