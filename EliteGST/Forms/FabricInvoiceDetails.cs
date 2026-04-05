@@ -229,7 +229,8 @@ namespace EliteGST.Forms
             var sgstRate = Convert.ToDecimal(txtSGSTRate.EditValue);
             var igstRate = Convert.ToDecimal(txtIGSTRate.EditValue);
 
-            txtFoldingLoss.Text = (meters > 0 && rate > 0 && frate > 0) ? (meters * (frate / 100)).ToString("f2") : "0.00";
+            var _floss = (meters > 0 && rate > 0 && frate > 0) ? (meters * (frate / 100)) : 0.00m;
+            txtFoldingLoss.Text = Math.Round((_floss + 0.01m) * 20 / 20, MidpointRounding.ToEven).ToString("f2");
             var floss = Convert.ToDecimal(txtFoldingLoss.EditValue);
 
             var amount = (meters - floss) * rate;
@@ -430,6 +431,7 @@ namespace EliteGST.Forms
                 }
                 else
                 {
+                    _irepo.Update(invoice, Id);
                     _iprepo.DeleteAllInvoiceProducts(Id);
                 }
 

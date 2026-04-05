@@ -277,13 +277,21 @@
 						<td><b>{{ invoice.Taxable }}</b></td>
 					</tr>
 					<tr class="row sub-totals">
-						<td colspan="6" rowspan="5" class="remarks"><p><b><u>Remarks:</u></b></p>{{{ invoice.Remarks }}}</td>
+						<td colspan="6" rowspan="7" class="remarks"><p><b><u>Remarks:</u></b></p>{{{ invoice.Remarks }}}</td>
 						<td colspan="3" class="totals"><b>TOTAL TAXABLE</b></td>
 						<td colspan="3" class="totals"><b>{{ invoice.Taxable }}</b></td>
 					</tr>
 					<tr class="row sub-totals">
-						<td colspan="3" class="totals"><b>TOTAL TAX</b></td>
-						<td colspan="3" class="totals"><b>{{ invoice.TotalTaxes }}</b></td>
+						<td colspan="3" class="totals"><b>TOTAL CGST @ {{ gst.CGST_PERCENT }}</b></td>
+						<td colspan="3" class="totals"><b>{{ gst.CGST }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>TOTAL SGST @ {{ gst.SGST_PERCENT }}</b></td>
+						<td colspan="3" class="totals"><b>{{ gst.SGST }}</b></td>
+					</tr>
+					<tr class="row sub-totals">
+						<td colspan="3" class="totals"><b>TOTAL IGST @ {{ gst.IGST_PERCENT }}</b></td>
+						<td colspan="3" class="totals"><b>{{ gst.IGST }}</b></td>
 					</tr>
 					<tr class="row sub-totals">
 						<td colspan="3" class="totals"><b>LOADING/FORWARDING CHARGES</b></td>

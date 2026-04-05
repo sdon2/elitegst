@@ -78,7 +78,6 @@
             // tileControl1
             // 
             this.tileControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tileControl1.DragSize = new System.Drawing.Size(0, 0);
             this.tileControl1.Groups.Add(this.tileGroup2);
             this.tileControl1.Groups.Add(this.tileGroup3);
             this.tileControl1.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -105,9 +104,9 @@
             this.tileItem1.AppearanceItem.Normal.Options.UseBorderColor = true;
             tileItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tileItemElement1.Appearance.Normal.Options.UseFont = true;
-            tileItemElement1.Image = global::EliteGST.Properties.Resources.boproductgroup_32x32;
-            tileItemElement1.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement1.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement1.ImageOptions.Image = global::EliteGST.Properties.Resources.boproductgroup_32x32;
+            tileItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement1.Text = "Products";
             this.tileItem1.Elements.Add(tileItemElement1);
             this.tileItem1.Id = 3;
@@ -131,9 +130,9 @@
             this.tileItem2.AppearanceItem.Normal.Options.UseBorderColor = true;
             tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tileItemElement2.Appearance.Normal.Options.UseFont = true;
-            tileItemElement2.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
-            tileItemElement2.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement2.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement2.ImageOptions.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
+            tileItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement2.Text = "Customers";
             this.tileItem2.Elements.Add(tileItemElement2);
             this.tileItem2.Id = 4;
@@ -150,9 +149,9 @@
             this.tileItem3.AppearanceItem.Normal.Options.UseBorderColor = true;
             tileItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tileItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileItemElement3.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            tileItemElement3.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement3.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement3.ImageOptions.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
+            tileItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement3.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement3.Text = "Invoices";
             this.tileItem3.Elements.Add(tileItemElement3);
             this.tileItem3.Id = 5;
@@ -168,9 +167,9 @@
             this.tileItem6.AppearanceItem.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tileItem6.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem6.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement4.Image = global::EliteGST.Properties.Resources.financial_32x32;
-            tileItemElement4.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement4.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement4.ImageOptions.Image = global::EliteGST.Properties.Resources.financial_32x32;
+            tileItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement4.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement4.Text = "Payments";
             this.tileItem6.Elements.Add(tileItemElement4);
             this.tileItem6.Id = 8;
@@ -193,9 +192,9 @@
             this.tileItem5.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem5.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileItem5.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement5.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
-            tileItemElement5.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement5.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement5.ImageOptions.Image = global::EliteGST.Properties.Resources.bocustomer_32x32;
+            tileItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement5.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement5.Text = "Suppliers";
             tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tileItem5.Elements.Add(tileItemElement5);
@@ -213,9 +212,9 @@
             this.tileItem4.AppearanceItem.Normal.Options.UseBackColor = true;
             this.tileItem4.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileItem4.AppearanceItem.Normal.Options.UseFont = true;
-            tileItemElement6.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
-            tileItemElement6.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement6.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
+            tileItemElement6.ImageOptions.Image = global::EliteGST.Properties.Resources.bofileattachment_32x32;
+            tileItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement6.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top;
             tileItemElement6.Text = "Purchase Orders";
             this.tileItem4.Elements.Add(tileItemElement6);
             this.tileItem4.Id = 6;
@@ -416,7 +415,7 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(447, 17);
             this.toolStripStatusLabel2.Spring = true;
-            this.toolStripStatusLabel2.Text = "Designed By: SVP Infotech | Phone: 9500442332";
+            this.toolStripStatusLabel2.Text = "Designed By: SVP Infotech | Phone: 9042596464";
             // 
             // statusTime
             // 
@@ -433,7 +432,6 @@
             // tileControl2
             // 
             this.tileControl2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tileControl2.DragSize = new System.Drawing.Size(0, 0);
             this.tileControl2.Groups.Add(this.tileGroup4);
             this.tileControl2.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tileControl2.Location = new System.Drawing.Point(0, 221);

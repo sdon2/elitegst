@@ -295,6 +295,7 @@ namespace EliteGST.Forms
             {
                 var _invoice = _invoices[dataGridView1.SelectedRows[0].Index];
                 var taxable = _invoice.Subtotal - _invoice.Discount;
+                GST gst = new GST();
 
                 dynamic i = new
                 {
@@ -351,6 +352,8 @@ namespace EliteGST.Forms
                             IGST = ip.IGST.ToString("f2"),
                             Packs = ip.Packs.ToString("n0")
                         });
+
+                        setTaxes(ip, ref gst);
                     }
 
                     var rpc = rproducts.Count;
@@ -390,11 +393,13 @@ namespace EliteGST.Forms
                             IGSTRate = ip.IGSTRate.ToString("f2"),
                             IGST = ip.IGST.ToString("f2")
                         });
+
+                        setTaxes(ip, ref gst);
                     }
 
                     var rpc = rproducts.Count;
-                    var ttp = 8;
-                    if (IsPacksRequired) ttp = 7;
+                    var ttp = 6;
+                    if (IsPacksRequired) ttp = 5;
                     if (rpc < ttp)
                     {
                         for (var l = rpc; l <= ttp; l++) rproducts.Add(new InvoiceFabricProductsPrint());
@@ -431,6 +436,7 @@ namespace EliteGST.Forms
                         data.billing = billing;
                         data.shipping = shipping;
                         data.products = rproducts;
+                        data.gst = gst;
                         data.bank = bank;
                         data.CSS = null;
                         data.financial_year = MainForm.financialYear.FinancialYearString;
@@ -527,6 +533,16 @@ namespace EliteGST.Forms
                 Helpers.ShowError(ex.Message);
             }
         }
+
+        private void setTaxes(dynamic ip, ref GST gst)
+        {
+            gst.CGST_PERCENT = ip.CGSTRate;
+            gst.CGST += ip.CGST;
+            gst.SGST_PERCENT = ip.SGSTRate;
+            gst.SGST += ip.SGST;
+            gst.IGST_PERCENT = ip.IGSTRate;
+            gst.IGST += ip.IGST;
+        }
     }
 
     internal class InvoiceProductsPrint
@@ -622,6 +638,46 @@ namespace EliteGST.Forms
             IGSTRate = "&nbsp;";
             IGST = "&nbsp;";
             Pieces = "&nbsp;";
+        }
+    }
+
+    public class GST
+    {
+        public decimal CGST_PERCENT;
+        public decimal SGST_PERCENT;
+        public decimal IGST_PERCENT;
+
+        public decimal CGST;
+        public decimal SGST;
+        public decimal IGST;
+
+        public GST(decimal cgstP = 0.00m, decimal sgstP = 0.00m, decimal igstP = 0.00m, decimal cgst = 0.00m, decimal sgst = 0.00m, decimal igst = 0.00m)
+        {
+            CGST_PERCENT = cgstP;
+            SGST_PERCENT = sgstP;
+            IGST_PERCENT = igstP;
+
+            CGST = cgst;
+            SGST = sgst;
+            IGST = igst;
+        }
+
+        public void setCGST(decimal percent, decimal value)
+        {
+            CGST_PERCENT = percent;
+            CGST = value;
+        }
+
+        public void setSGST(decimal percent, decimal value)
+        {
+            SGST_PERCENT = percent;
+            SGST = value;
+        }
+
+        public void setIGST(decimal percent, decimal value)
+        {
+            IGST_PERCENT = percent;
+            IGST = value;
         }
     }
 }

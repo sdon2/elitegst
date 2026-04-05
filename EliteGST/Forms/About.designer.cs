@@ -55,7 +55,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(451, 100);
             this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "Copyright © 2010 - 2019  SVP Infotech";
+            this.groupControl1.Text = "Copyright © 2010 - 2026  SVP Infotech";
             // 
             // labelControl2
             // 
@@ -95,7 +95,6 @@
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
             this.pictureEdit1.Size = new System.Drawing.Size(451, 129);
             this.pictureEdit1.TabIndex = 0;
             // 
@@ -103,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 328);
+            this.ClientSize = new System.Drawing.Size(454, 320);
             this.ControlBox = false;
             this.Controls.Add(this.hyperLinkEdit1);
             this.Controls.Add(this.simpleButton1);
