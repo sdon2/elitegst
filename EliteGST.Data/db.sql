@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `InvoiceStringId` varchar(50) NOT NULL,
   `InvoiceType` tinyint(4) NOT NULL,
   `InvoiceDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `DueDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `BillingId` int(11) NOT NULL,
   `ShippingId` int(11) NOT NULL,
   `TransportMode` varchar(20) NOT NULL,

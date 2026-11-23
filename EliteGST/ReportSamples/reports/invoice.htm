@@ -207,7 +207,13 @@
 					<table>
 						<tbody>
 							<tr><td><b>Invoice No:</b></td><td><b>{{ invoice.Id }}</b></td></tr>
-							<tr><td><b>Invoice Date:</b></td><td><b>{{ invoice.Date }}</b></td></tr>
+							<tr>
+								<td colspan="2">
+									<b>Invoice Date:</b></td><td><b>{{ invoice.Date }}</b>
+									&nbsp; | &nbsp;
+									<b>Due Date:</b></td><td><b>{{ invoice.DueDate }}</b>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

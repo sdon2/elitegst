@@ -83,6 +83,7 @@ namespace EliteGST.Forms
                     _invoice.FinancialYearId = MainForm.financialYear.Id;
                     _invoice.InvoiceType = InvoiceType.Normal;
                     _invoice.InvoiceDate = DateTime.Now;
+                    _invoice.DueDate = DateTime.Now;
                     _invoice.TransportMode = "By Road";
                     _invoiceProducts = new List<InvoiceProduct>();
                     _invoice.InvoiceStringId = IdGenerators.GenerateInvoiceId();
@@ -95,6 +96,7 @@ namespace EliteGST.Forms
 
                 txtInvoiceId.Text = _invoice.InvoiceStringId;
                 txtDate.DateTime = _invoice.InvoiceDate;
+                txtDueDate.DateTime = _invoice.DueDate;
                 txtTransportMode.Text = _invoice.TransportMode;
                 txtVehicleNumber.Text = _invoice.VehicleNumber;
                 txtRemarks.Text = _invoice.Remarks;
@@ -425,6 +427,7 @@ namespace EliteGST.Forms
                 invoice.FinancialYearId = MainForm.financialYear.Id;
                 invoice.InvoiceType = InvoiceType.Normal;
                 invoice.InvoiceDate = txtDate.DateTime.Date;
+                invoice.DueDate = txtDueDate.DateTime.Date;
                 invoice.InvoiceStringId = txtInvoiceId.Text;
                 invoice.BillingId = _billingId;
                 invoice.ShippingId = _shippingId;

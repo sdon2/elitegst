@@ -66,7 +66,7 @@ namespace EliteGST.Forms
         {
             _invoices = new BindingList<Invoice>();
             dataGridView1.DataSource = _invoices;
-            var cols = new List<int> { 0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+            var cols = new List<int> { 0, 1, 2, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
             cols.ForEach(i => dataGridView1.Columns[i].Visible = false);
             dataGridView1.Columns[23].DefaultCellStyle.Format = "c";
             dataGridView1.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -301,6 +301,7 @@ namespace EliteGST.Forms
                 {
                     Id = _invoice.InvoiceStringId,
                     Date = _invoice.InvoiceDate.ToShortDateString(),
+                    DueDate = _invoice.DueDate.ToShortDateString(),
                     TransportMode = _invoice.TransportMode,
                     VehicleNumber = _invoice.VehicleNumber,
                     Quantity = _invoice.Quantity.ToString("f2"),

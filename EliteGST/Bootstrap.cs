@@ -59,6 +59,7 @@ namespace EliteGST
             result.Add("database", Config.GetStringValue("database", string.Empty));
             result.Add("user", Config.GetStringValue("user", string.Empty));
             result.Add("password", Config.GetStringValue("password", string.Empty));
+            result.Add("due_date_required", Config.GetBoolValue("due_date_required", false, true));
             result.Add("include_purchase_order", Config.GetBoolValue("include_purchase_order", false));
             result.Add("packs_required", Config.GetBoolValue("packs_required", false));
             result.Add("fabric_invoice_required", Config.GetBoolValue("fabric_invoice_required", false));

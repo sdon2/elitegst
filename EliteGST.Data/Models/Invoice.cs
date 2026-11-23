@@ -12,6 +12,8 @@ namespace EliteGST.Data.Models
         public string InvoiceStringId { get; set; }
         [DisplayName("Date")]
         public DateTime InvoiceDate { get; set; }
+        [DisplayName("Due Date")]
+        public DateTime DueDate { get; set; }
         [IgnoreProperty(true)]
         public string Customer { get; set; }
         [IgnoreProperty(true)]
